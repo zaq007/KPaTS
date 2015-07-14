@@ -16,6 +16,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 Migrations/
+bower_components/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
