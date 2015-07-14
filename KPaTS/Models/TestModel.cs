@@ -14,6 +14,8 @@ namespace KPaTS.Models
 
         public string Description { get; set; }
 
+        public virtual UserProfile Creator { get; set; }
+
         public string Hash { get; set; }
 
         public string Space { get; set; }
