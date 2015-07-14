@@ -169,11 +169,21 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Auth\VKAuthClient.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507141217016_InitialCreate.cs" />
+    <Compile Include="Migrations\201507141217016_InitialCreate.Designer.cs">
+      <DependentUpon>201507141217016_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507141243136_Repositories.cs" />
+    <Compile Include="Migrations\201507141243136_Repositories.Designer.cs">
+      <DependentUpon>201507141243136_Repositories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AnswerModel.cs" />
     <Compile Include="Models\InfoModel.cs" />
@@ -182,6 +192,13 @@
     <Compile Include="Models\StatModel.cs" />
     <Compile Include="Models\TestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AnswersRepository.cs" />
+    <Compile Include="Repositories\InfosRepository.cs" />
+    <Compile Include="Repositories\MainContext.cs" />
+    <Compile Include="Repositories\ProfessorsRepository.cs" />
+    <Compile Include="Repositories\QuestionsRepository.cs" />
+    <Compile Include="Repositories\StatsRepository.cs" />
+    <Compile Include="Repositories\TestsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -300,6 +317,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201507141217016_InitialCreate.resx">
+      <DependentUpon>201507141217016_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507141243136_Repositories.resx">
+      <DependentUpon>201507141243136_Repositories.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
