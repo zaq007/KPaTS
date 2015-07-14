@@ -20,7 +20,7 @@ namespace KPaTS.Models
         public virtual QuestionModel QuestionModel { get; set; }
     }
 
-    enum AnswerType
+    public enum AnswerType
     {
         Radio,
         Check,

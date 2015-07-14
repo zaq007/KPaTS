@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
 using KPaTS.Models;
+using KPaTS.Auth;
 
 namespace KPaTS
 {
@@ -13,6 +14,12 @@ namespace KPaTS
         {
             // To let users of this site log in using their accounts from other sites such as Microsoft, Facebook, and Twitter,
             // следует обновить сайт. Дополнительные сведения: http://go.microsoft.com/fwlink/?LinkID=252166
+
+            OAuthWebSecurity.RegisterClient(
+                   client: new VKAuthClient(
+                          "4995286", "HcsrG4bgHVdCBRPznTms"),
+                   displayName: "ВКонтакте",
+                   extraData: null);
 
             //OAuthWebSecurity.RegisterMicrosoftClient(
             //    clientId: "",
