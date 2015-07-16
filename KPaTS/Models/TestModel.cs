@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -8,14 +9,18 @@ namespace KPaTS.Models
 {
     public class TestModel
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public virtual UserProfile Creator { get; set; }
 
+        [Required]
         public string Hash { get; set; }
 
         public string Space { get; set; }
