@@ -174,6 +174,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Auth\VKAuthClient.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -183,9 +184,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507160746474_Inital.cs" />
-    <Compile Include="Migrations\201507160746474_Inital.Designer.cs">
-      <DependentUpon>201507160746474_Inital.cs</DependentUpon>
+    <Compile Include="Migrations\201507161427192_Inital.cs" />
+    <Compile Include="Migrations\201507161427192_Inital.Designer.cs">
+      <DependentUpon>201507161427192_Inital.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -747,6 +748,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Test\GetTestsAutocomplete.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -755,8 +757,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507160746474_Inital.resx">
-      <DependentUpon>201507160746474_Inital.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507161427192_Inital.resx">
+      <DependentUpon>201507161427192_Inital.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

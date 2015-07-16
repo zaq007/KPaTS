@@ -14,7 +14,6 @@ using KPaTS.Models;
 namespace KPaTS.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         //
