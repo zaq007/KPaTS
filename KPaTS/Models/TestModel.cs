@@ -20,8 +20,6 @@ namespace KPaTS.Models
 
         public string Space { get; set; }
 
-        public Guid ProfessorModelId { get; set; }
-
         public virtual ProfessorModel ProfessorModel { get; set; }
 
         public virtual ICollection<QuestionModel> Questions { get; set; }

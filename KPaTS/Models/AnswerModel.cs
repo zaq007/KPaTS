@@ -15,8 +15,6 @@ namespace KPaTS.Models
 
         public bool isRight { get; set; }
 
-        public Guid QuestionModelId { get; set; }
-
         public virtual QuestionModel QuestionModel { get; set; }
     }
 

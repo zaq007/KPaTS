@@ -13,10 +13,6 @@ namespace KPaTS.Models
 
         public DateTime Date { get; set; }
 
-        public int UserProfileId { get; set; }
-
-        public Guid TestModelId { get; set; }
-
         public virtual TestModel TestModel { get; set; }
 
         public virtual UserProfile UserProfile { get; set; }
