@@ -20,10 +20,20 @@ namespace KPaTS.Models
 
         public string Space { get; set; }
 
+        public long Stars { get; set; }
+
         public virtual ProfessorModel ProfessorModel { get; set; }
 
         public virtual ICollection<QuestionModel> Questions { get; set; }
 
         public virtual ICollection<InfoModel> Infos { get; set; }
+    }
+
+    public class TestAutocompleteModel
+    {
+        public string Url { get; set; }
+        public string Name { get; set; }
+        public string Space { get; set; }
+        public long Stars { get; set; }
     }
 }

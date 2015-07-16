@@ -25,5 +25,11 @@ namespace KPaTS.Controllers
             return Json(new AnswersRepository().GetAnswer(guid), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetTestsAutocomplete(string query)
+        {
+            return Json(new TestsRepository().GetTestsForAutocomplete(query), JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
