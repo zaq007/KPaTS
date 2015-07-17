@@ -13,6 +13,10 @@ namespace KPaTS.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
+        // @shortcut
+        [Required]
+        public string Shortcut { get; set; }
+
         [Required]
         public string Name { get; set; }
     }

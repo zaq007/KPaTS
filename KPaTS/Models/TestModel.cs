@@ -20,8 +20,9 @@ namespace KPaTS.Models
 
         public virtual UserProfile Creator { get; set; }
 
+        // #shortcut
         [Required]
-        public string Hash { get; set; }
+        public string Shortcut { get; set; }
 
         public SpaceModel Space { get; set; }
 

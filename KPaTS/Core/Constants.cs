@@ -7,8 +7,7 @@ namespace KPaTS.Core
 {
     public class Constants
     {
+        public const char HASH_SPACE_SEPARATOR = '#';
         public const char TEST_SPACE_SEPARATOR = '@';
-
-
     }
 }

@@ -22,7 +22,7 @@ namespace KPaTS.Repositories
         {
             using (var DB = new MainContext())
             {
-                var tests = DB.Tests.Where(x => TestAutocompleteAlgorithm.isSuitable(x, query))
+                var tests = DB.Tests.Where(x => TestAutocompleteAlgorithm.matches(x, query))
                     .Select(x => new TestAutocompleteModel()
                     {
                         Url = new UrlHelper().Action("Index", "Test", x.Id),

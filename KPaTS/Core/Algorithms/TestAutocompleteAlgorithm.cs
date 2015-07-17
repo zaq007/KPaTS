@@ -8,7 +8,7 @@ namespace KPaTS.Core.Algorithms
 {
     public class TestAutocompleteAlgorithm
     {
-        public static bool isSuitable(TestModel test, string query)
+        public static bool matches(TestModel test, string query)
         {
             var split = query.ToLower().Split(Constants.TEST_SPACE_SEPARATOR);
             int sepCount = split.Count();
