@@ -15,6 +15,7 @@ namespace KPaTS.Repositories
         public DbSet<QuestionModel> Questions { get; set; }
         public DbSet<AnswerModel> Answers { get; set; }
         public DbSet<InfoModel> Infos { get; set; }
+        public DbSet<SpaceModel> Spaces { get; set; }
 
 
         public MainContext()

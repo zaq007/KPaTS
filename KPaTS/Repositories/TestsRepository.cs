@@ -27,7 +27,7 @@ namespace KPaTS.Repositories
                     {
                         Url = new UrlHelper().Action("Index", "Test", x.Id),
                         Name = x.Name,
-                        Space = x.Space,
+                        Space = x.Space.Name,
                         Stars = x.Stars
                     }).ToList();
                 return tests;

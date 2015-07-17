@@ -189,6 +189,7 @@
     <Compile Include="Models\InfoModel.cs" />
     <Compile Include="Models\ProfessorModel.cs" />
     <Compile Include="Models\QuestionModel.cs" />
+    <Compile Include="Models\SpaceModel.cs" />
     <Compile Include="Models\StatModel.cs" />
     <Compile Include="Models\TestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Repositories\MainContext.cs" />
     <Compile Include="Repositories\ProfessorsRepository.cs" />
     <Compile Include="Repositories\QuestionsRepository.cs" />
+    <Compile Include="Repositories\SpacesRepository.cs" />
     <Compile Include="Repositories\StatsRepository.cs" />
     <Compile Include="Repositories\TestsRepository.cs" />
   </ItemGroup>

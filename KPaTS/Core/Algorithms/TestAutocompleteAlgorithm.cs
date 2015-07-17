@@ -21,7 +21,7 @@ namespace KPaTS.Core.Algorithms
                 space = split[1];
                 name = split[0];
             }
-            if (String.Compare(test.Space, space, true) != 0)
+            if (String.Compare(test.Space.Name, space, true) != 0)
                 return false;
             for (int i = 0; i < name.Length; i++)
                 if (test.Name.ToLower()[i] != name[i])

@@ -23,7 +23,7 @@ namespace KPaTS.Models
         [Required]
         public string Hash { get; set; }
 
-        public string Space { get; set; }
+        public SpaceModel Space { get; set; }
 
         public long Stars { get; set; }
 
