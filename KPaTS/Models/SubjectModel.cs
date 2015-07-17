@@ -7,18 +7,21 @@ using System.Web;
 
 namespace KPaTS.Models
 {
-    public class InfoModel
+    public class SubjectModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string Shortcut { get; set; }
 
         [Required]
-        public string Link { get; set; }
+        public string Name { get; set; }
 
-        public virtual ICollection<TestModel> Test { get; set; }
+        public ICollection<TestModel> Tests { get; set; }
+
+        public ICollection<ProfessorModel> Professors { get; set; }
+
     }
 }

@@ -16,5 +16,7 @@ namespace KPaTS.Models
         [Required]
         public string Name { get; set; }
 
+        public ICollection<TestModel> Tests { get; set; }
+
     }
 }

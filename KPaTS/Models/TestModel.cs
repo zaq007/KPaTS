@@ -30,6 +30,8 @@ namespace KPaTS.Models
 
         public virtual ProfessorModel ProfessorModel { get; set; }
 
+        public virtual SubjectModel Subject { get; set; }
+
         public virtual ICollection<QuestionModel> Questions { get; set; }
 
         public virtual ICollection<InfoModel> Infos { get; set; }
