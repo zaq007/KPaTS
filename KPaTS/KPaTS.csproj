@@ -172,9 +172,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProfessorController.cs" />
     <Compile Include="Auth\VKAuthClient.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -222,6 +224,13 @@
     <None Include=".bin\bower.cmd" />
     <None Include=".bin\git.cmd" />
     <None Include=".bin\node.cmd" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Professor\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Professor\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Professor\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Professor\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -275,6 +284,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
