@@ -20,8 +20,5 @@ namespace KPaTS.Models
         public string Name { get; set; }
 
         public ICollection<TestModel> Tests { get; set; }
-
-        public ICollection<ProfessorModel> Professors { get; set; }
-
     }
 }

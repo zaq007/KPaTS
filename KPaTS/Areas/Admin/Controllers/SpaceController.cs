@@ -8,46 +8,45 @@ using KPaTS.Repositories;
 
 namespace KPaTS.Areas.Admin.Controllers
 {
-    [Authorize(Roles="admin")]
-    public class ProfessorController : Controller
+    [Authorize(Roles = "admin")]
+    public class SpaceController : Controller
     {
-        ProfessorsRepository repository = new ProfessorsRepository();
+        SpacesRepository repository = new SpacesRepository();
 
         public ActionResult Index()
         {
-            return View(repository.GetProfessors());
+            return View(repository.GetSpaces());
         }
 
         public ActionResult Details(Guid id)
         {
-            return View(repository.GetProfessorById(id));
+            return View(repository.GetSpaceById(id));
         }
 
-        [HttpGet]
-        public ActionResult Edit(Guid id)
-        {
-            return View(repository.GetProfessorById(id));
-        }
-
-        [HttpPost]
-        public ActionResult Edit(ProfessorModel data)
-        {
-            bool result = repository.Edit(data);
-            if(result == false)
-                return View(data);
-            return RedirectToAction("Details", new { id = data.Id });
-        }
-
-        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(ProfessorModel data)
+        public ActionResult Create(SpaceModel data)
         {
             bool result = repository.Add(data);
+            if (result == false)
+                return View(data);
+            return RedirectToAction("Details", new { id = data.Id });
+        }
+
+
+        public ActionResult Edit(Guid id)
+        {
+            return View(repository.GetSpaceById(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(SpaceModel data)
+        {
+            bool result = repository.Edit(data);
             if (result == false)
                 return View(data);
             return RedirectToAction("Details", new { id = data.Id });
@@ -59,7 +58,5 @@ namespace KPaTS.Areas.Admin.Controllers
             repository.Delete(id);
             return RedirectToAction("Index");
         }
-
-
     }
 }

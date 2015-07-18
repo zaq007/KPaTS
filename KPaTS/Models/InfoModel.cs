@@ -19,6 +19,6 @@ namespace KPaTS.Models
         [Required]
         public string Link { get; set; }
 
-        public virtual ICollection<TestModel> Test { get; set; }
+        public virtual TestModel Test { get; set; }
     }
 }

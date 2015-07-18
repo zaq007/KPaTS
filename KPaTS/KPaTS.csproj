@@ -175,6 +175,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfessorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SpaceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SubjectController.cs" />
     <Compile Include="Auth\VKAuthClient.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
@@ -186,13 +188,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507161427192_Inital.cs" />
-    <Compile Include="Migrations\201507161427192_Inital.Designer.cs">
-      <DependentUpon>201507161427192_Inital.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507171337258_Stuff.cs" />
-    <Compile Include="Migrations\201507171337258_Stuff.Designer.cs">
-      <DependentUpon>201507171337258_Stuff.cs</DependentUpon>
+    <Compile Include="Migrations\201507181351040_Inital.cs" />
+    <Compile Include="Migrations\201507181351040_Inital.Designer.cs">
+      <DependentUpon>201507181351040_Inital.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -231,6 +229,14 @@
     <Content Include="Areas\Admin\Views\Professor\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Professor\Create.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Subject\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Subject\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Subject\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Subject\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Space\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Space\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Space\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Space\Edit.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -292,11 +298,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507161427192_Inital.resx">
-      <DependentUpon>201507161427192_Inital.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507171337258_Stuff.resx">
-      <DependentUpon>201507171337258_Stuff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507181351040_Inital.resx">
+      <DependentUpon>201507181351040_Inital.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
