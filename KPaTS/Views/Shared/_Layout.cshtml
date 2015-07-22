@@ -17,15 +17,35 @@
                     <span class="mdl-layout-title">@ViewBag.Title</span>
                     <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        @Html.ActionLink("Авторизация", "Login", "Account", null, new { @class="mdl-navigation__link" })
-                        @Html.ActionLink("Регистрация", "Register", "Account", null, new { @class="mdl-navigation__link" })
+                        @if (ViewBag.PageId != KPaTS.Core.PageID.PAGE_AUTH)
+                        {
+                            if (!Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Авторизация", "Login", "Account", null, new { @class="mdl-navigation__link" })
+                                @Html.ActionLink("Регистрация", "Register", "Account", null, new { @class="mdl-navigation__link" })
+                            }
+                        }
                     </nav>
                 </div>
             </header>
             <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">Title</span>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="drawer-header">
+                        @Html.ActionLink("Hi, jack!", "Manage", "Account")
+                        @using (Html.BeginForm("LogOff", "Account"))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent" value="Logout"/>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <span class="mdl-layout-title">Title</span>
+                }
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="/">Home</a>
                     <a class="mdl-navigation__link" href="">Link</a>
                     <a class="mdl-navigation__link" href="">Link</a>
                     <a class="mdl-navigation__link" href="">Link</a>

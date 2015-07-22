@@ -39,3 +39,13 @@ SPAN.mark {
 .card-padding {
     padding: 16px 32px;
 }
+
+.drawer-header {
+    display: flex;
+    height: 144px;
+    justify-content: space-around;
+}
+
+.drawer-header > * {
+    align-self: center;
+}

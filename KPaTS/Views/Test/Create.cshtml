@@ -1,43 +1,29 @@
 ﻿@model KPaTS.Models.TestModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Создание теста";
 }
 
-<h2>Create</h2>
-@if(ViewBag.Message != null)
-{
-    <h3>@ViewBag.Message</h3>
-}
-
+<section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>TestModel</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            @Html.LabelFor(model => model.Name, new { @class = "mdl-textfield__label"})
+            @Html.TextBoxFor(model => model.Name, new { @class = "mdl-textfield__input" })
             @Html.ValidationMessageFor(model => model.Name)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            @Html.LabelFor(model => model.Description, new { @class = "mdl-textfield__label"})
+            @Html.TextBoxFor(model => model.Description, new { @class = "mdl-textfield__input" })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Shortcut)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Shortcut)
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            @Html.LabelFor(model => model.Shortcut, new { @class = "mdl-textfield__label"})
+            @Html.TextBoxFor(model => model.Shortcut, new { @class = "mdl-textfield__input" })
             @Html.ValidationMessageFor(model => model.Shortcut)
         </div>
 
@@ -61,12 +47,13 @@
             @Html.DropDownList("QuestionType",EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
             <input type ="button" value="Add question" onClick="addQuestion()"/>
 
+        <br />
+        <br />
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Создать тест" />
         </p>
-    </fieldset>
 }
-
+</section>
 
 
 <div>

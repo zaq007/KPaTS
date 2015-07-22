@@ -1,9 +1,11 @@
 ﻿@model KPaTS.Models.RegisterModel
 @{
     ViewBag.Title = "Регистрация";
+    ViewBag.PageId = KPaTS.Core.PageID.PAGE_AUTH;
 }
 
-<section class="mdl-color--white mdl-cell mdl-cell--12-col card-padding">
+<div class="mdl-grid">
+<section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -23,9 +25,14 @@
         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "mdl-textfield__input" })
     </div>
     <br />
-    <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent" value="Регистрация" />
+    <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Регистрация" />
 }
 </section>
+
+<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col card-padding" id="socialLoginForm">
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

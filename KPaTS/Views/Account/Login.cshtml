@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Авторизация";
+    ViewBag.PageId = KPaTS.Core.PageID.PAGE_AUTH;
 }
 
 <div class="mdl-grid">
@@ -26,7 +27,7 @@
         <br/>
         <br/>
         <br/>
-        <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent" value="Выполнить вход" />
+        <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Выполнить вход" />
         @Html.ActionLink("Register", "Register", null, new { @class="mdl-button mdl-js-button mdl-js-ripple-effect" })
 }
 </section>

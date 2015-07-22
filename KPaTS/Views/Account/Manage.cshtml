@@ -3,14 +3,10 @@
     ViewBag.Title = "Управление учетной записью";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
-
+<div class="mdl-grid">
 <p class="message-success">@ViewBag.StatusMessage</p>
 
-<p>Вы вошли как <strong>@User.Identity.Name</strong>.</p>
-
+<section id="loginForm" class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
 @if (ViewBag.HasLocalPassword)
 {
     @Html.Partial("_ChangePasswordPartial")
@@ -19,13 +15,13 @@ else
 { 
     @Html.Partial("_SetPasswordPartial")
 }
+</section>
 
-<section id="externalLogins">
+<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col card-padding" id="externalLogins">
     @Html.Action("RemoveExternalLogins")
-
-    <h3>Добавить внешнюю учетную запись</h3>
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
