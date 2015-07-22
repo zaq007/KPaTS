@@ -185,6 +185,7 @@
     <Compile Include="Core\Algorithms\TestAutocompleteAlgorithm.cs" />
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\PageID.cs" />
+    <Compile Include="Core\ViewHelper.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -283,6 +284,9 @@
     <Content Include="Views\Admin\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Test\_QuestionPartialView.cshtml" />
+    <Content Include="Views\Test\_AnswerPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

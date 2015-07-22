@@ -1,0 +1,13 @@
+﻿@model KPaTS.Models.QuestionModel
+
+<div class="question">
+    
+    <br />
+    <fieldset>
+        <legend><input type="text" value="@((int)ViewBag.type)" name="questions[@ViewBag.number][Text]" /></legend>
+        <input type="hidden" value="@((int)ViewBag.type)" name="questions[@ViewBag.number][Type]" />
+        <div id="answers@(ViewBag.number)">
+        </div>
+    </fieldset>
+    <input type="button" value="addAnswer" onclick="@("addAnswer("+ViewBag.number+","+(int)ViewBag.type+")")" />
+</div>

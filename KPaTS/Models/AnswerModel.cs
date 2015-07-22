@@ -17,18 +17,9 @@ namespace KPaTS.Models
         public string Text { get; set; }
 
         [Required]
-        public AnswerType Type { get; set; }
-
-        [Required]
         public bool isRight { get; set; }
 
         public virtual QuestionModel QuestionModel { get; set; }
     }
 
-    public enum AnswerType
-    {
-        Radio,
-        Check,
-        Plain
-    }
 }

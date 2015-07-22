@@ -16,6 +16,18 @@ namespace KPaTS.Repositories
             }
         }
 
+        public List<SubjectModel> GetSpaceSubjects(Guid id)
+        {
+            using (var DB = new MainContext())
+            {
+                return DB.Spaces.Where(x => x.Id == id).FirstOrDefault().Subjects.Select(x => new SubjectModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Shortcut = x.Shortcut
+                }).ToList();
+            }
+        }
 
         public SubjectModel GetSubjectById(Guid guid)
         {
