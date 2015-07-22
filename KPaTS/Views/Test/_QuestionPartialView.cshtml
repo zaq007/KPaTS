@@ -4,7 +4,7 @@
     
     <br />
     <fieldset>
-        <legend><input type="text" value="@((int)ViewBag.type)" name="questions[@ViewBag.number][Text]" /></legend>
+        <legend><input type="text" name="questions[@ViewBag.number][Text]" /></legend>
         <input type="hidden" value="@((int)ViewBag.type)" name="questions[@ViewBag.number][Type]" />
         <div id="answers@(ViewBag.number)">
         </div>

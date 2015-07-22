@@ -5,6 +5,10 @@
 }
 
 <h2>Create</h2>
+@if(ViewBag.Message != null)
+{
+    <h3>@ViewBag.Message</h3>
+}
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -41,10 +45,10 @@
             @Html.LabelFor(model => model.Space);
         </div>
         <div class="editor-field">
-            @Html.DropDownList("SpacesList", KPaTS.Core.ViewHelper.GetSpacesList())
+            @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
         </div>
         <div class="editor-field">
-            @Html.DropDownList("SubjectsList", new SelectList(new List<SelectListItem>()), new { style = "display:none"})
+            @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()), new { style = "display:none"})
         </div>
 
 
@@ -87,15 +91,15 @@
         }
 
         $(document).ready(function () {
-            $("#SpacesList").on("change", function (data) {
-                $.get("/Api/GetSpaceSubjects", { id: $("#SpacesList option:selected").val() }, function (data) {
+            $("#Space_Id_").on("change", function (data) {
+                $.get("/Api/GetSpaceSubjects", { id: $("#Space_Id_ option:selected").val() }, function (data) {
                     $.each(data, function (i, item) {
-                        $('#SubjectsList').append($('<option>', {
+                        $('#Subject_Id_').append($('<option>', {
                             value: item.Id,
                             text: item.Shortcut
                         }));
                     });
-                    $('#SubjectsList').show();
+                    $('#Subject_Id_').show();
                 })
             });
         });

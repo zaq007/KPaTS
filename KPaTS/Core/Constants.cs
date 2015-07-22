@@ -9,5 +9,8 @@ namespace KPaTS.Core
     {
         public const char HASH_SPACE_SEPARATOR = '#';
         public const char TEST_SPACE_SEPARATOR = '@';
+
+        public const string TEST_CREATING_SUCCESS = "Success!";
+        public const string TEST_CREATING_ERROR = "Error!";
     }
 }

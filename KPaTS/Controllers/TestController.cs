@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using KPaTS.Core;
 using KPaTS.Models;
 using KPaTS.Repositories;
+using WebMatrix.WebData;
 
 namespace KPaTS.Controllers
 {
@@ -25,16 +27,22 @@ namespace KPaTS.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ViewResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ViewResult Create(TestModel model)
         {
-            var a = this.HttpContext.Request.Params;
-            return View();
+            var result = new TestsRepository().Add(model);
+            if (result == true)
+                ViewBag.Message = Constants.TEST_CREATING_SUCCESS;
+            else
+                ViewBag.Message = Constants.TEST_CREATING_ERROR;
+            return View(model);
         }
 
         public ActionResult GetQuestionView(int number, int type)

@@ -18,6 +18,24 @@ namespace KPaTS.Repositories
             }
         }
 
+        public bool Add(TestModel model)
+        {
+            model.Creator = new UserProfile()
+            {
+                UserId = WebMatrix.WebData.WebSecurity.CurrentUserId
+            };
+            using(var DB = new MainContext())
+            {
+                DB.Tests.Add(model);
+                DB.Entry(model.Space).State = System.Data.Entity.EntityState.Unchanged;
+                DB.Entry(model.Subject).State = System.Data.Entity.EntityState.Unchanged;
+                DB.Entry(model.Creator).State = System.Data.Entity.EntityState.Unchanged;
+                DB.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
         public List<TestAutocompleteModel> GetTestsForAutocomplete(string query)
         {
             using (var DB = new MainContext())
