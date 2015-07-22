@@ -10,9 +10,9 @@
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
-    <body class="main">
+    <body class="main @(ViewBag.PageId == KPaTS.Core.PageID.PAGE_INDEX ? "index" : "")">
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-            <header class="mdl-layout__header mdl-layout__header--transparent">
+            <header class="mdl-layout__header @(ViewBag.PageId == KPaTS.Core.PageID.PAGE_INDEX ? "mdl-layout__header--transparent" : "")">
                 <div class="mdl-layout__header-row">
                     <span class="mdl-layout-title">@ViewBag.Title</span>
                     <div class="mdl-layout-spacer"></div>
@@ -38,6 +38,15 @@
                     @RenderBody()
                 </div>
             </main>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                <div class="mdl-logo">Title</div>
+                <ul class="mdl-mini-footer--link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+                </div>
+            </footer>
         </div>
 
         @Scripts.Render("~/bundles/jquery")

@@ -12,14 +12,15 @@ else
     using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
     {
     @Html.AntiForgeryToken()
-    <fieldset id="socialLoginList">
-        <legend>Вход через другую службу</legend>
+        <h5>Авторизация через другую службу</h5>
+        <br/>
+        <br/>
+        <br/>
         <p>
         @foreach (AuthenticationClientData p in Model)
         {
-            <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Войдите, используя свою учетную запись @p.DisplayName">@p.DisplayName</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Войдите, используя свою учетную запись @p.DisplayName">@p.DisplayName</button>
         }
         </p>
-    </fieldset>
     }
 }

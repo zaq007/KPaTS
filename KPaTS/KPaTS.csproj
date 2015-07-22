@@ -184,15 +184,11 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Core\Algorithms\TestAutocompleteAlgorithm.cs" />
     <Compile Include="Core\Constants.cs" />
+    <Compile Include="Core\PageID.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507181351040_Inital.cs" />
-    <Compile Include="Migrations\201507181351040_Inital.Designer.cs">
-      <DependentUpon>201507181351040_Inital.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AnswerModel.cs" />
     <Compile Include="Models\InfoModel.cs" />
@@ -296,11 +292,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507181351040_Inital.resx">
-      <DependentUpon>201507181351040_Inital.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

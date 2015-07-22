@@ -1,4 +1,4 @@
-﻿body {
+﻿body.index {
     background: url('../Images/bg.png') center / cover;
 }
 
@@ -30,4 +30,12 @@
 
 .tooltip-left {
     text-align: left;
+}
+
+SPAN.mark {
+    font-weight: 700;
+}
+
+.card-padding {
+    padding: 16px 32px;
 }

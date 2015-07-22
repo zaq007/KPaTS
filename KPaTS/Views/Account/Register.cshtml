@@ -3,34 +3,29 @@
     ViewBag.Title = "Регистрация";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Создание новой учетной записи.</h2>
-</hgroup>
-
+<section id="loginForm" class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
-    <fieldset>
-        <legend>Форма регистрации</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Регистрация" />
-    </fieldset>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        @Html.LabelFor(m => m.UserName, new { @class = "mdl-textfield__label" })
+        @Html.TextBoxFor(m => m.UserName, new { @class = "mdl-textfield__input" })
+    </div>
+    <br />
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        @Html.LabelFor(m => m.Password, new { @class = "mdl-textfield__label" })
+        @Html.PasswordFor(m => m.Password, new { @class = "mdl-textfield__input" })
+    </div>
+    <br />
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "mdl-textfield__label" })
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "mdl-textfield__input" })
+    </div>
+    <br />
+    <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent" value="Регистрация" />
 }
+</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

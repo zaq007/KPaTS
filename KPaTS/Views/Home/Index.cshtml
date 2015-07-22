@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Домашняя страница";
+    ViewBag.PageId = KPaTS.Core.PageID.PAGE_INDEX;
 }
 <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--12-col main-page">
@@ -16,9 +17,9 @@
         <div class="mdl-tooltip mdl-tooltip--large tooltip-left" for="search">
             Search variations:
             <ul>
-                <li>#testName
-                <li>@@space
-                <li>#test@@space
+                <li><span class="mdl-color-text--primary mark">#</span>testName
+                <li><span class="mdl-color-text--accent mark">@@</span>space
+                <li><span class="mdl-color-text--primary mark">#</span>test<span class="mdl-color-text--accent mark">@@</span>space
             </ul>
         </div>
     </div>
