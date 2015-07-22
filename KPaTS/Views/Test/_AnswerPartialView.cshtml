@@ -1,0 +1,8 @@
+﻿@model KPaTS.Models.AnswerModel
+
+<div>
+    @if (ViewBag.type == KPaTS.Models.QuestionType.Radio)
+    {
+        <input type="radio" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]" value="true"/><input type="text" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][Text]" /> <br />
+    }
+</div>

@@ -16,7 +16,18 @@ namespace KPaTS.Models
         [Required]
         public string Text { get; set; }
 
+        [Required]
+        public QuestionType Type { get; set; }
+
         public virtual ICollection<AnswerModel> Answers { get; set; }
 
+    }
+
+
+    public enum QuestionType
+    {
+        Radio,
+        Check,
+        Plain
     }
 }

@@ -184,6 +184,7 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Core\Algorithms\TestAutocompleteAlgorithm.cs" />
     <Compile Include="Core\Constants.cs" />
+    <Compile Include="Core\ViewHelper.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -191,6 +192,14 @@
     <Compile Include="Migrations\201507181351040_Inital.cs" />
     <Compile Include="Migrations\201507181351040_Inital.Designer.cs">
       <DependentUpon>201507181351040_Inital.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507210659066_Inital1.cs" />
+    <Compile Include="Migrations\201507210659066_Inital1.Designer.cs">
+      <DependentUpon>201507210659066_Inital1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507210728118_Inital11.cs" />
+    <Compile Include="Migrations\201507210728118_Inital11.Designer.cs">
+      <DependentUpon>201507210728118_Inital11.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -287,6 +296,9 @@
     <Content Include="Views\Admin\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Test\_QuestionPartialView.cshtml" />
+    <Content Include="Views\Test\_AnswerPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,6 +312,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201507181351040_Inital.resx">
       <DependentUpon>201507181351040_Inital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507210659066_Inital1.resx">
+      <DependentUpon>201507210659066_Inital1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507210728118_Inital11.resx">
+      <DependentUpon>201507210728118_Inital11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

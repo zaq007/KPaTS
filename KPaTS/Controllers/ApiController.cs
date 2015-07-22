@@ -30,6 +30,9 @@ namespace KPaTS.Controllers
             return Json(new TestsRepository().GetTestsForAutocomplete(query), JsonRequestBehavior.AllowGet);
         }
 
-
+        public JsonResult GetSpaceSubjects(Guid id)
+        {
+            return Json(new SubjectsRepository().GetSpaceSubjects(id), JsonRequestBehavior.AllowGet);
+        }
     }
 }

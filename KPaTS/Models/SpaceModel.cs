@@ -20,6 +20,6 @@ namespace KPaTS.Models
         [Required]
         public string Name { get; set; }
 
-        public ICollection<SubjectModel> Subjects { get; set; }
+        public virtual ICollection<SubjectModel> Subjects { get; set; }
     }
 }

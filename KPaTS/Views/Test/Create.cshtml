@@ -1,0 +1,103 @@
+﻿@model KPaTS.Models.TestModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TestModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Shortcut)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Shortcut)
+            @Html.ValidationMessageFor(model => model.Shortcut)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Space);
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SpacesList", KPaTS.Core.ViewHelper.GetSpacesList())
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SubjectsList", new SelectList(new List<SelectListItem>()), new { style = "display:none"})
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Questions)
+        </div>
+        <div class ="questions">
+
+        </div>
+            @Html.DropDownList("QuestionType",EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
+            <input type ="button" value="Add question" onClick="addQuestion()"/>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var currentQuestions = 0;
+
+        function addQuestion() {
+            $.get("/Test/GetQuestionView", { number: currentQuestions++, type: $("#QuestionType option:selected").val() }, function (data) {
+                $(".questions").append(data);
+            })
+        }
+
+        function addAnswer(num, type) {
+            $.get("/Test/GetAnswerView", { number: num, type: type, count: $("#answers" + num).children().size() }, function (data) {
+                $("#answers"+num).append(data);
+            })
+        }
+
+        $(document).ready(function () {
+            $("#SpacesList").on("change", function (data) {
+                $.get("/Api/GetSpaceSubjects", { id: $("#SpacesList option:selected").val() }, function (data) {
+                    $.each(data, function (i, item) {
+                        $('#SubjectsList').append($('<option>', {
+                            value: item.Id,
+                            text: item.Shortcut
+                        }));
+                    });
+                    $('#SubjectsList').show();
+                })
+            });
+        });
+</script>
+}
