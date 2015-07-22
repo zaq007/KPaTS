@@ -32,7 +32,7 @@
                 @if (Request.IsAuthenticated)
                 {
                     <div class="drawer-header">
-                        @Html.ActionLink("Hi, jack!", "Manage", "Account")
+                        @Html.ActionLink("Hi, "+User.Identity.Name, "Manage", "Account")
                         @using (Html.BeginForm("LogOff", "Account"))
                         {
                             @Html.AntiForgeryToken()

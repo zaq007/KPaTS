@@ -37,11 +37,17 @@ namespace KPaTS.Controllers
         [Authorize]
         public ViewResult Create(TestModel model)
         {
-            var result = new TestsRepository().Add(model);
-            if (result == true)
-                ViewBag.Message = Constants.TEST_CREATING_SUCCESS;
-            else
-                ViewBag.Message = Constants.TEST_CREATING_ERROR;
+            TestsRepository repository = new TestsRepository();
+            if (repository.GetTestByShortcut(model.Shortcut) == null)
+            {
+                var result = new TestsRepository().Add(model);
+                if (result == true)
+                    ViewBag.Message = Constants.TEST_CREATING_SUCCESS;
+                else
+                    ViewBag.Message = Constants.TEST_CREATING_ERROR;
+                return View(model);
+            }
+            ViewBag.Message = Constants.TEST_CREATING_ERROR;
             return View(model);
         }
 

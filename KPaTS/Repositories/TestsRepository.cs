@@ -18,6 +18,14 @@ namespace KPaTS.Repositories
             }
         }
 
+        public TestModel GetTestByShortcut(string @short)
+        {
+            using (var DB = new MainContext())
+            {
+                return DB.Tests.Where(x => string.Compare(x.Shortcut, @short, true) == 0).FirstOrDefault();
+            }
+        }
+
         public bool Add(TestModel model)
         {
             model.Creator = new UserProfile()

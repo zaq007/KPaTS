@@ -89,6 +89,15 @@
                     $('#Subject_Id_').show();
                 })
             });
+
+            $("#Shortcut").on("change", function (data) {
+                $.get("/Api/CheckTestShortcut", { shortcut: $("#Shortcut").val() }, function (data) {
+                    if (data.result == 0)
+                        $("#Shortcut").css("background-color", "red");
+                    else
+                        $("#Shortcut").css("background-color", "white");
+                })
+            });
         });
 </script>
 }

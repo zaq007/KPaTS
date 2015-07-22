@@ -34,5 +34,10 @@ namespace KPaTS.Controllers
         {
             return Json(new SubjectsRepository().GetSpaceSubjects(id), JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult CheckTestShortcut(string shortcut)
+        {
+            return Json(new { result = (new TestsRepository().GetTestByShortcut(shortcut) != null) ? 0 : 1 }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
