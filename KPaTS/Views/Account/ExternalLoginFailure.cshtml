@@ -2,7 +2,8 @@
     ViewBag.Title = "Ошибка при входе";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Не удалось войти через службу.</h2>
-</hgroup>
+<section id="loginForm" class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
+    <h4>Не удалось войти через службу.</h4>
+    @Html.ActionLink("Авторизация", "Login", null, new { @class="mdl-button mdl-button--raised mdl-color--accent mdl-js-button mdl-js-ripple-effect" })
+    @Html.ActionLink("Регистрация", "Register", null, new { @class="mdl-button mdl-js-button mdl-js-ripple-effect" })
+</section>

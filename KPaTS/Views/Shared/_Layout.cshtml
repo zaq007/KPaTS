@@ -17,10 +17,8 @@
                     <span class="mdl-layout-title">@ViewBag.Title</span>
                     <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
-                        <a class="mdl-navigation__link" href="">Link</a>
+                        @Html.ActionLink("Авторизация", "Login", "Account", null, new { @class="mdl-navigation__link" })
+                        @Html.ActionLink("Регистрация", "Register", "Account", null, new { @class="mdl-navigation__link" })
                     </nav>
                 </div>
             </header>

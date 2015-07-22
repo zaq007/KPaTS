@@ -3,33 +3,29 @@
     ViewBag.Title = "Регистрация";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Свяжите свою учетную запись в @ViewBag.ProviderDisplayName.</h2>
-</hgroup>
-
+<div class="mdl-grid">
+<section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Форма связывания</legend>
-        <p>
-            Вы прошли проверку через <strong>@ViewBag.ProviderDisplayName</strong>.
-            Введите имя пользователя на этом сайте ниже и нажмите кнопку "Подтвердить", чтобы
-                завершить вход.
-        </p>
-        <ol>
-            <li class="name">
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-        </ol>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            @Html.LabelFor(m => m.UserName, new { @class = "mdl-textfield__label" })
+            @Html.TextBoxFor(m => m.UserName, new { @class = "mdl-textfield__input" })
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
         @Html.HiddenFor(m => m.ExternalLoginData)
-        <input type="submit" value="Регистрация" />
-    </fieldset>
+        <br/>
+        <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent" value="Регистрация" />
 }
+</section>
+
+<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col card-padding" id="socialLoginForm">
+    <h4>Свяжите свою учетную запись в @ViewBag.ProviderDisplayName.</h4>
+    <p>Вы прошли проверку через <strong>@ViewBag.ProviderDisplayName</strong>.
+        Введите имя пользователя на этом сайте ниже и нажмите кнопку "Подтвердить", чтобы
+        завершить вход.</p>
+</section>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
