@@ -10,41 +10,41 @@
 <div class="mdl-grid">
 <section class="mdl-color--white mdl-cell mdl-cell--4-col card-padding mdl-cell--top">
     <h5>Test data</h5>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            @Html.LabelFor(model => model.Name, new { @class = "mdl-textfield__label"})
-            @Html.TextBoxFor(model => model.Name, new { @class = "mdl-textfield__input" })
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            @Html.LabelFor(model => model.Description, new { @class = "mdl-textfield__label"})
-            @Html.TextBoxFor(model => model.Description, new { @class = "mdl-textfield__input" })
-            @Html.ValidationMessageFor(model => model.Description)
-        </div>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            @Html.LabelFor(model => model.Shortcut, new { @class = "mdl-textfield__label"})
-            @Html.TextBoxFor(model => model.Shortcut, new { @class = "mdl-textfield__input" })
-            @Html.ValidationMessageFor(model => model.Shortcut)
-        </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        @Html.LabelFor(model => model.Name, new { @class = "mdl-textfield__label"})
+        @Html.TextBoxFor(model => model.Name, new { @class = "mdl-textfield__input" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <br />
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        @Html.LabelFor(model => model.Description, new { @class = "mdl-textfield__label"})
+        @Html.TextBoxFor(model => model.Description, new { @class = "mdl-textfield__input" })
+        @Html.ValidationMessageFor(model => model.Description)
+    </div>
+    <br />
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        @Html.LabelFor(model => model.Shortcut, new { @class = "mdl-textfield__label"})
+        @Html.TextBoxFor(model => model.Shortcut, new { @class = "mdl-textfield__input" })
+        @Html.ValidationMessageFor(model => model.Shortcut)
+    </div>
 
-        <h6>@Html.LabelFor(model => model.Space)</h6>
-        <div class="editor-field">
-            @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
-        </div>
-        <div id="subject" style="display: none">
-            <h6>@Html.LabelFor(model => model.Subject)</h6>
-            @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
-        </div>
+    <h6>@Html.LabelFor(model => model.Space)</h6>
+    <div class="editor-field">
+        @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
+    </div>
+    <div id="subject" style="display: none">
+        <h6>@Html.LabelFor(model => model.Subject)</h6>
+        @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
+    </div>
     <button type="submit" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
         <i class="material-icons">add</i>
     </button>
 </section>
 <section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
-        <h5>@Html.LabelFor(model => model.Questions)</h5>
-        <div class ="questions mdl-grid"></div>
-        @Html.DropDownList("QuestionType",EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
-        <input class="mdl-button mdl-js-button mdl-js-ripple-effect"type ="button" value="Add question" onClick="addQuestion()"/>
+    <h5>@Html.LabelFor(model => model.Questions)</h5>
+    <div class ="questions mdl-grid"></div>
+    @Html.DropDownList("QuestionType",EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
+    <input class="mdl-button mdl-js-button mdl-js-ripple-effect"type ="button" value="Add question" onClick="addQuestion()"/>
 </section>
 </div>
 }

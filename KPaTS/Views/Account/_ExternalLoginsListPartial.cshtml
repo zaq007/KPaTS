@@ -18,7 +18,7 @@ else
         <p>
         @foreach (AuthenticationClientData p in Model)
         {
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Войдите, используя свою учетную запись @p.DisplayName">@p.DisplayName</button>
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect" type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Войдите, используя свою учетную запись @p.DisplayName">@p.DisplayName</button>
         }
         </p>
     }

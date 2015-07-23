@@ -15,6 +15,7 @@
             @Html.TextBoxFor(m => m.UserName, new { @class = "mdl-textfield__input" })
             @Html.ValidationMessageFor(m => m.UserName)
         </div>
+        <br />
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             @Html.LabelFor(m => m.Password, new { @class = "mdl-textfield__label" })
             @Html.PasswordFor(m => m.Password, new { @class = "mdl-textfield__input" })
@@ -28,11 +29,11 @@
         <br/>
         <br/>
         <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Выполнить вход" />
-        @Html.ActionLink("Register", "Register", null, new { @class="mdl-button mdl-js-button mdl-js-ripple-effect" })
+        @Html.ActionLink("Регистрация", "Register", null, new { @class="mdl-button mdl-js-button mdl-js-ripple-effect" })
 }
 </section>
 
-<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col card-padding" id="socialLoginForm">
+<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col mdl-cell--top card-padding" id="socialLoginForm">
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
 </div>
