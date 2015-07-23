@@ -4,11 +4,12 @@
     ViewBag.Title = "Создание теста";
 }
 
-<section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
+<div class="mdl-grid">
+<section class="mdl-color--white mdl-cell mdl-cell--4-col card-padding mdl-cell--top">
+    <h5>Test data</h5>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             @Html.LabelFor(model => model.Name, new { @class = "mdl-textfield__label"})
             @Html.TextBoxFor(model => model.Name, new { @class = "mdl-textfield__input" })
@@ -27,38 +28,26 @@
             @Html.ValidationMessageFor(model => model.Shortcut)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Space);
-        </div>
+        <h6>@Html.LabelFor(model => model.Space)</h6>
         <div class="editor-field">
             @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
         </div>
-        <div class="editor-field">
-            @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()), new { style = "display:none"})
+        <div id="subject" style="display: none">
+            <h6>@Html.LabelFor(model => model.Subject)</h6>
+            @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
         </div>
-
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Questions)
-        </div>
-        <div class ="questions">
-
-        </div>
-            @Html.DropDownList("QuestionType",EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
-            <input type ="button" value="Add question" onClick="addQuestion()"/>
-
-        <br />
-        <br />
-        <p>
-            <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Создать тест" />
-        </p>
-}
+    <button type="submit" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">add</i>
+    </button>
 </section>
-
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
+        <h5>@Html.LabelFor(model => model.Questions)</h5>
+        <div class ="questions mdl-grid"></div>
+        @Html.DropDownList("QuestionType",EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
+        <input class="mdl-button mdl-js-button mdl-js-ripple-effect"type ="button" value="Add question" onClick="addQuestion()"/>
+</section>
 </div>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -68,12 +57,14 @@
         function addQuestion() {
             $.get("/Test/GetQuestionView", { number: currentQuestions++, type: $("#QuestionType option:selected").val() }, function (data) {
                 $(".questions").append(data);
+                componentHandler.upgradeAllRegistered();
             })
         }
 
         function addAnswer(num, type) {
             $.get("/Test/GetAnswerView", { number: num, type: type, count: $("#answers" + num).children().size() }, function (data) {
-                $("#answers"+num).append(data);
+                $("#answers" + num).append(data);
+                componentHandler.upgradeAllRegistered();
             })
         }
 
@@ -86,7 +77,7 @@
                             text: item.Shortcut
                         }));
                     });
-                    $('#Subject_Id_').show();
+                    $('#subject').show();
                 })
             });
 

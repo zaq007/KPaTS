@@ -1,8 +1,17 @@
 ﻿@model KPaTS.Models.AnswerModel
 
+<hr />
 <div>
     @if (ViewBag.type == KPaTS.Models.QuestionType.Radio)
     {
-        <input type="radio" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]" value="true"/><input type="text" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][Text]" /> <br />
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]">
+            <input type="radio" id="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]" class="mdl-radio__button" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]" />
+            <span class="mdl-radio__label">Right answer</span>
+        </label>
+        <br />
+        <div class="mdl-textfield mdl-js-textfield textfield-demo">
+            <input class="mdl-textfield__input" type="text" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][Text]" />
+            <label class="mdl-textfield__label" for="sample1">Text...</label>
+        </div>
     }
 </div>

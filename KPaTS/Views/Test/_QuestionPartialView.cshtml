@@ -1,13 +1,15 @@
 ﻿@model KPaTS.Models.QuestionModel
 
-<div class="question">
-    
-    <br />
-    <fieldset>
-        <legend><input type="text" name="questions[@ViewBag.number][Text]" /></legend>
-        <input type="hidden" value="@((int)ViewBag.type)" name="questions[@ViewBag.number][Type]" />
-        <div id="answers@(ViewBag.number)">
-        </div>
-    </fieldset>
-    <input type="button" value="addAnswer" onclick="@("addAnswer("+ViewBag.number+","+(int)ViewBag.type+")")" />
+<div class="question mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col card-padding">
+    <div class="mdl-textfield mdl-js-textfield textfield-demo">
+        <textarea class="mdl-textfield__input" rows= "3" name="questions[@ViewBag.number][Text]" id="questions[@ViewBag.number][Text]" ></textarea>
+        <label class="mdl-textfield__label" for="questions[@ViewBag.number][Text]">Question text</label>
+    </div>
+
+    <h6>Answer list</h6>
+
+    <input type="hidden" value="@((int)ViewBag.type)" name="questions[@ViewBag.number][Type]" />
+    <div id="answers@(ViewBag.number)">
+    </div>
+    <input class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" value="Add answer" onclick="@("addAnswer("+ViewBag.number+","+(int)ViewBag.type+")")" />
 </div>

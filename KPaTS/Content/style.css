@@ -49,3 +49,13 @@ SPAN.mark {
 .drawer-header > * {
     align-self: center;
 }
+
+.question .mdl-textfield {
+    width: 100%;
+}
+
+.right-fab {
+    position: fixed;
+    right: 30px;
+    bottom: 120px;
+}
