@@ -40,6 +40,29 @@ SPAN.mark {
     padding: 16px 32px;
 }
 
+.card-footer {
+    padding: 8px;
+    box-shadow: inset 0 2px 2px 0 rgba(0,0,0,.14),inset 0 3px 1px -2px rgba(0,0,0,.2);
+    background-color: #C5CAE9;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-footer * {
+    align-self: center;
+}
+
+.card-footer .author {
+    color: rgba(0,0,0,.87);
+    font-size: 12px;
+    line-height: 18px;
+    overflow: hidden;
+}
+
+.card-footer.mdl-card--border {
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
 .drawer-header {
     display: flex;
     height: 144px;
@@ -58,4 +81,8 @@ SPAN.mark {
     position: fixed;
     right: 30px;
     bottom: 120px;
+}
+
+.displayNone {
+    display: none;
 }
