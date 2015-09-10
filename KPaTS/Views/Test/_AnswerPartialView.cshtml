@@ -1,7 +1,6 @@
 ﻿@model KPaTS.Models.AnswerModel
 
-<hr />
-<div>
+<div class="mdl-cell">
     @if (ViewBag.type == KPaTS.Models.QuestionType.Radio)
     {
         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]">

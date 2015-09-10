@@ -9,7 +9,7 @@
     <h6>Answer list</h6>
 
     <input type="hidden" value="@((int)ViewBag.type)" name="questions[@ViewBag.number][Type]" />
-    <div id="answers@(ViewBag.number)">
+    <div id="answers@(ViewBag.number)" class="mdl-grid">
     </div>
     <input class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" value="Add answer" onclick="@("addAnswer("+ViewBag.number+","+(int)ViewBag.type+")")" />
 </div>

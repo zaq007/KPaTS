@@ -2,56 +2,98 @@
 
 @{
     ViewBag.Title = "Создание теста";
+    ViewBag.PageId = KPaTS.Core.PageID.PAGE_TEST_CREATE;
 }
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 <div class="mdl-grid">
-<section class="mdl-color--white mdl-cell mdl-cell--4-col card-padding mdl-cell--top">
-    <h5>Test data</h5>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        @Html.LabelFor(model => model.Name, new { @class = "mdl-textfield__label"})
-        @Html.TextBoxFor(model => model.Name, new { @class = "mdl-textfield__input" })
-        @Html.ValidationMessageFor(model => model.Name)
-    </div>
-    <br />
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        @Html.LabelFor(model => model.Description, new { @class = "mdl-textfield__label"})
-        @Html.TextBoxFor(model => model.Description, new { @class = "mdl-textfield__input" })
-        @Html.ValidationMessageFor(model => model.Description)
-    </div>
-    <br />
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        @Html.LabelFor(model => model.Shortcut, new { @class = "mdl-textfield__label"})
-        @Html.TextBoxFor(model => model.Shortcut, new { @class = "mdl-textfield__input" })
-        @Html.ValidationMessageFor(model => model.Shortcut)
-    </div>
+    <section class="mdl-cell--hide-tablet mdl-cell--hide-phone mdl-cell mdl-cell--2-col">
+    </section>
+    <section class="mdl-color--white mdl-cell mdl-cell--4-col card-padding mdl-cell--top mdl-shadow--2dp">
+        <h5>Test data</h5>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            @Html.LabelFor(model => model.Name, new { @class = "mdl-textfield__label"})
+            @Html.TextBoxFor(model => model.Name, new { @class = "mdl-textfield__input" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            @Html.LabelFor(model => model.Description, new { @class = "mdl-textfield__label"})
+            @Html.TextBoxFor(model => model.Description, new { @class = "mdl-textfield__input" })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        <br />
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            @Html.LabelFor(model => model.Shortcut, new { @class = "mdl-textfield__label"})
+            @Html.TextBoxFor(model => model.Shortcut, new { @class = "mdl-textfield__input" })
+            @Html.ValidationMessageFor(model => model.Shortcut)
+        </div>
 
-    <h6>@Html.LabelFor(model => model.Space)</h6>
-    <div class="editor-field">
-        @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
-    </div>
-    <div id="subject" style="display: none">
-        <h6>@Html.LabelFor(model => model.Subject)</h6>
-        @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
-    </div>
-    <button type="submit" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-        <i class="material-icons">add</i>
-    </button>
-</section>
-<section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
-    <h5>@Html.LabelFor(model => model.Questions)</h5>
-    <div class ="questions mdl-grid"></div>
-    @Html.DropDownList("QuestionType",EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
-    <input class="mdl-button mdl-js-button mdl-js-ripple-effect"type ="button" value="Add question" onClick="addQuestion()"/>
-</section>
+        <h6>@Html.LabelFor(model => model.Space)</h6>
+        <div class="editor-field">
+            @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
+        </div>
+        <div id="subject" style="display: none">
+            <h6>@Html.LabelFor(model => model.Subject)</h6>
+            @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
+        </div>
+        <button type="submit" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <i class="material-icons">add</i>
+        </button>
+    </section>
+    <section class="mdl-card mdl-cell mdl-cell--4-col mdl-shadow--2dp mdl-cell--top">
+        <div class="mdl-card__title mdl-card--expand">
+            <h2 class="mdl-card__title-text" id="preview-name">#tvims</h2>
+            <h2 class="mdl-card__subtitle-text displayNone" id="preview-space">@@BSUIR</h2>
+        </div>
+        <div class="mdl-card__supporting-text" id="preview-description">
+            Short test description Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenan convallis.
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Start test
+            </a>
+        </div>
+        <div class="card-footer mdl-card--border">
+            <span class="author">Created by @@@(User.Identity.Name)</span>
+        </div>
+    </section>
+</div>
+<div class="mdl-grid">
+    <section class="mdl-cell mdl-cell--2-col">
+    </section>
+    <section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
+        <h5>@Html.LabelFor(model => model.Questions)</h5>
+        <div class ="questions mdl-grid"></div>
+        @Html.DropDownList("QuestionType",EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
+        <input class="mdl-button mdl-js-button mdl-js-ripple-effect"type ="button" value="Add question" onClick="addQuestion()"/>
+    </section>
 </div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
+        $("#Shortcut").keyup(function () {
+            $("#preview-name").text("#" + $("#Shortcut").val());
+        });
+
+        $("#Description").keyup(function () {
+            $("#preview-description").text($("#Description").val());
+        });
+
+        $("#Space_Id_").change(function () {
+            if ($("#Space_Id_").val() != 0)
+                $("#preview-space").show()
+            else
+                $("#preview-space").hide()
+
+            $("#preview-space").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
+        });
+
         var currentQuestions = 0;
 
         function addQuestion() {
