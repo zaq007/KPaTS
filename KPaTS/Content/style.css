@@ -86,3 +86,33 @@ SPAN.mark {
 .displayNone {
     display: none;
 }
+
+.literal {
+    position: absolute;
+    top: 28px;
+    font-size: 35px;
+    text-shadow: rgba(0, 0, 0, 0.4) 0 1px 3px;
+    transition: all ease 0.3s;
+    opacity: 0;
+    left: 0;
+    transform: rotate(45deg);
+}
+
+.is-focused .literal.space, .is-dirty .literal.space:not(.transition)  {
+    top: 25px;
+    left: -39px;
+}
+
+.is-focused .literal, .is-dirty .literal:not(.transition) {
+    left: -25px;
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.mdl-textfield.accent.is-dirty .mdl-textfield__label, .mdl-textfield.accent.is-focused .mdl-textfield__label {
+    color: rgb(255,110,64);
+}
+
+.mdl-textfield.accent .mdl-textfield__label::after {
+    background-color: rgb(255,110,64)!important;
+}
