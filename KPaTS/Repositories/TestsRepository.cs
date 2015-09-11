@@ -44,17 +44,17 @@ namespace KPaTS.Repositories
             return false;
         }
 
-        public List<TestAutocompleteModel> GetTestsForAutocomplete(string query)
+        public List<TestInfoModel> GetTestsForAutocomplete(string query)
         {
             using (var DB = new MainContext())
             {
                 var tests = DB.Tests.Where(x => TestAutocompleteAlgorithm.matches(x, query))
-                    .Select(x => new TestAutocompleteModel()
+                    .Select(x => new TestInfoModel()
                     {
                         Url = new UrlHelper().Action("Index", "Test", x.Id),
                         Name = x.Name,
                         Space = x.Space.Name,
-                        Stars = x.Stars
+                        Rating = x.Rating
                     }).ToList();
                 return tests;
             }

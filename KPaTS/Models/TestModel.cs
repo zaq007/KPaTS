@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 
 namespace KPaTS.Models
 {
@@ -26,7 +27,7 @@ namespace KPaTS.Models
 
         public SpaceModel Space { get; set; }
 
-        public long Stars { get; set; }
+        public long Rating { get; set; }
 
         public virtual ProfessorModel ProfessorModel { get; set; }
 
@@ -37,11 +38,22 @@ namespace KPaTS.Models
         public virtual ICollection<InfoModel> Infos { get; set; }
     }
 
-    public class TestAutocompleteModel
+    public class TestInfoModel
     {
         public string Url { get; set; }
         public string Name { get; set; }
+        public string Shortcut { get; set; }
         public string Space { get; set; }
-        public long Stars { get; set; }
+        public string Description { get; set; }
+        public long Rating { get; set; }
+        public string Creator { get; set; }
+
+        public TestInfoModel()
+        {
+            Name = "Unnamed test";
+            Shortcut = "shortcut";
+            Description = "Description placeholder";
+            Creator = Membership.GetUser().UserName;
+        }
     }
 }
