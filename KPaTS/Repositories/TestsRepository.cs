@@ -59,5 +59,25 @@ namespace KPaTS.Repositories
                 return tests;
             }
         }
+
+        /// <summary>
+        /// todo: implement algorythm
+        /// </summary>
+        /// <returns></returns>
+        public List<TestInfoModel> GetRecommendedTests()
+        {
+            using (var DB = new MainContext())
+            {
+                return DB.Tests.OrderBy(r => Guid.NewGuid()).Take(3)
+                    .Select(t => new TestInfoModel()
+                    {
+                        Shortcut = t.Shortcut,
+                        Space = t.Space.Name,
+                        Description = t.Description,
+                        Rating = t.Rating,
+                        Creator = t.Creator.UserName
+                    }).ToList();
+            }
+        }
     }
 }

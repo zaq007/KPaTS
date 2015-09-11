@@ -24,6 +24,12 @@
             </ul>
         </div>
     </div>
+    @foreach(var test in ViewBag.RecommendedTests)
+    {
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
+            @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", (KPaTS.Models.TestInfoModel)test);
+        </div>
+    }
 </div>
 
 @section Scripts {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KPaTS.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace KPaTS.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Измените этот шаблон, чтобы быстро приступить к работе над приложением ASP.NET MVC.";
+            ViewBag.RecommendedTests = (new TestsRepository()).GetRecommendedTests();
 
             return View();
         }
