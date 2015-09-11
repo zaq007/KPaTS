@@ -1,0 +1,19 @@
+﻿@model KPaTS.Models.TestInfoModel
+
+<div class="mdl-card mdl-shadow--2dp test-card">
+    <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text" id="preview-name">#@(Model.Shortcut)</h2>
+        <h2 class="mdl-card__subtitle-text displayNone" id="preview-space">@(Model.Space)</h2>
+    </div>
+    <div class="mdl-card__supporting-text" id="preview-description">
+        @(Model.Description)
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Start test
+        </a>
+    </div>
+    <div class="card-footer mdl-card--border">
+        <span class="author">Created by @@@(Model.Creator)</span>
+    </div>
+</div>

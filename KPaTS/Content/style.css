@@ -116,3 +116,7 @@ SPAN.mark {
 .mdl-textfield.accent .mdl-textfield__label::after {
     background-color: rgb(255,110,64)!important;
 }
+
+.test-card {
+    margin: auto;
+}
