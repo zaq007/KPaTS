@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using KPaTS.Core.Algorithms;
 using KPaTS.Repositories;
 
 namespace KPaTS.Controllers
@@ -25,9 +26,10 @@ namespace KPaTS.Controllers
             return Json(new AnswersRepository().GetAnswer(guid), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetTestsAutocomplete(string query)
+        public JsonResult GetAutocompleteItems(string query)
         {
-            return Json(new TestsRepository().GetTestsForAutocomplete(query), JsonRequestBehavior.AllowGet);
+            dynamic data = AutocompleteAlgorithms.ParseQuery(query);
+            return Json(new TestsRepository().GetTestsForAutocomplete(data.space, data.test), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetSpaceSubjects(Guid id)
