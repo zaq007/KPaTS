@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
 using System.Web.Security;
 
 namespace KPaTS.Models
@@ -53,7 +52,7 @@ namespace KPaTS.Models
             Name = "Unnamed test";
             Shortcut = "shortcut";
             Description = "Description placeholder";
-            Creator = Membership.GetUser().UserName;
+            Creator = WebMatrix.WebData.WebSecurity.IsAuthenticated ?  Membership.GetUser().UserName : "user";
         }
     }
 }
