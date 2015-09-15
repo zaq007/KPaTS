@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KPaTS.Core;
+using KPaTS.Core.Algorithms;
 using KPaTS.Models;
 using KPaTS.Repositories;
 using WebMatrix.WebData;
@@ -23,7 +24,8 @@ namespace KPaTS.Controllers
         [HttpPost]
         public PartialViewResult GetTestsAutocomplete(string query)
         {
-            return PartialView(new TestsRepository().GetTestsForAutocomplete(query));
+            dynamic data = AutocompleteAlgorithms.ParseQuery(query);
+            return PartialView(new TestsRepository().GetTestsForAutocomplete(data.space, data.test));
         }
 
         [HttpGet]

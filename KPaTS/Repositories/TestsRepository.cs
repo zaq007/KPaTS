@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using KPaTS.Core.Algorithms;
 using KPaTS.Models;
 
@@ -30,7 +31,8 @@ namespace KPaTS.Repositories
         {
             model.Creator = new UserProfile()
             {
-                UserId = WebMatrix.WebData.WebSecurity.CurrentUserId
+                UserId = WebMatrix.WebData.WebSecurity.CurrentUserId,
+                UserName = WebMatrix.WebData.WebSecurity.CurrentUserName
             };
             using(var DB = new MainContext())
             {
@@ -48,13 +50,15 @@ namespace KPaTS.Repositories
         {
             using (var DB = new MainContext())
             {
-                var tests = DB.Tests.Where(x => AutocompleteAlgorithms.Matches(x, space))
-                    .Select(x => new TestInfoModel()
+                var list = DB.Tests.AsEnumerable().Where(x => AutocompleteAlgorithms.Matches(x, space, test)).ToList();
+                var tests = list.Select(x => new TestInfoModel()
                     {
-                        Url = new UrlHelper().Action("Index", "Test", x.Id),
+                        Id = x.Id,
                         Name = x.Name,
-                        Space = x.Space.Name,
-                        Rating = x.Rating
+                        Space = (x.Space != null) ? (x.Space.Name) : (""),
+                        Rating = x.Rating,
+                        Shortcut = x.Shortcut,
+                        Creator = x.Creator.UserName
                     }).ToList();
                 return tests;
             }

@@ -10,6 +10,7 @@ namespace KPaTS.Core.Algorithms
     {
         public static object ParseQuery(string query)
         {
+            query = query.ToLower().Trim();
             if(query[0] == '@')
                 return new 
                 { 
@@ -36,13 +37,14 @@ namespace KPaTS.Core.Algorithms
 
 
 
-        public static bool Matches(TestModel test, string query)
+        public static bool Matches(TestModel t, string space, string test)
         {
-            
-            if (String.Compare(test.Space.Name, space, true) != 0)
+            if (t.Space != null && space != "")
+                if (String.Compare(t.Space.Name, space, true) != 0 && space != "")
                 return false;
-            for (int i = 0; i < name.Length; i++)
-                if (test.Name.ToLower()[i] != name[i])
+            
+            for (int i = 0; i < test.Length; i++)
+                if (t.Shortcut.ToLower()[i] != test[i])
                     return false;
             return true;
         }

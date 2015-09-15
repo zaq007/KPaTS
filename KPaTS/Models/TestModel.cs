@@ -39,7 +39,7 @@ namespace KPaTS.Models
 
     public class TestInfoModel
     {
-        public string Url { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Shortcut { get; set; }
         public string Space { get; set; }
