@@ -15,7 +15,7 @@
             <input class="mdl-textfield__input mdl-shadow--4dp" type="text" id="search" />
             <label class="mdl-textfield__label">Search query</label>
         </div>
-        <div class="mdl-tooltip mdl-tooltip--large tooltip-left" for="search">
+        <div class="mdl-tooltip mdl-tooltip--large tooltip-left mdl-grid" for="search" id="search-tooltip">
             Search variations:
             <ul>
                 <li><span class="mdl-color-text--primary mark">#</span>testName
@@ -59,6 +59,22 @@
                     $(".literal").text(leading);
                 }, 200);
             }
+
+            if ($("#search").val().length != 0)
+                $("#search-tooltip").hide();
+            else
+                $("#search-tooltip").show();
+
+            var query = ($(".literal").hasClass("space") ? "@@" : "#") + $("#search").val();
+            $.ajax({
+                type: "POST",
+                url: '/Api/GetAutocompleteItems',
+                data: 'query=' + query,
+                cache: false,
+                success: function (response) {
+                    console.log(response);
+                }
+            });
         });
     </script>
 }
