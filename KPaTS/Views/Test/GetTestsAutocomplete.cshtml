@@ -1,7 +1,7 @@
-﻿@model List<KPaTS.Models.TestAutocompleteModel>
+﻿@model List<KPaTS.Models.TestInfoModel>
 
 @foreach (var test in Model)
 {
-    @Html.ValueForModel()
+    @Html.Partial("~/Views/Test/_TestAutocompletePartial.cshtml", test);
 }
 

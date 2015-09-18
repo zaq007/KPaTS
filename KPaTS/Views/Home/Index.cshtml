@@ -10,12 +10,19 @@
         <h6 class="welcome">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis placerat lectus. Duis ultrices vel ex vel aliquet. Aenean tincidunt mi dui, id tincidunt odio rhoncus commodo. Quisque diam diam, vehicula quis pharetra at, eleifend non neque. Integer sit amet pellentesque odio, id varius est. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis ac ipsum vel ante ultricies semper vel id tortor.
         </h6>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label main-input-container">
-            <span class="literal mdl-color-text--primary">#</span>
-            <input class="mdl-textfield__input mdl-shadow--4dp" type="text" id="search" />
-            <label class="mdl-textfield__label">Search query</label>
+        <div class="search-container">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label search-input-container" id="main-search-container">
+                <span class="literal mdl-color-text--primary">#</span>
+                <input class="mdl-textfield__input mdl-shadow--4dp" type="text" id="search-main" />
+                <label class="mdl-textfield__label">Search query</label>
+            </div>
+            <div class="mdl-textfield accent mdl-js-textfield mdl-textfield--floating-label search-input-container space invisible shrink" id="secondary-search-container">
+                <span class="literal space mdl-color-text--accent">@@</span>
+                <input class="mdl-textfield__input mdl-shadow--4dp" type="text" id="search-secondary" />
+                <label class="mdl-textfield__label">Space</label>
+            </div>
         </div>
-        <div class="mdl-tooltip mdl-tooltip--large tooltip-left mdl-grid" for="search" id="search-tooltip">
+        <div class="mdl-tooltip mdl-tooltip--large tooltip-left mdl-grid" for="search-main" id="search-tooltip">
             Search variations:
             <ul>
                 <li><span class="mdl-color-text--primary mark">#</span>testName
@@ -24,57 +31,89 @@
             </ul>
         </div>
     </div>
-    @foreach(var test in ViewBag.RecommendedTests)
-    {
-        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
-            @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", (KPaTS.Models.TestInfoModel)test);
-        </div>
-    }
+</div>
+<div class="mdl-cell mdl-cell--12-col autocomplete-container">
+    <div class="mdl-shadow--2dp autocomplete-frame">
+    </div>
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jquery")
 
     <script>
-        $("#search").keyup(function (){
-            var leading = $("#search").val().charAt(0);
+        function buildQuery() {
+            if ($("#search-main").val().length == 0 && $("#search-secondary").val().length == 0)
+                return
+
+            var query = ($("#main-search-container .literal").hasClass("space") ? "@@" : "#") + $("#search-main").val();
+            if ($("#search-secondary").val().length > 0)
+                query += "@@" + $("#search-secondary").val();
+
+            return query
+        }
+
+        $("#search-main").keyup(function () {
+            var leading = $("#search-main").val().charAt(0);
+            var lastSymbol = $("#search-main").val().charAt($("#search-main").val().length - 1);
 
             if (leading == "@@" || leading == "#") {
-                $("#search").val($("#search").val().substr(1));
-                $("#search").blur();
-                $(".literal").addClass("transition");
+                $("#search-main").val($("#search-main").val().substr(1));
+                $("#search-main").blur();
+                $("#main-search-container .literal").addClass("transition");
 
                 if (leading == "@@") {
-                    $(".literal").addClass("space mdl-color-text--accent").removeClass("mdl-color-text--primary");
-                    $("#search").parent().addClass("accent");
+                    $("#main-search-container .literal").addClass("space mdl-color-text--accent").removeClass("mdl-color-text--primary");
+                    $("#search-main").parent().addClass("accent");
                 }
                 else if (leading == "#") {
-                    $(".literal").removeClass("space mdl-color-text--accent").addClass("mdl-color-text--primary");
-                    $("#search").parent().removeClass("accent");
+                    $("#main-search-container .literal").removeClass("space mdl-color-text--accent").addClass("mdl-color-text--primary");
+                    $("#search-main").parent().removeClass("accent");
                 }
 
                 setTimeout(function () {
-                    $("#search").focus();
-                    $(".literal").removeClass("transition");
-                    $(".literal").text(leading);
+                    $("#search-main").focus();
+                    $("#main-search-container .literal").removeClass("transition");
+                    $("#main-search-container .literal").text(leading);
                 }, 200);
             }
 
-            if ($("#search").val().length != 0)
+            if ($("#search-main").val().length != 0)
                 $("#search-tooltip").hide();
             else
                 $("#search-tooltip").show();
 
-            var query = ($(".literal").hasClass("space") ? "@@" : "#") + $("#search").val();
-            $.ajax({
-                type: "POST",
-                url: '/Api/GetAutocompleteItems',
-                data: 'query=' + query,
-                cache: false,
-                success: function (response) {
-                    console.log(response);
-                }
-            });
+            if (!$("#main-search-container .literal").hasClass("space") && lastSymbol == "@@") {
+                $("#search-main").blur();
+                $("#main-search-container").addClass("shrink");
+                $("#search-main").val($("#search-main").val().substr(0, $("#search-main").val().length - 1));
+                setTimeout(function () {
+                    $("#secondary-search-container").removeClass("invisible");
+                    setTimeout(function () {
+                        $("#search-secondary").focus();
+                    }, 50);
+                }, 200);
+            }
+
+            autocomplete(buildQuery());
         });
+
+        $("#search-secondary").keyup(function () {
+            if (!$("#search-secondary").val().length) {
+                $("#secondary-search-container").addClass("invisible");
+                $("#main-search-container").removeClass("shrink");
+                $("#search-secondary").blur();
+                $("#search-main").focus();
+            }
+            autocomplete(buildQuery());
+        });
+
+        function autocomplete(query) {
+            if (!query || query.length == 0)
+                return
+
+            $.post('/Test/GetTestsAutocomplete', { "query": query }, function (response) {
+                $(".autocomplete-frame").html(response);
+            });
+        }
     </script>
 }
