@@ -148,6 +148,23 @@ SPAN.mark {
     margin: auto;
 }
 
+.test-card.decorated {
+    height: 270px;
+}
+
+.test-card.decorated.tvims .mdl-card__title {
+    background: url('../Images/tvims.jpg') 0px -23px / cover;
+}
+
+.test-card.decorated.math .mdl-card__title {
+    background: url('../Images/math.jpg') -90px -160px;
+    color: white;
+}
+
+.mdl-card__subtitle-text {
+    align-self: flex-end;
+}
+
 .autocomplete-container {
     margin-top: -36px;
     display: flex;
