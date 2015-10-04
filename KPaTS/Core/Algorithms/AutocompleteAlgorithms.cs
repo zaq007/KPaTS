@@ -37,15 +37,16 @@ namespace KPaTS.Core.Algorithms
 
 
 
-        public static bool Matches(TestModel t, string space, string test)
+        public static bool Matches(TestInfoModel t, string space, string test)
         {
             if (t.Space != null && space != "")
-                if (String.Compare(t.Space.Name, space, true) != 0 && space != "")
+                if (String.Compare(t.Space, space, true) != 0 && space != "")
                 return false;
             
-            for (int i = 0; i < test.Length; i++)
-                if (t.Shortcut.ToLower()[i] != test[i])
-                    return false;
+            if(test != "")
+                for (int i = 0; i < test.Length; i++)
+                    if (t.Shortcut.ToLower()[i] != test[i])
+                        return false;
             return true;
         }
 

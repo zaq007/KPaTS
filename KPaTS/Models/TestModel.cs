@@ -24,7 +24,7 @@ namespace KPaTS.Models
         [Required]
         public string Shortcut { get; set; }
 
-        public SpaceModel Space { get; set; }
+        public virtual SpaceModel Space { get; set; }
 
         public long Rating { get; set; }
 

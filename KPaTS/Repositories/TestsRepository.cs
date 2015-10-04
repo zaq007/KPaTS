@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,18 +49,20 @@ namespace KPaTS.Repositories
 
         public List<TestInfoModel> GetTestsForAutocomplete(string space, string test)
         {
+
             using (var DB = new MainContext())
             {
-                var list = DB.Tests.AsEnumerable().Where(x => AutocompleteAlgorithms.Matches(x, space, test)).ToList();
-                var tests = list.Select(x => new TestInfoModel()
+                
+                var list = DB.Tests.AsEnumerable().Select(x => new TestInfoModel()
                     {
                         Id = x.Id,
                         Name = x.Name,
-                        Space = (x.Space != null) ? (x.Space.Name) : (""),
+                        Space = (x.Space != null) ? (x.Space.Shortcut) : (""),
                         Rating = x.Rating,
                         Shortcut = x.Shortcut,
                         Creator = x.Creator.UserName
                     }).ToList();
+                var tests = list.Where(x => AutocompleteAlgorithms.Matches(x, space, test)).ToList();
                 return tests;
             }
         }
