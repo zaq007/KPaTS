@@ -7,23 +7,48 @@
     color: white;
 }
 
+.page-content {
+    position: relative;
+}
+
 .main-page {
     display: flex;
     flex-direction: column;
 }
 
-.main-input-container {
+.search-container {
     align-self: center;
 }
 
-.main-input-container INPUT {
+.search-input-container {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.search-input-container.shrink {
+    width: 123px;
+}
+
+.search-input-container.space {
+    margin-left: 50px;
+    opacity: 1;
+}
+
+.search-input-container.space.invisible {
+    /*display: none;*/
+    opacity: 0;
+    width: 0px;
+    position: absolute;
+}
+
+.search-input-container INPUT {
     border-radius: 2px;
     background-color: rgba(255, 255, 255, 0.50);
     padding: 0 5px 0 5px;
     font-size: 30px;
 }
 
-.main-input-container LABEL {
+.search-input-container LABEL {
     padding: 0 5px 0 5px;
     top: 30px;
 }
@@ -121,4 +146,49 @@ SPAN.mark {
 
 .test-card {
     margin: auto;
+}
+
+.test-card.decorated {
+    height: 270px;
+}
+
+.test-card.decorated.tvims .mdl-card__title {
+    background: url('../Images/tvims.jpg') 0px -23px / cover;
+}
+
+.test-card.decorated.math .mdl-card__title {
+    background: url('../Images/math.jpg') -90px -160px;
+    color: white;
+}
+
+.mdl-card__subtitle-text {
+    align-self: flex-end;
+}
+
+.autocomplete-container {
+    margin-top: -36px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.autocomplete-frame {
+    align-self: center;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    transition: all 1s ease;
+    width: 300px;
+}
+
+.autocomplete-card {
+    width: 270px;
+    padding: 5px;
+    margin: 10px;
+    align-self: center;
+}
+
+.autocomplete-card H5 {
+    margin: 0;
 }

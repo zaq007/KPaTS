@@ -289,6 +289,7 @@
     <Content Include="Views\Test\_QuestionPartialView.cshtml" />
     <Content Include="Views\Test\_AnswerPartialView.cshtml" />
     <Content Include="Views\Test\_TestCardPartialView.cshtml" />
+    <Content Include="Views\Test\_TestAutocompletePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
