@@ -1,28 +1,19 @@
 ﻿@model KPaTS.Models.AnswerModel
 
 <div class="mdl-cell">
-    @if (ViewBag.type == KPaTS.Models.QuestionType.Radio)
+    <input type="hidden" id="questions[@(ViewData["number"])][Answers][@(ViewData["count"])][Id]" value="@Model.Id" name="questions[@(ViewData["number"])][Answers][@(ViewData["count"])][Id]"/>
+    @if ((KPaTS.Models.QuestionType)ViewData["type"] == KPaTS.Models.QuestionType.Radio)
     {
-        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]">
-            <input type="radio" id="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]" class="mdl-radio__button" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]" />
-            <span class="mdl-radio__label">Right answer</span>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="questions[@(ViewData["number"])][Answers][@(ViewData["count"])][isRight]">
+            <input type="radio" id="questions[@(ViewData["number"])][Answers][@(ViewData["count"])][isRight]" value="true" class="mdl-radio__button" name="questions[@(ViewData["number"])][Answers][@(ViewData["count"])][isRight]" />
+            <span class="mdl-radio__label">@Model.Text</span>
         </label>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield textfield-demo">
-            <input class="mdl-textfield__input" type="text" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][Text]" />
-            <label class="mdl-textfield__label" for="sample1">Text...</label>
-        </div>
     }
-    else if (ViewBag.type == KPaTS.Models.QuestionType.Check)
+    else if ((KPaTS.Models.QuestionType)ViewData["type"] == KPaTS.Models.QuestionType.Check)
     {
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]">
-            <input type="checkbox" id="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][isRight]" class="mdl-checkbox__input" />
-            <span class="mdl-checkbox__label">Right answer</span>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="questions[@(ViewData["number"])][Answers][@(ViewData["count"])][isRight]">
+            <input type="checkbox" id="questions[@(ViewData["number"])][Answers][@(ViewData["count"])][isRight]" value="true" name="questions[@(ViewData["number"])][Answers][@(ViewData["count"])][isRight]" class="mdl-checkbox__input" />
+            <span class="mdl-checkbox__label">@Model.Text</span>
         </label>
-        <br />
-        <div class="mdl-textfield mdl-js-textfield textfield-demo">
-            <input class="mdl-textfield__input" type="text" name="questions[@(ViewBag.number)][Answers][@(ViewBag.count)][Text]" />
-            <label class="mdl-textfield__label" for="sample1">Text...</label>
-        </div>
     }
 </div>

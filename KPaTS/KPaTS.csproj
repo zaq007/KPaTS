@@ -183,6 +183,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Core\Algorithms\AutocompleteAlgorithms.cs" />
+    <Compile Include="Core\Algorithms\TestCheckingAlgorithms.cs" />
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\PageID.cs" />
     <Compile Include="Core\ViewHelper.cs" />
@@ -256,7 +257,9 @@
     <Content Include="Scripts\material.js" />
     <Content Include="Scripts\material.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -286,10 +289,14 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Test\Create.cshtml" />
-    <Content Include="Views\Test\_QuestionPartialView.cshtml" />
-    <Content Include="Views\Test\_AnswerPartialView.cshtml" />
+    <Content Include="Views\Test\_CreateQuestionPartialView.cshtml" />
+    <Content Include="Views\Test\_CreateAnswerPartialView.cshtml" />
     <Content Include="Views\Test\_TestCardPartialView.cshtml" />
     <Content Include="Views\Test\_TestAutocompletePartial.cshtml" />
+    <Content Include="Views\Test\Pass.cshtml" />
+    <Content Include="Views\Test\_AnswerPartialView.cshtml" />
+    <Content Include="Views\Test\_QuestionPartialView.cshtml" />
+    <Content Include="Views\Test\TestResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,19 +1,26 @@
 ﻿@model KPaTS.Models.QuestionModel
 
-<div class="question displayNone mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col card-padding">
+<div class="question mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col card-padding">
     <div class="mdl-textfield mdl-js-textfield textfield-demo">
-        <textarea class="mdl-textfield__input" rows= "3" name="questions[@ViewBag.number][Text]" id="questions[@ViewBag.number][Text]" ></textarea>
-        <label class="mdl-textfield__label" for="questions[@ViewBag.number][Text]">Question text</label>
+        <label class="mdl-textfield__label" for="questions[@ViewBag.number][Text]">@Model.Text</label>
     </div>
-
+    <input type="hidden" value="@Model.Id" id="questions[@(ViewData["count"])][Id]" name="questions[@(ViewData["count"])][Id]" />
     <h6>Answers</h6>
 
-    <input type="hidden" value="@((int)ViewBag.type)" name="questions[@ViewBag.number][Type]" />
     @if (ViewBag.type != KPaTS.Models.QuestionType.Plain)
     {
-        <div id="answers@(ViewBag.number)" class="mdl-grid">
+        <div id="answers@(ViewData["count"])" class="mdl-grid">
+            @{var answers = Model.Answers.ToList();}
+            @for (int i = 0; i < answers.Count;i++ )
+            {
+                var dic = new ViewDataDictionary();
+                dic.Add("count", i);
+                dic.Add("number", ViewData["count"]);
+                dic.Add("type", Model.Type);
+                @Html.Partial("_AnswerPartialView", answers[i], dic);
+            }
         </div>
-        <input class="mdl-button mdl-js-button mdl-js-ripple-effect" type="button" value="Add answer" onclick="@("addAnswer("+ViewBag.number+","+(int)ViewBag.type+")")" />
+        
     }
     else
     {

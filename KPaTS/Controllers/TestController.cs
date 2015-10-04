@@ -35,6 +35,19 @@ namespace KPaTS.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ViewResult Pass(Guid Id)
+        {
+            var DB = new MainContext();
+            return View(DB.Tests.Where(x => x.Id == Id).FirstOrDefault());
+        }
+
+        [HttpPost]
+        public ViewResult Pass(TestModel model)
+        {
+            return View("TestResult", TestCheckingAlgorithms.CheckTest(model));
+        }
+
         [HttpPost]
         [Authorize]
         public ViewResult Create(TestModel model)
@@ -57,7 +70,7 @@ namespace KPaTS.Controllers
         {
             ViewBag.number = number;
             ViewBag.type = (QuestionType)type;
-            return PartialView("_QuestionPartialView");
+            return PartialView("_CreateQuestionPartialView");
         }
 
         public ActionResult GetAnswerView(int number, int type, int count)
@@ -65,7 +78,7 @@ namespace KPaTS.Controllers
             ViewBag.count = count;
             ViewBag.number = number;
             ViewBag.type = (QuestionType)type;
-            return PartialView("_AnswerPartialView");
+            return PartialView("_CreateAnswerPartialView");
         }
 
     }

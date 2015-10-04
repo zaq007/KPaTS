@@ -55,4 +55,11 @@ namespace KPaTS.Models
             Creator = WebMatrix.WebData.WebSecurity.IsAuthenticated ?  Membership.GetUser().UserName : "user";
         }
     }
+
+    public class CheckResultModel
+    {
+        public Guid TestId { get; set; }
+        public int QuestionsCount { get; set; }
+        public int RightAnswers { get; set; }
+    }
 }
