@@ -4,6 +4,7 @@
 
 .welcome {
     text-align: center;
+    font-weight: 200;
     color: white;
 }
 
@@ -152,13 +153,26 @@ SPAN.mark {
     height: 270px;
 }
 
-.test-card.decorated.tvims .mdl-card__title {
+.tvims .mdl-card__title {
     background: url('../Images/tvims.jpg') 0px -23px / cover;
 }
 
-.test-card.decorated.math .mdl-card__title {
+.math .mdl-card__title {
     background: url('../Images/math.jpg') -90px -160px;
     color: white;
+}
+
+.learn .mdl-card__title {
+    background: url('../Images/learn.jpg') center / cover;
+    color: white;
+}
+
+.check .mdl-card__title {
+    background: url('../Images/test.jpg') center / cover;
+}
+
+.collaborate .mdl-card__title {
+    background: url('../Images/collaboration.png') center / cover;
 }
 
 .mdl-card__subtitle-text {
@@ -191,4 +205,23 @@ SPAN.mark {
 
 .autocomplete-card H5 {
     margin: 0;
+}
+
+.description {
+    margin-top: 100px;
+}
+
+.description-col {
+    margin: 40px 8px 0 8px;
+    overflow: visible;
+}
+
+.description-col .mdl-card__title {
+    height: 100px;
+}
+
+.description-col .mdl-button--fab {
+    position: absolute;
+    top: -28px;
+    right: 10px;
 }
