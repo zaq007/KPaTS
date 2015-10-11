@@ -1,4 +1,8 @@
-﻿body.index {
+﻿header {
+    overflow: visible!important;
+}
+
+body.index {
     background: url('../Images/bg.png') center / cover;
 }
 
@@ -8,7 +12,7 @@
     color: white;
 }
 
-.page-content {
+.page-content, .test-data, .mdl-layout__header-row {
     position: relative;
 }
 
@@ -220,15 +224,17 @@ SPAN.mark {
     right: 10px;
 }
 
-.test-data {
-    position: relative;
-}
-
-.test-data .mdl-button--fab {
+.right-fab {
     position: absolute;
     right: 30px;
     bottom: -28px;
     z-index: 4;
+    transition: all 0.3s ease;
+}
+
+.right-fab.transition {
+    transform: scale(0.1) rotate(90deg);
+    opacity: 0;
 }
 
 select {
