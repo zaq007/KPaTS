@@ -39,8 +39,9 @@
             </div>
         </div>
     </section>
-    <section class="mdl-cell mdl-cell--4-col mdl-cell--top">
+    <section class="mdl-cell mdl-cell--4-col test-preview">
         @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", new KPaTS.Models.TestInfoModel())
+        @Html.Partial("~/Views/Test/_TestAutocompletePartial.cshtml", new KPaTS.Models.TestInfoModel())
     </section>
     <div class="mdl-layout-spacer"></div>
     <div id="test-fab" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
@@ -63,20 +64,24 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $("#Shortcut").keyup(function () {
-            $("#preview-name").text("#" + $("#Shortcut").val());
+            $(".mdl-card__title-text").text("#" + $("#Shortcut").val());
         });
 
         $("#Description").keyup(function () {
-            $("#preview-description").text($("#Description").val());
+            $(".mdl-card__supporting-text").text($("#Description").val());
         });
 
         $("#Space_Id_").change(function () {
-            if ($("#Space_Id_").val() != 0)
-                $("#preview-space").show()
-            else
-                $("#preview-space").hide()
+            if ($("#Space_Id_").val() != 0) {
+                $(".test-card .mdl-card__subtitle-text").show()
+                $(".autocomplete-card .mdl-card__subtitle-text").show()
+            }
+            else {
+                $(".test-card .mdl-card__subtitle-text").hide()
+                $(".autocomplete-card .mdl-card__subtitle-text").hide()
+            }
 
-            $("#preview-space").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
+            $(".mdl-card__subtitle-text").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
         });
 
         var currentQuestions = 0;

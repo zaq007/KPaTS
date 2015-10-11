@@ -19,10 +19,12 @@ body.index {
 .main-page {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .search-container {
     align-self: center;
+    z-index: 1;
 }
 
 .search-input-container {
@@ -178,10 +180,10 @@ SPAN.mark {
 }
 
 .autocomplete-container {
-    margin-top: -36px;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
     position: absolute;
+    margin-top: -20px;
+    z-index: 0;
 }
 
 .autocomplete-frame {
@@ -196,13 +198,22 @@ SPAN.mark {
 
 .autocomplete-card {
     width: 270px;
-    padding: 5px;
-    margin: 10px;
+    min-height: initial;
+    padding: 16px 0 16px 0;
+    margin: auto;
     align-self: center;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
 }
 
-.autocomplete-card H5 {
+.autocomplete-card .mdl-card__title, .autocomplete-card .mdl-card__supporting-text {
     margin: 0;
+    padding: 0 16px 0 16px;
+}
+
+.autocomplete-card .mdl-card__subtitle-text {
+    position: absolute;
+    line-height: initial;
 }
 
 .description {
@@ -285,4 +296,9 @@ select:focus {
 
 .mdl-selectfield.is-invalid:after {
     border-top-color: #de3226;
+}
+
+.test-preview {
+    display: flex;
+    flex-direction: column;
 }

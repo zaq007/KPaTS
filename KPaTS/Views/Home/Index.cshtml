@@ -20,6 +20,8 @@
                 <label class="mdl-textfield__label">Space</label>
             </div>
         </div>
+        <div class="autocomplete-container">
+        </div>
         <div class="mdl-tooltip mdl-tooltip--large tooltip-left mdl-grid" for="search-main" id="search-tooltip">
             Search variations:
             <ul>
@@ -33,10 +35,6 @@
         </h6>
     </div>
     <div class="mdl-layout-spacer"></div>
-</div>
-<div class="mdl-cell mdl-cell--12-col autocomplete-container">
-    <div class="mdl-shadow--2dp autocomplete-frame">
-    </div>
 </div>
 <div class="mdl-grid description">
     <div class="mdl-cell--4-col mdl-cell--8-col-tablet mdl-card description-col learn">
@@ -149,7 +147,7 @@
                 return
 
             $.post('/Test/GetTestsAutocomplete', { "query": query }, function (response) {
-                $(".autocomplete-frame").html(response);
+                $(".autocomplete-container").html(response);
             });
         }
     </script>
