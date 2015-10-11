@@ -266,3 +266,12 @@ select:focus {
     border-top: .375em solid rgba(0, 0, 0, 0.12);
     pointer-events: none;
  }
+
+.mdl-selectfield.is-invalid select {
+    color: #de3226;
+    border-color: #de3226;
+}
+
+.mdl-selectfield.is-invalid:after {
+    border-top-color: #de3226;
+}

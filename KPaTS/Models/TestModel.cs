@@ -20,7 +20,6 @@ namespace KPaTS.Models
 
         public virtual UserProfile Creator { get; set; }
 
-        // #shortcut
         [Required]
         public string Shortcut { get; set; }
 
