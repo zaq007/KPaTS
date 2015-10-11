@@ -105,12 +105,6 @@ SPAN.mark {
     width: 100%;
 }
 
-.right-fab {
-    position: fixed;
-    right: 30px;
-    bottom: 120px;
-}
-
 .displayNone {
     display: none;
 }
@@ -224,6 +218,17 @@ SPAN.mark {
     position: absolute;
     top: -28px;
     right: 10px;
+}
+
+.test-data {
+    position: relative;
+}
+
+.test-data .mdl-button--fab {
+    position: absolute;
+    right: 30px;
+    bottom: -28px;
+    z-index: 4;
 }
 
 select {

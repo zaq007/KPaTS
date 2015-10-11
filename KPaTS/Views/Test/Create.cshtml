@@ -5,20 +5,12 @@
     ViewBag.PageId = KPaTS.Core.PageID.PAGE_TEST_CREATE;
 }
 
-@using (Html.BeginForm("Create", "Test", FormMethod.Post, new {id="test-create"}))
+@using (Html.BeginForm("Create", "Test", FormMethod.Post, new { id = "test-create", @class = "mdl-color--primary" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-<div class="mdl-grid">
-    <section class="mdl-cell mdl-cell--hide-tablet mdl-cell--hide-phone mdl-cell--2-col">
-    </section>
-    <section class="mdl-cell mdl-cell--4-col">
-        <h5>Test data</h5>
-    </section>
-</div>
-<div class="mdl-grid">
-    <section class="mdl-cell--hide-tablet mdl-cell--hide-phone mdl-cell mdl-cell--2-col">
-    </section>
+<div class="mdl-grid test-data">
+    <div class="mdl-layout-spacer"></div>
     <section class="mdl-color--white mdl-cell mdl-cell--4-col card-padding mdl-cell--top mdl-shadow--2dp">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             @Html.LabelFor(model => model.Name, new { @class = "mdl-textfield__label" })
@@ -50,8 +42,12 @@
     <section class="mdl-cell mdl-cell--4-col mdl-cell--top">
         @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", new KPaTS.Models.TestInfoModel())
     </section>
+    <div class="mdl-layout-spacer"></div>
+    <div id="test-fab" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">add</i>
+    </div>
 </div>
-<div class="mdl-grid">
+<div class="mdl-grid mdl-color--white">
     <section class="mdl-cell mdl-cell--2-col">
     </section>
     <section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
@@ -62,9 +58,6 @@
     </section>
 </div>
 }
-<div id="test-fab" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-    <i class="material-icons">add</i>
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -104,6 +97,24 @@
         }
 
         $(document).ready(function () {
+            var form = $('#test-create')
+                , formData = $.data(form[0])
+                , settings = formData.validator.settings
+                , oldErrorPlacement = settings.errorPlacement;
+
+            settings.errorPlacement = function (label, element) {
+                oldErrorPlacement(label, element);
+                label.addClass("mdl-textfield__error");
+            };
+
+            settings.highlight = function (element) {
+                $(element).parent().addClass("is-invalid");
+            };
+
+            settings.unhighlight = function (element) {
+                $(element).parent().removeClass('is-invalid');
+            };
+
             $("#Space_Id_").on("change", function (data) {
                 $.get("/Api/GetSpaceSubjects", { id: $("#Space_Id_ option:selected").val() }, function (data) {
                     $.each(data, function (i, item) {
@@ -117,14 +128,14 @@
                 })
             });
 
-            $("#Shortcut").on("change", function (data) {
+            /*$("#Shortcut").on("change", function (data) {
                 $.get("/Api/CheckTestShortcut", { shortcut: $("#Shortcut").val() }, function (data) {
                     if (data.result == 0)
-                        $("#Shortcut").css("background-color", "red");
+                        $("#Shortcut").parent().addClass("is-invalid");
                     else
-                        $("#Shortcut").css("background-color", "white");
+                        $("#Shortcut").parent().removeClass("is-invalid");
                 })
-            });
+            });*/
 
             $("#test-fab").on("click", function () {
                 $("#test-create").submit();
