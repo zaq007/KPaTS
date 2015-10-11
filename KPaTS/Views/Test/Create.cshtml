@@ -38,13 +38,13 @@
             @Html.ValidationMessageFor(model => model.Shortcut)
         </div>
 
-        <h6>@Html.LabelFor(model => model.Space)</h6>
-        <div class="editor-field">
+        <div class="mdl-selectfield editor-field">
             @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
         </div>
         <div id="subject" style="display: none">
-            <h6>@Html.LabelFor(model => model.Subject)</h6>
-            @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
+            <div class="mdl-selectfield">
+                @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
+            </div>
         </div>
     </section>
     <section class="mdl-cell mdl-cell--4-col mdl-cell--top">

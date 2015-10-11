@@ -225,3 +225,44 @@ SPAN.mark {
     top: -28px;
     right: 10px;
 }
+
+select {
+    background-color: transparent;
+    width: 100%;
+    padding: 4px 0;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.26);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+select:focus {
+    outline: none
+}
+
+.mdl-selectfield {
+    width: 300px;
+    max-width: 100%;
+    position: relative;
+    padding: 20px 0;
+}
+
+.mdl-selectfield select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.mdl-selectfield:after {
+    position: absolute;
+    top: 2.15em;
+    right: 0.5em;
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: .25em solid transparent;
+    border-right: .25em solid transparent;
+    border-top: .375em solid rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+ }
