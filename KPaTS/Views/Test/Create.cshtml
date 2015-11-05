@@ -115,24 +115,6 @@
         }
 
         $(document).ready(function () {
-            var form = $('#test-create')
-                , formData = $.data(form[0])
-                , settings = formData.validator.settings
-                , oldErrorPlacement = settings.errorPlacement;
-
-            settings.errorPlacement = function (label, element) {
-                oldErrorPlacement(label, element);
-                label.addClass("mdl-textfield__error");
-            };
-
-            settings.highlight = function (element) {
-                $(element).parent().addClass("is-invalid");
-            };
-
-            settings.unhighlight = function (element) {
-                $(element).parent().removeClass('is-invalid');
-            };
-
             $("#Space_Id_").on("change", function (data) {
                 $.get("/Api/GetSpaceSubjects", { id: $("#Space_Id_ option:selected").val() }, function (data) {
                     $.each(data, function (i, item) {
