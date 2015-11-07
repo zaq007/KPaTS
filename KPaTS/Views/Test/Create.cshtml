@@ -55,7 +55,7 @@
         <h5>@Html.LabelFor(model => model.Questions)</h5>
         <div class ="questions mdl-grid"></div>
         @Html.DropDownList("QuestionType", EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
-        <input class="mdl-button mdl-js-button mdl-js-ripple-effect"type ="button" value="Add question" onClick="addQuestion()"/>
+        <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" type="button" value="Add question" onClick="addQuestion()"/>
     </section>
 </div>
 }

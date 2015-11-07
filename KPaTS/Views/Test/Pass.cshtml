@@ -1,11 +1,8 @@
 ﻿@model KPaTS.Models.TestModel
 
 @{
-    ViewBag.Title = "Pass";
+    ViewBag.Title = @Model.Name;
 }
-
-<h2>@Model.Name</h2>
-<h2>@Model.Description</h2>
 
 @using (Html.BeginForm("Pass", "Test", FormMethod.Post, new { id = "test-create" }))
 {
@@ -22,7 +19,7 @@
 }
 
 <div id="test-fab" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-    <i class="material-icons">add</i>
+    <i class="material-icons">send</i>
 </div>
 
 @section Scripts {

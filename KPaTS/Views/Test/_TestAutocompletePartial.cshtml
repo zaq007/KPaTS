@@ -1,11 +1,13 @@
 ﻿@model KPaTS.Models.TestInfoModel
 
 <div class="mdl-card mdl-shadow--2dp autocomplete-card">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">#@(Model.Shortcut)</h2>
-        <h2 class="mdl-card__subtitle-text displayNone">@@BSUIR</h2>
-    </div>
-    <div class="mdl-card__supporting-text" id="preview-description">
-        Small description
-    </div>
+    <a @(Model.Id != Guid.Empty ? "href=/Test/Index?Id=" + Model.Id : "")>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">#@(Model.Shortcut)</h2>
+            <h2 class="mdl-card__subtitle-text displayNone">@@BSUIR</h2>
+        </div>
+        <div class="mdl-card__supporting-text" id="preview-description">
+            Small description
+        </div>
+    </a>
 </div>
