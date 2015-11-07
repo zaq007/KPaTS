@@ -16,7 +16,8 @@ namespace KPaTS
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jquery.validate*",
+                        "~/Scripts/mdl-val.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/mdl").Include(
                         "~/Scripts/material.js"));

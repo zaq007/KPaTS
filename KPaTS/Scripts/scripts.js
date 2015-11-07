@@ -1,22 +1,12 @@
-﻿$(document).ready(function () {
-    $('form').each(function (index, elem) {
-        var formData = $.data(elem)
-        if (formData.validator) {
-            var settings = formData.validator.settings
-            , oldErrorPlacement = settings.errorPlacement;
+﻿function isScrolledIntoView(elem) {
+    var $elem = $(elem);
+    var $window = $(window);
 
-            settings.errorPlacement = function (label, element) {
-                oldErrorPlacement(label, element);
-                label.addClass("mdl-textfield__error");
-            };
+    var docViewTop = $window.scrollTop() + 56;
+    var docViewBottom = docViewTop + $window.height();
 
-            settings.highlight = function (element) {
-                $(element).parent().addClass("is-invalid");
-            };
+    var elemTop = $elem.offset().top;
+    var elemBottom = elemTop + $elem.height();
 
-            settings.unhighlight = function (element) {
-                $(element).parent().removeClass('is-invalid');
-            };
-        }
-    });
-});
+    return (((elemTop >= docViewTop) && (elemTop <= docViewBottom)) || ((elemBottom >= docViewTop) && (elemBottom <= docViewBottom)));
+}

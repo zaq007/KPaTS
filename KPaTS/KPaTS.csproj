@@ -236,6 +236,7 @@
     <Content Include="Areas\Admin\Views\Space\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Space\Edit.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\mdl-val.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
