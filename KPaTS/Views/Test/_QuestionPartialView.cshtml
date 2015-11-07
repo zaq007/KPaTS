@@ -7,7 +7,7 @@
     <input type="hidden" value="@Model.Id" id="questions[@(ViewData["count"])][Id]" name="questions[@(ViewData["count"])][Id]" />
     <h6>Answers</h6>
 
-    @if (ViewBag.type != KPaTS.Models.QuestionType.Plain)
+    @if (Model.Type != KPaTS.Models.QuestionType.Plain)
     {
         <div id="answers@(ViewData["count"])" class="mdl-grid">
             @{var answers = Model.Answers.ToList();}
