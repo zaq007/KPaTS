@@ -181,6 +181,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SpaceController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Core\Algorithms\AutocompleteAlgorithms.cs" />
     <Compile Include="Core\Algorithms\TestCheckingAlgorithms.cs" />
@@ -300,6 +301,8 @@
     <Content Include="Views\Test\_AnswerPartialView.cshtml" />
     <Content Include="Views\Test\_QuestionPartialView.cshtml" />
     <Content Include="Views\Test\TestResult.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Space\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

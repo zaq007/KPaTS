@@ -23,6 +23,23 @@ namespace KPaTS.Models
         public string Name { get; set; }
 
         public virtual ICollection<SubjectModel> Subjects { get; set; }
+
+        public virtual ICollection<TestInfoModel> Tests
+        {
+            get
+            {
+                var DB = new MainContext();
+                return DB.Tests.Where(x => x.Space.Id == Id).AsEnumerable().Select(x => new TestInfoModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Space = (x.Space != null) ? (x.Space.Shortcut) : (""),
+                    Rating = x.Rating,
+                    Shortcut = x.Shortcut,
+                    Creator = x.Creator.UserName
+                }).ToList();
+            }
+        }
     }
 
     public class SpaceInfoModel : AutocompleteInfo

@@ -155,6 +155,7 @@ SPAN.mark {
 
 .test-card {
     margin: auto;
+    margin-top: 10px;
 }
 
 .test-card.decorated {
