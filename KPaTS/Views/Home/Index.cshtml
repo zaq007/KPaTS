@@ -146,7 +146,7 @@
             if (!query || query.length == 0)
                 return
 
-            $.post('/Test/GetTestsAutocomplete', { "query": query }, function (response) {
+            $.post('/Home/GetAutocompleteResults', { "query": query }, function (response) {
                 $(".autocomplete-container").html(response);
             });
         }

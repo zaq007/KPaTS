@@ -1,4 +1,8 @@
-﻿header {
+﻿A {
+    text-decoration: none;
+}
+
+header {
     overflow: visible!important;
 }
 
@@ -66,6 +70,10 @@ body.index {
 
 SPAN.mark {
     font-weight: 700;
+}
+
+.card-relative {
+    position: relative;
 }
 
 .card-padding {

@@ -7,10 +7,11 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using KPaTS.Core.Algorithms;
 using KPaTS.Models;
+using KPaTS.Core;
 
 namespace KPaTS.Repositories
 {
-    public class TestsRepository
+    public class TestsRepository : IAutocompleteRepository
     {
         public TestModel GetTest(Guid guid)
         {
@@ -49,22 +50,26 @@ namespace KPaTS.Repositories
 
         public List<TestInfoModel> GetTestsForAutocomplete(string space, string test)
         {
-
             using (var DB = new MainContext())
             {
                 
                 var list = DB.Tests.AsEnumerable().Select(x => new TestInfoModel()
-                    {
-                        Id = x.Id,
-                        Name = x.Name,
-                        Space = (x.Space != null) ? (x.Space.Shortcut) : (""),
-                        Rating = x.Rating,
-                        Shortcut = x.Shortcut,
-                        Creator = x.Creator.UserName
-                    }).ToList();
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Space = (x.Space != null) ? (x.Space.Shortcut) : (""),
+                    Rating = x.Rating,
+                    Shortcut = x.Shortcut,
+                    Creator = x.Creator.UserName
+                }).ToList();
                 var tests = list.Where(x => AutocompleteAlgorithms.Matches(x, space, test)).ToList();
                 return tests;
             }
+        }
+
+        public List<AutocompleteInfo> GetAutocompleteItems(string space, string test)
+        {
+            return GetTestsForAutocomplete(space, test).Cast<AutocompleteInfo>().ToList();
         }
 
         /// <summary>

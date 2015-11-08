@@ -37,18 +37,17 @@ namespace KPaTS.Core.Algorithms
 
 
 
-        public static bool Matches(TestInfoModel t, string space, string test)
+        public static bool Matches(AutocompleteInfo info, string space, string test)
         {
-            if (t.Space != null && space != "")
-                if (String.Compare(t.Space, space, true) != 0 && space != "")
-                return false;
-            
-            if(test != "")
+            if (info.Space != null && space != "")
+                if (String.Compare(info.Space, space, true) != 0 && space != "")
+                    return false;
+
+            if (test != "")
                 for (int i = 0; i < test.Length; i++)
-                    if (t.Shortcut.ToLower()[i] != test[i])
+                    if (info.Shortcut.ToLower()[i] != test[i])
                         return false;
             return true;
         }
-
     }
 }

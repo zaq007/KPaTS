@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KPaTS.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -36,13 +37,15 @@ namespace KPaTS.Models
         public virtual ICollection<InfoModel> Infos { get; set; }
     }
 
-    public class TestInfoModel
+    public class TestInfoModel : AutocompleteInfo
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Shortcut { get; set; }
-        public string Space { get; set; }
-        public string Description { get; set; }
+        public override Core.Type Type
+        {
+            get
+            {
+                return Core.Type.Test;
+            }
+        }
         public long Rating { get; set; }
         public string Creator { get; set; }
 

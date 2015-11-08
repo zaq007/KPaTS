@@ -1,0 +1,7 @@
+﻿@model List<KPaTS.Core.AutocompleteInfo>
+
+@foreach (var info in Model)
+{
+    @Html.Partial("~/Views/Test/_TestAutocompletePartial.cshtml", info);
+}
+

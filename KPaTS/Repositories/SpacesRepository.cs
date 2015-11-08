@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using KPaTS.Models;
+using KPaTS.Core.Algorithms;
+using KPaTS.Core;
 
 namespace KPaTS.Repositories
 {
-    public class SpacesRepository
+    public class SpacesRepository : IAutocompleteRepository
     {
         public List<SpaceModel> GetSpaces()
         {
@@ -56,5 +58,26 @@ namespace KPaTS.Repositories
             }
         }
 
+        public List<SpaceInfoModel> GetSpacesForAutocomplete(string space, string test)
+        {
+            using (var DB = new MainContext())
+            {
+
+                var list = DB.Spaces.AsEnumerable().Select(x => new SpaceInfoModel()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Space = x.Shortcut,
+                    Shortcut = x.Shortcut,
+                }).ToList();
+                var spaces = list.Where(x => AutocompleteAlgorithms.Matches(x, space, test)).ToList();
+                return spaces;
+            }
+        }
+
+        public List<AutocompleteInfo> GetAutocompleteItems(string space, string test)
+        {
+            return GetSpacesForAutocomplete(space, test).Cast<AutocompleteInfo>().ToList();
+        }
     }
 }

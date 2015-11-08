@@ -16,16 +16,10 @@ namespace KPaTS.Controllers
         //
         // GET: /Test/
 
-        public ActionResult Index(Guid? testId)
+        public ViewResult Index(Guid Id)
         {
-            return View(testId);
-        }
-
-        [HttpPost]
-        public PartialViewResult GetTestsAutocomplete(string query)
-        {
-            dynamic data = AutocompleteAlgorithms.ParseQuery(query);
-            return PartialView(new TestsRepository().GetTestsForAutocomplete(data.space, data.test));
+            var DB = new MainContext();
+            return View(DB.Tests.Where(x => x.Id == Id).FirstOrDefault());
         }
 
         [HttpGet]
