@@ -15,9 +15,13 @@
 
 <div class="mdl-grid">
     <div class="mdl-cell--8-col mdl-grid">
-    @foreach (var test in Model.Tests)
+    @foreach (var subject in Model.Subjects)
     {
-        @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", test);
+        <h5 class="mdl-cell--12-col">@subject.Name</h5>
+        foreach (var test in subject.Tests)
+        {
+            @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", test.ToTestInfoModel());
+        }
     }
     </div>
 </div>

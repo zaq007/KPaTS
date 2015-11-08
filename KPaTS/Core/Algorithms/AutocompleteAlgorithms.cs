@@ -39,6 +39,9 @@ namespace KPaTS.Core.Algorithms
 
         public static bool Matches(AutocompleteInfo info, string space, string test)
         {
+            if (test != "" && info.Type == Type.Space)
+                return false;
+
             if (info.Space != null && space != "")
                 if (String.Compare(info.Space, space, true) != 0 && space != "")
                     return false;

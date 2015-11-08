@@ -1,7 +1,7 @@
 ﻿@model KPaTS.Core.AutocompleteInfo
 
 <div class="mdl-card mdl-shadow--2dp autocomplete-card">
-    <a @(Model.Id != Guid.Empty ? "href=/Test/Index?Id=" + Model.Id : "")>
+    <a @(Model.Id != Guid.Empty ? "href=/" + (Model.Type == KPaTS.Core.Type.Test ? "Test" : "Space") + "/Index?Id=" + Model.Id : "")>
         <div class="mdl-card__title">
         @if (Model.Type == KPaTS.Core.Type.Test)
         {

@@ -35,6 +35,20 @@ namespace KPaTS.Models
         public virtual ICollection<QuestionModel> Questions { get; set; }
 
         public virtual ICollection<InfoModel> Infos { get; set; }
+
+        public TestInfoModel ToTestInfoModel()
+        {
+            return new TestInfoModel()
+            {
+                Id = this.Id,
+                Name = this.Name,
+                Space = this.Space.Name,
+                Shortcut = this.Shortcut,
+                Description = this.Description,
+                Rating = this.Rating,
+                Creator = this.Creator.UserName
+            };
+        }
     }
 
     public class TestInfoModel : AutocompleteInfo
