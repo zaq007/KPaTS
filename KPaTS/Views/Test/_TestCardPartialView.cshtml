@@ -9,7 +9,7 @@
         @(Model.Description)
     </div>
     <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/Test/Index?Id=@Model.Id">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="@(Model.Id != Guid.Empty ? "/Test/Index?Id=" + Model.Id : "#") ">
             Open
         </a>
     </div>

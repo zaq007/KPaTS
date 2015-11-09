@@ -16,4 +16,12 @@
             <span class="mdl-checkbox__label">@Model.Text</span>
         </label>
     }
+    else if ((KPaTS.Models.QuestionType)ViewData["type"] == KPaTS.Models.QuestionType.Plain)
+    {
+        <div class="mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" rows= "3" name="questions[@(ViewBag.number)][Answers][0][Text]" id="questions[@(ViewBag.number)][Answers][0][Text]" ></textarea>
+            <input type="hidden" value="true" id="questions[@(ViewBag.number)][Answers][0][isRight]" name="questions[@(ViewBag.number)][Answers][0][isRight]" />
+            <label class="mdl-textfield__label" for="questions[@(ViewBag.number)][Answers][0][Text]">Answer</label>
+        </div>
+    }
 </div>
