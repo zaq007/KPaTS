@@ -2,9 +2,9 @@
     ViewBag.Title = "Домашняя страница";
     ViewBag.PageId = KPaTS.Core.PageID.PAGE_INDEX;
 }
-<div class="mdl-grid">
+<section class="mdl-grid viewport-page">
     <div class="mdl-layout-spacer"></div>
-    <div class="mdl-cell mdl-cell--8-col main-page">
+    <div class="mdl-cell mdl-cell--middle mdl-cell--8-col main-page">
         <h2 class="welcome">
             Hello and welcome to %projectname%
         </h2>
@@ -35,42 +35,52 @@
         </h6>
     </div>
     <div class="mdl-layout-spacer"></div>
-</div>
-<div class="mdl-grid description">
-    <div class="mdl-cell--4-col mdl-cell--8-col-tablet mdl-card description-col learn">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Learn</h2>
+</section>
+<section class="about-page viewport-page mdl-color--optic-white">
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--top mdl-cell--12-col fab-scroll">
+            <a class="mdl-button--fab mdl-color--white mdl-color-text--blue-grey-500" href="#about" id="about-scroll">
+                <i class="material-icons">expand_more</i>
+            </a>
         </div>
-        <div class="mdl-button--fab mdl-color--accent">
-            <i class="material-icons">local_library</i>
+        <div class="mdl-cell mdl-cell--top mdl-cell--12-col mdl-typography--text-center">
+            <h2 id="about">About project</h2>
         </div>
-        <div class="mdl-card__supporting-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis placerat lectus. Duis ultrices vel ex vel aliquet.
+        <div class="mdl-cell--top mdl-cell--4-col mdl-cell--8-col-tablet mdl-card description-col learn mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Learn</h2>
+            </div>
+            <div class="mdl-button--fab mdl-color--accent">
+                <i class="material-icons">local_library</i>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis placerat lectus. Duis ultrices vel ex vel aliquet.
+            </div>
+        </div>
+        <div class="mdl-cell--top mdl-cell--4-col mdl-cell--8-col-tablet mdl-card description-col check mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Check</h2>
+            </div>
+            <div class="mdl-button--fab mdl-color--accent">
+                <i class="material-icons">done_all</i>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis placerat lectus. Duis ultrices vel ex vel aliquet.
+            </div>
+        </div>
+        <div class="mdl-cell--top mdl-cell--4-col mdl-cell--8-col-tablet mdl-card description-col collaborate mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Collaborate</h2>
+            </div>
+            <div class="mdl-button--fab mdl-color--accent">
+                <i class="material-icons">school</i>
+            </div>
+            <div class="mdl-card__supporting-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis placerat lectus. Duis ultrices vel ex vel aliquet.
+            </div>
         </div>
     </div>
-    <div class="mdl-cell--4-col mdl-cell--8-col-tablet mdl-card description-col check">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Check</h2>
-        </div>
-        <div class="mdl-button--fab mdl-color--accent">
-            <i class="material-icons">done_all</i>
-        </div>
-        <div class="mdl-card__supporting-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis placerat lectus. Duis ultrices vel ex vel aliquet.
-        </div>
-    </div>
-    <div class="mdl-cell--4-col mdl-cell--8-col-tablet mdl-card description-col collaborate">
-        <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Collaborate</h2>
-        </div>
-        <div class="mdl-button--fab mdl-color--accent">
-            <i class="material-icons">school</i>
-        </div>
-        <div class="mdl-card__supporting-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis placerat lectus. Duis ultrices vel ex vel aliquet.
-        </div>
-    </div>
-</div>
+</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jquery")
@@ -148,6 +158,8 @@
 
             $.post('/Home/GetAutocompleteResults', { "query": query }, function (response) {
                 $(".autocomplete-container").html(response);
+            }).fail(function (a) {
+                $("body").html(a.responseText);
             });
         }
     </script>

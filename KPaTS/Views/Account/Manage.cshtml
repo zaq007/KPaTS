@@ -3,10 +3,10 @@
     ViewBag.Title = "Управление учетной записью";
 }
 
-<div class="mdl-grid">
+<div class="mdl-grid mdl-cell--8-col">
 <p class="message-success">@ViewBag.StatusMessage</p>
 
-<section id="loginForm" class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
+<section id="loginForm" class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone card-padding">
 @if (ViewBag.HasLocalPassword)
 {
     @Html.Partial("_ChangePasswordPartial")
@@ -17,7 +17,7 @@ else
 }
 </section>
 
-<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col mdl-cell--top card-padding" id="externalLogins">
+<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--top card-padding" id="externalLogins">
     @Html.Action("RemoveExternalLogins")
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>

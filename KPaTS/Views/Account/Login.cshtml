@@ -5,8 +5,8 @@
     ViewBag.PageId = KPaTS.Core.PageID.PAGE_AUTH;
 }
 
-<div class="mdl-grid">
-<section id="loginForm" class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
+<div class="mdl-grid mdl-cell--8-col">
+<section id="loginForm" class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone card-padding">
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -33,7 +33,7 @@
 }
 </section>
 
-<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col mdl-cell--top card-padding" id="socialLoginForm">
+<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--top card-padding" id="socialLoginForm">
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
 </div>

@@ -1,5 +1,13 @@
-﻿A {
+﻿.mdl-color--optic-white {
+    background-color: #FAFAFA;
+}
+
+A {
     text-decoration: none;
+}
+
+A.mdl-button--fab {
+    display: block;
 }
 
 header {
@@ -225,10 +233,6 @@ SPAN.mark {
     line-height: initial;
 }
 
-.description {
-    margin-top: 100px;
-}
-
 .description-col {
     margin: 40px 8px 0 8px;
     overflow: visible;
@@ -310,4 +314,22 @@ select:focus {
 .test-preview {
     display: flex;
     flex-direction: column;
+}
+
+.viewport-page {
+    min-height: calc(100vh - 168px);
+}
+
+.about-page {
+    padding-top: 56px;
+    min-height: calc(100vh - 72px);
+}
+
+.about-page > H2 {
+    font: 300 48px/60px Roboto,sans-serif;
+    margin: 0 40px 20px;
+}
+
+.fab-scroll {
+    margin-top: -92px;
 }

@@ -5,11 +5,11 @@
     ViewBag.PageId = KPaTS.Core.PageID.PAGE_TEST_CREATE;
 }
 
-@using (Html.BeginForm("Create", "Test", FormMethod.Post, new { id = "test-create", @class = "mdl-color--primary" }))
+@using (Html.BeginForm("Create", "Test", FormMethod.Post, new { id = "test-create"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-<div class="mdl-grid test-data">
+<div class="mdl-grid test-data mdl-color--primary">
     <div class="mdl-layout-spacer"></div>
     <section class="mdl-color--white mdl-cell mdl-cell--4-col card-padding mdl-cell--top mdl-shadow--2dp">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -48,10 +48,10 @@
         <i class="material-icons">add</i>
     </div>
 </div>
-<div class="mdl-grid mdl-color--white">
+<div class="mdl-grid">
     <section class="mdl-cell mdl-cell--2-col">
     </section>
-    <section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
+    <section class="mdl-cell mdl-cell--8-col card-padding">
         <h5>@Html.LabelFor(model => model.Questions)</h5>
         <div class ="questions mdl-grid"></div>
         @Html.DropDownList("QuestionType", EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
