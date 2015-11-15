@@ -68,6 +68,58 @@ input[type="week"], select[multiple], select[size], textarea {
     position: relative;
 }
 
+.test-data.info SECTION {
+    margin-top: 36px;
+    border-radius: 2px;
+    padding: 0;
+}
+
+.test-data.info .right-fab {
+    bottom: initial;
+    top: -28px;
+}
+
+.test-data.info .space {
+    font-weight: 500;
+    color: #FF9E80;
+    margin-left: 8px;
+}
+
+.test-data .test-title {
+    padding: 0 16px;
+}
+
+.test-data.info SECTION, .test-theory {
+    max-width: 800px;
+}
+
+.card-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-side .body {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-side .content {
+    width: 100%;
+}
+
+.card-side ASIDE {
+    padding: 16px;
+    border-radius: 2px 0 0 2px;
+    background-color: #E8EAF6;
+    width: 100%;
+    flex-shrink: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
 .main-page {
     display: flex;
     flex-direction: column;
@@ -167,13 +219,14 @@ SPAN.mark {
     background-color: #C5CAE9;
     display: flex;
     justify-content: space-between;
+    border-radius: 0 0 2px 2px;
 }
 
 .card-footer * {
     align-self: center;
 }
 
-.card-footer .author {
+.card-footer span {
     color: rgba(0,0,0,.87);
     font-size: 12px;
     line-height: 18px;
