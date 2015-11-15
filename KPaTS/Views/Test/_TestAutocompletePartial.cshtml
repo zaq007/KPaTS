@@ -1,20 +1,18 @@
 ﻿@model KPaTS.Core.AutocompleteInfo
 
-<div class="mdl-card mdl-shadow--2dp autocomplete-card">
+<li class="suggest-item">
     <a @(Model.Id != Guid.Empty ? "href=/" + (Model.Type == KPaTS.Core.Type.Test ? "Test" : "Space") + "/Index?Id=" + Model.Id : "")>
-        <div class="mdl-card__title">
         @if (Model.Type == KPaTS.Core.Type.Test)
         {
-            <h2 class="mdl-card__title-text">#@(Model.Shortcut)</h2>
-            <h2 class="mdl-card__subtitle-text displayNone">@@@(Model.Space)</h2>
+            <span class="shortcut">#@(Model.Shortcut)</span>
+            if (Model.Space != "")
+            {
+                <span class="space">@@@(Model.Space)</span>
+            }
         }
         else
         {
-            <h2 class="mdl-card__title-text">@@@(Model.Space)</h2>
+            @:@@@(Model.Shortcut)
         }
-        </div>
-        <div class="mdl-card__supporting-text" id="preview-description">
-            @(Model.Description)
-        </div>
     </a>
-</div>
+</li>

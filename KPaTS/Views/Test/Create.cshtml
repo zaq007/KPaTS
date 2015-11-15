@@ -41,7 +41,16 @@
     </section>
     <section class="mdl-cell mdl-cell--4-col test-preview">
         @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", new KPaTS.Models.TestInfoModel())
-        @Html.Partial("~/Views/Test/_TestAutocompletePartial.cshtml", new KPaTS.Models.TestInfoModel())
+        <ul class="suggest suggest-preview mdl-color--white mdl-shadow--2dp">
+            <li class="suggest-item dummy">
+                <a>#prevTest</a>
+            </li>
+            @Html.Partial("~/Views/Test/_TestAutocompletePartial.cshtml", new KPaTS.Models.TestInfoModel())
+            <li class="suggest-item dummy">
+                <a>#postTest</a>
+            </li>
+            <div class="overlay"></div>
+        </ul>
     </section>
     <div class="mdl-layout-spacer"></div>
     <div id="test-fab" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
@@ -65,6 +74,7 @@
     <script>
         $("#Shortcut").keyup(function () {
             $(".mdl-card__title-text").text("#" + $("#Shortcut").val());
+            $(".suggest-item:not(.dummy) .shortcut").text("#" + $("#Shortcut").val());
         });
 
         $("#Description").keyup(function () {
@@ -74,14 +84,14 @@
         $("#Space_Id_").change(function () {
             if ($("#Space_Id_").val() != 0) {
                 $(".test-card .mdl-card__subtitle-text").show()
-                $(".autocomplete-card .mdl-card__subtitle-text").show()
+                $(".suggest-item:not(.dummy) .space").show()
             }
             else {
                 $(".test-card .mdl-card__subtitle-text").hide()
-                $(".autocomplete-card .mdl-card__subtitle-text").hide()
+                $(".suggest-item:not(.dummy) .space").hide()
             }
 
-            $(".mdl-card__subtitle-text").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
+            $(".suggest-item:not(.dummy) .space").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
         });
 
         var currentQuestions = 0;

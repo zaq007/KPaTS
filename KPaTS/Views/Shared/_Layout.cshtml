@@ -14,18 +14,24 @@
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <header class="mdl-layout__header mdl-layout__header--waterfall @(ViewBag.PageId == KPaTS.Core.PageID.PAGE_INDEX ? "mdl-layout__header--transparent mdl-layout__header--seamed" : "")">
                 <div class="mdl-layout__header-row">
-                    <span class="mdl-layout-title">@ViewBag.Title</span>
+                    <span class="mdl-layout-title mdl-layout--large-screen-only">@ViewBag.Title</span>
                     <div class="mdl-layout-spacer"></div>
-                    <div class="mdl-navigation">
-                        @if (ViewBag.PageId != KPaTS.Core.PageID.PAGE_AUTH)
-                        {
+                    <div id="header-search-container"></div>
+                    <div class="mdl-layout-spacer"></div>
+                    @if (ViewBag.PageId != KPaTS.Core.PageID.PAGE_AUTH)
+                    {
                             if (!Request.IsAuthenticated)
                             {
+                                @:<div class="mdl-navigation">
                                 @Html.ActionLink("Авторизация", "Login", "Account", null, new { @class="mdl-navigation__link" })
                                 @Html.ActionLink("Регистрация", "Register", "Account", null, new { @class="mdl-navigation__link" })
+                                @:</div>
                             }
-                        }
-                    </div>
+                            else
+                            {
+                                @:<div class="mdl-layout-spacer"></div>
+                            }
+                    }
                 </div>
             </header>
             <div class="mdl-layout__drawer">

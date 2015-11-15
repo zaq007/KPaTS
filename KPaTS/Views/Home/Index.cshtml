@@ -19,8 +19,16 @@
                 <input class="mdl-textfield__input mdl-shadow--4dp" type="text" id="search-secondary" />
                 <label class="mdl-textfield__label">Space</label>
             </div>
-        </div>
-        <div class="autocomplete-container">
+            <div class="autocomplete-container mdl-shadow--8dp container-hidden">
+                <ul id="suggest-list" class="suggest displayNone">
+                </ul>
+                <ul id="suggest-recommended" class="suggest">
+                    <li class="suggest-category">Check out these featured tests</li>
+                    <li class="suggest-item"><a>One</a></li>
+                    <li class="suggest-item"><a>Two</a></li>
+                    <li class="suggest-item"><a>Thee</a></li>
+                </ul>
+            </div>
         </div>
         <div class="mdl-tooltip mdl-tooltip--large tooltip-left mdl-grid" for="search-main" id="search-tooltip">
             Search variations:
@@ -157,10 +165,36 @@
                 return
 
             $.post('/Home/GetAutocompleteResults', { "query": query }, function (response) {
-                $(".autocomplete-container").html(response);
+                if (response.length != 0) {
+                    $("#suggest-list").show().html(response);
+                    $("#suggest-recommended").hide();
+                }
+                else {
+                    $("#suggest-list").hide();
+                    $("#suggest-recommended").show();
+                }
             }).fail(function (a) {
                 $("body").html(a.responseText);
             });
         }
+
+        $(".mdl-layout__content").scroll(function () {
+            if (!isScrolledIntoView($(".search-container"))) {
+                $("header").addClass("mdl-color--primary");
+                $(".search-container").children().appendTo($("#header-search-container"));
+            }
+            else {
+                $("header").removeClass("mdl-color--primary");
+                $("#header-search-container").children().appendTo($(".search-container"));
+            }
+        });
+
+        $(".search-input-container INPUT").blur(function () {
+            $(".autocomplete-container").addClass("container-hidden");
+        });
+
+        $(".search-input-container INPUT").focus(function () {
+            $(".autocomplete-container").removeClass("container-hidden");
+        });
     </script>
 }

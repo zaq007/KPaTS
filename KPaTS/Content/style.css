@@ -12,10 +12,50 @@ A.mdl-button--fab {
 
 header {
     overflow: visible!important;
+    transition: all 0.3s ease !important;
 }
 
 body.index {
     background: url('../Images/bg.png') center / cover;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+        -ms-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+
+    65% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+.index .page-content {
+    animation-name: fadeInDown;
+    animation-duration: .4s;
+    animation-delay: .6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    transform: translateY(-20px);
+}
+
+input[type="text"], input[type="date"], input[type="datetime"],
+input[type="datetime-local"], input[type="email"], input[type="month"],
+input[type="number"], input[type="password"], input[type="search"],
+input[type="tel"], input[type="text"], input[type="time"], input[type="url"],
+input[type="week"], select[multiple], select[size], textarea {
+    font: 16px/20px Roboto,sans-serif;
 }
 
 .welcome {
@@ -40,8 +80,21 @@ body.index {
 }
 
 .search-input-container {
-    transition: all 0.3s ease;
     display: inline-block;
+    color: black;
+    transition: width .3s ease, opacity .3s ease;
+}
+
+HEADER .search-input-container * {
+    box-shadow: none;
+}
+
+.search-input-container .mdl-textfield__label {
+    font: 16px/20px Roboto,sans-serif;
+}
+
+HEADER .search-input-container .mdl-textfield__label {
+    color: white;
 }
 
 .search-input-container.shrink {
@@ -54,7 +107,6 @@ body.index {
 }
 
 .search-input-container.space.invisible {
-    /*display: none;*/
     opacity: 0;
     width: 0px;
     position: absolute;
@@ -65,11 +117,32 @@ body.index {
     background-color: rgba(255, 255, 255, 0.50);
     padding: 0 5px 0 5px;
     font-size: 30px;
+    transition: color .2s, background .2s;
+}
+
+HEADER .search-input-container INPUT {
+    background-color: #9FA8DA;
+}
+
+.search-input-container INPUT:hover {
+    background-color: #C5CAE9;
+}
+
+.search-input-container INPUT:focus {
+    background-color: #E8EAF6;
 }
 
 .search-input-container LABEL {
     padding: 0 5px 0 5px;
     top: 30px;
+}
+
+HEADER .search-input-container.is-dirty:not(.is-focused) INPUT {
+    color: white;
+}
+
+HEADER .search-input-container.is-focused LABEL, HEADER .search-input-container.is-dirty LABEL {
+    opacity: 0;
 }
 
 .tooltip-left {
@@ -197,27 +270,74 @@ SPAN.mark {
 }
 
 .autocomplete-container {
-    width: 100%;
     position: absolute;
     margin-top: -20px;
-    z-index: 0;
+    margin-left: 20px;
+    background-color: white;
+    z-index: -1;
+    transition: transform .2s, visibility .3s, opacity .2s;
 }
 
-.autocomplete-frame {
-    align-self: center;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-    display: flex;
-    flex-direction: column;
-    z-index: 3;
-    transition: all 1s ease;
-    width: 300px;
+.autocomplete-container.container-hidden {
+    transform: translateY(-20px);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.suggest {
+    list-style-type: none;
+    padding: 0 16px;
+    margin-top: 16px;
+    margin-bottom: 0;
+    width: 238px;
+    position: relative;
+}
+
+.suggest-preview {
+    margin: 16px  auto;
+}
+
+.suggest-preview .overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 5%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 95%);
+}
+
+.suggest-category {
+    color: #757575;
+    font-size: 12px;
+}
+
+.suggest-item {
+    font: 13px/20px Roboto,sans-serif;
+}
+
+.suggest-item A {
+    padding: 8px;
+    margin-left: -8px;
+    display: block;
+    color: #212121;
+    font-weight: normal;
+}
+
+.suggest-item .space {
+    font-weight: 500;
+    color: #FF9E80;
+}
+
+.suggest-all-results {
+    border-top: 1px solid #ebebeb;
+    margin: 8px 0 0;
+    padding: 7px 0 8px;
 }
 
 .autocomplete-card {
     width: 270px;
     min-height: initial;
     padding: 16px 0 16px 0;
-    margin: auto;
     align-self: center;
     border-radius: 0;
     border-bottom: 1px solid rgba(0,0,0,0.12);
@@ -314,10 +434,11 @@ select:focus {
 .test-preview {
     display: flex;
     flex-direction: column;
+    margin-top: -10px;
 }
 
 .viewport-page {
-    min-height: calc(100vh - 168px);
+    min-height: calc(100vh - 120px);
 }
 
 .about-page {
