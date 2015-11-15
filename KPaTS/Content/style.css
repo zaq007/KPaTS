@@ -37,7 +37,7 @@ body.index {
     }
 }
 
-.index .page-content {
+.page-content {
     animation-name: fadeInDown;
     animation-duration: .4s;
     animation-delay: .6s;
@@ -89,7 +89,7 @@ input[type="week"], select[multiple], select[size], textarea {
     padding: 0 16px;
 }
 
-.test-data.info SECTION, .test-theory {
+.test-data.info SECTION, .test-theory, .page-wrapper {
     max-width: 800px;
 }
 
@@ -249,8 +249,21 @@ SPAN.mark {
     align-self: flex-end;
 }
 
-.question .mdl-textfield {
+.question-card {
+    padding-top: 16px;
+}
+
+.question-card .mdl-textfield {
     width: 100%;
+}
+
+.question-card > DIV {
+    padding: 0 16px;
+}
+
+.question-card .answers {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    background-color: #C5CAE9;
 }
 
 .displayNone {
@@ -506,4 +519,25 @@ select:focus {
 
 .fab-scroll {
     margin-top: -92px;
+}
+
+.question-control {
+    width: 220px;
+    margin: auto;
+    overflow: visible;
+    height: 40px;
+    position: relative;
+    line-height: 40px;
+    border-radius: 20px;
+}
+
+.question-control .button-back {
+    position: absolute;
+    left: 0px;
+}
+
+.question-control .button-forward {
+    position: absolute;
+    right: 0px;
+    transition: background-color .5s;
 }

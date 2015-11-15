@@ -4,29 +4,103 @@
     ViewBag.Title = @Model.Name;
 }
 
-@using (Html.BeginForm("Pass", "Test", FormMethod.Post, new { id = "test-create" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    
-    var questions = Model.Questions.ToList();
-    for (int i = 0; i < questions.Count; i++ )
-    {
-        var dic = new ViewDataDictionary();
-        dic.Add("count", i);
-        @Html.Partial("_QuestionPartialView", questions[i], dic)    
-    }
-}
+<div class="mdl-grid mdl-color--primary">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell mdl-cell--8-col mdl-typography--text-center">
+        <div class="question-control mdl-color--optic-white mdl-shadow--2dp">
+            <button class="button-back mdl-button mdl-button--fab mdl-button--mini-fab" disabled>
+              <i class="material-icons">arrow_back</i>
+            </button>
+            Question <span id="current-question-id"></span> / @Model.Questions.Count
+            <button class="button-forward mdl-button mdl-button--fab mdl-button--mini-fab">
+              <i class="material-icons">arrow_forward</i>
+            </button>
+        </div>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+</div>
 
-<div id="test-fab" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-    <i class="material-icons">send</i>
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell mdl-cell--8-col page-wrapper">
+    @using (Html.BeginForm("Pass", "Test", FormMethod.Post, new { id = "test-pass" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        var questions = Model.Questions.ToList();
+        for (int i = 0; i < questions.Count; i++ )
+        {
+            var dic = new ViewDataDictionary();
+            dic.Add("count", i);
+            @Html.Partial("_QuestionPartialView", questions[i], dic)
+        }
+    }
+    </div>
+    <div class="mdl-layout-spacer"></div>
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-            $("#test-fab").on("click", function () {
-                $("#test-create").submit();
-            });
+        function PassController(questions) {
+            this.questions = questions;
+            this.currentQuestionId = 0;
+
+            this.questions.hide().first().show();
+        }
+
+        PassController.prototype.nextQuestion = function () {
+            if (this.currentQuestionId + 1 < this.questions.length) {
+                $(this.questions[this.currentQuestionId]).hide();
+                this.currentQuestionId++;
+                $(this.questions[this.currentQuestionId]).show();
+                return true;
+            }
+            return false;
+        };
+
+        PassController.prototype.prevQuestion = function () {
+            if (this.currentQuestionId - 1 >= 0) {
+                $(this.questions[this.currentQuestionId]).hide();
+                this.currentQuestionId--;
+                $(this.questions[this.currentQuestionId]).show();
+                return this.currentQuestionId != 0;
+            }
+            return false;
+        };
+
+        PassController.prototype.isOnLastQuestion = function () {
+            return this.currentQuestionId == (this.questions.length - 1)
+        }
+
+        PassController.prototype.getCurrentQuestionId = function () {
+            return this.currentQuestionId;
+        }
+
+        var passController = new PassController($(".question-card"));
+        $("#current-question-id").text(passController.getCurrentQuestionId() + 1);
+
+        $(".button-forward").click(function () {
+            if (passController.nextQuestion()) {
+                $("#current-question-id").text(passController.getCurrentQuestionId() + 1);
+                $(".button-back").removeAttr("disabled");
+                if (passController.isOnLastQuestion()) {
+                    $(".button-forward").addClass("mdl-button--colored").children("i").text("check");
+                }
+                return true;
+            }
+            else {
+                $("#test-pass").submit();
+            }
+        });
+
+        $(".button-back").on("click", function () {
+            if (!passController.prevQuestion()) {
+                $(this).prop("disabled", true);
+            }
+            $(".button-forward").removeClass("mdl-button--colored").children("i").text("arrow_forward");
+            $("#current-question-id").text(passController.getCurrentQuestionId() + 1);
+        });
     </script>
 }

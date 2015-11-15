@@ -138,26 +138,6 @@
                 $("#test-create").submit();
             });
         });
-
-        $(".mdl-layout__content").scroll(function () {
-            if (!isScrolledIntoView($(".test-data")) && !$("#test-fab").hasClass("header")) {
-                $("#test-fab").addClass("transition");
-                setTimeout(function () {
-                    $("#test-fab").appendTo($(".mdl-layout__header-row")).addClass("header");
-                    setTimeout(function () {
-                        $("#test-fab").removeClass("transition");
-                    }, 200);
-                }, 200);
-            }
-            else if (isScrolledIntoView($(".test-data")) && $("#test-fab").hasClass("header")) {
-                $("#test-fab").addClass("transition");
-                setTimeout(function () {
-                    $("#test-fab").appendTo($(".test-data")).removeClass("header");
-                    setTimeout(function () {
-                        $("#test-fab").removeClass("transition");
-                    }, 200);
-                }, 200);
-            }
-        });
+        registerScrollTransformation($(".mdl-layout__content"), $(".test-data"), $("#test-fab"), $(".test-data"), $(".mdl-layout__header-row"));
 </script>
 }

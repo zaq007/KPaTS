@@ -1,11 +1,11 @@
 ﻿@model KPaTS.Models.QuestionModel
 
-<div class="question mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col card-padding">
-    <div class="mdl-textfield mdl-js-textfield textfield-demo">
-        <label class="mdl-textfield__label" for="questions[@ViewBag.number][Text]">@Model.Text</label>
+<div class="question-card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
+    <div class="question">
+        <h5>Question #@(Convert.ToInt32(ViewData["count"])+1)</h5>
+        <p>@Model.Text</p>
     </div>
-    <input type="hidden" value="@Model.Id" id="questions[@(ViewData["count"])][Id]" name="questions[@(ViewData["count"])][Id]" />
-    <h6>Answers</h6>
+    <div class="answers">
         <div id="answers@(ViewData["count"])" class="mdl-grid">
             @{var answers = Model.Answers.ToList();}
             @for (int i = 0; i < answers.Count;i++ )
@@ -17,4 +17,6 @@
                 @Html.Partial("_AnswerPartialView", answers[i], dic);
             }
         </div>        
+    </div>
+    <input type="hidden" value="@Model.Id" id="questions[@(ViewData["count"])][Id]" name="questions[@(ViewData["count"])][Id]" />
 </div>
