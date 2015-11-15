@@ -48,6 +48,42 @@
             this.currentQuestionId = 0;
 
             this.questions.hide().first().show();
+            this.restoreFromLocalStorage();
+        }
+
+        PassController.prototype.restoreFromLocalStorage = function () {
+            var questionData = JSON.parse(localStorage.getItem('@Model.Id'));
+            for (var questionId in questionData) {
+                var question = questionData[questionId];
+                var id = "#" + question.id;
+                id = id.replace(/\[/g, "\\[").replace(/\]/g, "\\]");
+                var $input = $(id);
+                if (!$input.is("textarea")) {
+                    $input.attr("checked", question.data);
+                }
+                else {
+                    $input.val(question.data);
+                }
+            }
+        }
+
+        PassController.prototype.updateLocalStorage = function () {
+            var questionData = [];
+            $(this.questions).children(".answers").each(function (index, answers) {
+                $(answers).find('input[type!="hidden"], textarea').each(function (index, answer) {
+                    if (!$(answer).is("textarea")) {
+                        if ($(answer).is(":checked"))
+                            questionData.push({"id" : $(answer).attr("id"), "data": $(answer).is(":checked")});
+                    }
+                    else {
+                        if ($(answer).val())
+                            questionData.push({ "id": $(answer).attr("id"), "data": $(answer).val() });
+                    }
+                });
+            });
+            if (questionData.length != 0) {
+                localStorage.setItem('@Model.Id', JSON.stringify(questionData));
+            }
         }
 
         PassController.prototype.nextQuestion = function () {
@@ -82,6 +118,7 @@
         $("#current-question-id").text(passController.getCurrentQuestionId() + 1);
 
         $(".button-forward").click(function () {
+            passController.updateLocalStorage();
             if (passController.nextQuestion()) {
                 $("#current-question-id").text(passController.getCurrentQuestionId() + 1);
                 $(".button-back").removeAttr("disabled");
