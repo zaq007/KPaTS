@@ -102,5 +102,12 @@
             $(".button-forward").removeClass("mdl-button--colored").children("i").text("arrow_forward");
             $("#current-question-id").text(passController.getCurrentQuestionId() + 1);
         });
+
+        $("body").on("click", ".mdl-radio", function () {
+            $(this).parent().parent().parent().find(".mdl-radio").removeClass("is-checked");
+            $(this).addClass("is-checked");
+            $(this).parent().parent().parent().find("input[type='radio']").val("false");
+            $(this).find("input[type='radio']").val("true");
+        });
     </script>
 }

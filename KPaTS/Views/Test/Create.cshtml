@@ -139,5 +139,12 @@
             });
         });
         registerScrollTransformation($(".mdl-layout__content"), $(".test-data"), $("#test-fab"), $(".test-data"), $(".mdl-layout__header-row"));
+
+        $("body").on("click", ".mdl-radio", function () {
+            $(this).parent().parent().parent().find(".mdl-radio").removeClass("is-checked");
+            $(this).addClass("is-checked");
+            $(this).parent().parent().parent().find("input[type='radio']").val("false");
+            $(this).find("input[type='radio']").val("true");
+        });
 </script>
 }
