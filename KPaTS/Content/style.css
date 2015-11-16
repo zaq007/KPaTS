@@ -128,6 +128,7 @@ input[type="week"], select[multiple], select[size], textarea {
 
 .search-container {
     align-self: center;
+    min-height: 77px;
     z-index: 1;
 }
 
