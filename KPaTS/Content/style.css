@@ -254,7 +254,7 @@ SPAN.mark {
     padding-top: 16px;
 }
 
-.question-card .mdl-textfield {
+.mdl-textfield:not(.search-input-container) {
     width: 100%;
 }
 
@@ -463,8 +463,7 @@ select:focus {
 }
 
 .mdl-selectfield {
-    width: 300px;
-    max-width: 100%;
+    width: 100%;
     position: relative;
     padding: 20px 0;
 }

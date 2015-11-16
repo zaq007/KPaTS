@@ -30,13 +30,11 @@
             @Html.ValidationMessageFor(model => model.Shortcut)
         </div>
 
-        <div class="mdl-selectfield editor-field">
+        <div class="mdl-selectfield">
             @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
         </div>
-        <div id="subject" style="display: none">
-            <div class="mdl-selectfield">
-                @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
-            </div>
+        <div class="mdl-selectfield" id="subject" style="display: none">
+            @Html.DropDownList("Subject[Id]", new SelectList(new List<SelectListItem>()))
         </div>
     </section>
     <section class="mdl-cell mdl-cell--4-col test-preview">
@@ -63,7 +61,9 @@
     <section class="mdl-cell mdl-cell--8-col card-padding">
         <h5>@Html.LabelFor(model => model.Questions)</h5>
         <div class ="questions mdl-grid"></div>
-        @Html.DropDownList("QuestionType", EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
+        <div class="mdl-selectfield">
+            @Html.DropDownList("QuestionType", EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
+        </div>
         <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" type="button" value="Add question" onClick="addQuestion()"/>
     </section>
 </div>
