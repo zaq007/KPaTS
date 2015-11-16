@@ -15,7 +15,7 @@ namespace KPaTS.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View(repository.GetProfessors());
+            return PartialView(repository.GetProfessors());
         }
 
         public ActionResult Details(Guid id)

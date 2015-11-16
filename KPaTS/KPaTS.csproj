@@ -238,6 +238,7 @@
     <Content Include="Areas\Admin\Views\Space\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Space\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Space\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\mdl-val.js" />
     <Content Include="Scripts\scripts.js" />
@@ -307,7 +308,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>

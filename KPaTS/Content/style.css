@@ -37,7 +37,7 @@ body.index {
     }
 }
 
-.page-content {
+body:not(.admin) .page-content {
     animation-name: fadeInDown;
     animation-duration: .4s;
     animation-delay: .6s;
@@ -79,7 +79,7 @@ input[type="week"], select[multiple], select[size], textarea {
     top: -28px;
 }
 
-.test-data.info .space {
+.test-data.info .space, .admin-table .space {
     font-weight: 500;
     color: #FF9E80;
     margin-left: 8px;
@@ -540,4 +540,18 @@ select:focus {
     position: absolute;
     right: 0px;
     transition: background-color .5s;
+}
+
+.mdl-data-table__cell--buttons {
+    padding-top: 9px!important;
+}
+
+.admin-table {
+    margin-top: 40px;
+    position: relative;
+}
+
+.admin-table .right-fab {
+    bottom: initial;
+    top: -28px;
 }

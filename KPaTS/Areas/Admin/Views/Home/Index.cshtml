@@ -1,9 +1,20 @@
 ﻿@{
     ViewBag.Title = "Index";
+    ViewBag.PageId = KPaTS.Core.PageID.PAGE_INDEX;
 }
 
-<h2>Index</h2>
-
-@Html.ActionLink("Professors", "Index", "Professor")
-@Html.ActionLink("Subjects", "Index", "Subject")
-@Html.ActionLink("Spaces", "Index", "Space")
+<section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+    <div class="page-content">
+        @Html.Action("Index", "Space")
+    </div>
+</section>
+<section class="mdl-layout__tab-panel" id="fixed-tab-2">
+    <div class="page-content">
+        @Html.Action("Index", "Subject")
+    </div>
+</section>
+<section class="mdl-layout__tab-panel" id="fixed-tab-3">
+    <div class="page-content">
+        @Html.Action("Index", "Professor")
+    </div>
+</section>
