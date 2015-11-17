@@ -366,6 +366,7 @@
     <Content Include="Views\Test\TestResult.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Space\Index.cshtml" />
+    <Content Include="Views\Test\_InfoSearchPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

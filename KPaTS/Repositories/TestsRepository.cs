@@ -42,6 +42,11 @@ namespace KPaTS.Repositories
                 DB.Entry(model.Space).State = System.Data.Entity.EntityState.Unchanged;
                 DB.Entry(model.Subject).State = System.Data.Entity.EntityState.Unchanged;
                 DB.Entry(model.Creator).State = System.Data.Entity.EntityState.Unchanged;
+                foreach (var infoModel in model.Infos)
+                {
+                    if (infoModel != model.Infos.First())
+                        DB.Entry(infoModel).State = System.Data.Entity.EntityState.Unchanged;
+                }
                 DB.SaveChanges();
                 return true;
             }

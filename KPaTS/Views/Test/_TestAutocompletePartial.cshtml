@@ -1,6 +1,6 @@
 ﻿@model KPaTS.Core.AutocompleteInfo
 
-<li class="suggest-item">
+<li class="results-item">
     <a @(Model.Id != Guid.Empty ? "href=/" + (Model.Type == KPaTS.Core.Type.Test ? "Test" : "Space") + "/Index?Id=" + Model.Id : "")>
         @if (Model.Type == KPaTS.Core.Type.Test)
         {

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using KPaTS.Core.Algorithms;
 using KPaTS.Repositories;
+using KPaTS.Models;
 
 namespace KPaTS.Controllers
 {
@@ -40,6 +41,18 @@ namespace KPaTS.Controllers
         public JsonResult CheckTestShortcut(string shortcut)
         {
             return Json(new { result = (new TestsRepository().GetTestByShortcut(shortcut) != null) ? 0 : 1 }, JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult SearchInfo(string query)
+        {
+            List<InfoModel> info = new InfosRepository().GetInfos();
+            return PartialView("~/Views/Test/_InfoSearchPartialView.cshtml", info);
+        }
+
+        public JsonResult PreviewInfo(Guid infoGuid)
+        {
+            InfoModel info = new InfosRepository().GetInfoById(infoGuid);
+            return Json(info.Body, JsonRequestBehavior.AllowGet);
         }
     }
 }

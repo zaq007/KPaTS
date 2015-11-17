@@ -4,7 +4,7 @@
 {
     if (Model.Any(p => p.Type == KPaTS.Core.Type.Space))
     {
-        <li class="suggest-category">Spaces</li>
+        <li class="results-category">Spaces</li>
         foreach (var item in Model.Where(p => p.Type == KPaTS.Core.Type.Space).Take(3))
         {
             @Html.Partial("~/Views/Test/_TestAutocompletePartial.cshtml", item);
@@ -13,12 +13,12 @@
 
     if (Model.Any(p => p.Type == KPaTS.Core.Type.Test))
     {
-        <li class="suggest-category">Tests</li>
+        <li class="results-category">Tests</li>
         foreach (var item in Model.Where(p => p.Type == KPaTS.Core.Type.Test).Take(3))
         {
             @Html.Partial("~/Views/Test/_TestAutocompletePartial.cshtml", item);
         }
     }
 
-    <li class="suggest-all-results"><a class="mdl-button mdl-button--primary mdl-js-button">All results</a></li>
+    <li class="results-all-results"><a class="mdl-button mdl-button--primary mdl-js-button">All results</a></li>
 }

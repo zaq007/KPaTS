@@ -1,0 +1,22 @@
+﻿@model List<KPaTS.Models.InfoModel>
+
+@foreach (var info in Model)
+{
+    <li class="results-item expandable-content with-button" data-entry-id="@info.Id">
+        <div class="expandable" data-entry-id="@info.Id">
+            <div class="header">
+                <div class="add-theory mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                    <i class="material-icons">add</i>
+                </div>
+                <a>@info.Name</a>
+            </div>
+            <div class="body">
+            </div>
+            <div class="footer">
+                <button class="mdl-button mdl-js-button close-preview">
+                    Close preview
+                </button>
+            </div>
+        </div>
+    </li>
+}

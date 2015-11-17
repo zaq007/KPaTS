@@ -33,18 +33,12 @@
 
 <div class="mdl-grid">
     <div class="mdl-layout-spacer"></div>
-    <section class="test-theory">
-        <h3>Теория, блять</h3>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod placerat mi id viverra. Aenean ac aliquet massa, id facilisis mi. Proin nec nisi aliquam, dictum sapien nec, eleifend nisl. Vivamus varius sed tellus eu finibus. Sed vel pulvinar dolor, eget euismod dolor. Nulla molestie elementum magna, ultricies vulputate nisi gravida et. Nulla congue diam metus, eget laoreet lorem dapibus non. Morbi luctus molestie sem, sed aliquet risus pharetra ut. Nam id dignissim dolor. Nulla id dolor lacinia erat rhoncus pellentesque. Integer lacinia mauris elementum ligula condimentum pharetra. Nullam finibus ante nec odio pharetra, quis congue est dapibus. Mauris consequat varius eleifend.</p>
-
-        <p>In sit amet ante ac libero pulvinar blandit id nec sapien. Mauris molestie id quam ac scelerisque. Nam vitae purus ipsum. Curabitur efficitur diam lorem, id mollis nulla dapibus vulputate. Praesent facilisis faucibus tellus sed sollicitudin. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas ut lorem lobortis, pharetra risus sed, tristique est. Aenean lacus augue, tempus eget tincidunt a, fermentum sed justo. Nam nulla ipsum, hendrerit eget velit id, tincidunt aliquet est. Proin hendrerit metus lectus, aliquam imperdiet magna ullamcorper vel. Cras turpis justo, congue at massa ac, auctor aliquet neque. In hac habitasse platea dictumst.</p>
-
-        <p>Praesent vulputate vestibulum augue vel ultricies. Cras sagittis convallis felis, vel pharetra eros faucibus nec. Suspendisse viverra urna et diam mollis porta. Cras eu vulputate turpis. Donec augue dolor, dictum in erat non, rutrum porttitor ante. Duis vitae mauris velit. Ut faucibus dictum lectus, nec semper libero tincidunt vitae. Etiam vel pellentesque neque. Pellentesque purus elit, ultricies eget ultrices a, varius nec tellus. Integer ultrices tristique risus. Fusce id libero posuere dui consequat ullamcorper. Nulla ut lectus suscipit, scelerisque orci eu, tempus enim. Sed id mi porttitor turpis placerat malesuada.</p>
-
-        <p>Cras nunc velit, mattis eget mattis ac, mattis non nulla. Curabitur tempor elit eget sagittis efficitur. Mauris efficitur vestibulum ex, quis pellentesque dui gravida eu. Aenean vulputate leo sed quam sollicitudin volutpat. Integer risus nisi, commodo in scelerisque nec, fringilla ac purus. Sed non metus sed purus vestibulum pretium a ut nisi. Morbi volutpat quis metus in maximus. Praesent tristique nisi a quam vulputate, non tristique turpis commodo. Praesent venenatis pellentesque rutrum. Donec fringilla ligula vel ligula bibendum, sodales viverra leo dignissim. Nulla tincidunt sapien turpis, fermentum tempor ante auctor nec. Proin quis enim ipsum. Integer dignissim, neque vel feugiat suscipit, nisl nulla ultricies metus, vel aliquam lectus magna eu ipsum. Aliquam erat volutpat. Proin feugiat justo sed sollicitudin efficitur.</p>
-
-        <p>Suspendisse faucibus risus mi, in scelerisque augue ullamcorper in. Maecenas sed lacinia neque, eget lacinia sem. Nullam in felis eu quam malesuada ornare. Vivamus ornare tellus sit amet nulla cursus bibendum. Nulla ullamcorper fringilla tempor. Pellentesque pulvinar ultricies porta. Quisque malesuada justo eget eleifend euismod. Proin malesuada dignissim consectetur. Phasellus ac mauris condimentum, porttitor augue id, rutrum dolor. In ac sodales leo. Nulla rutrum est non nunc rhoncus, vel iaculis erat tempus. Maecenas lacinia ac quam id auctor. Aliquam erat volutpat. Quisque consequat pretium lectus, non feugiat dolor pharetra eu.</p>
+    <section class="mdl-cell--8-col test-theory">
+        @foreach(var info in Model.Infos)
+        {
+            <h3>@info.Name</h3>
+            @Html.Raw(info.Body)
+        }
     </section>
     <div class="mdl-layout-spacer"></div>
 </div>
