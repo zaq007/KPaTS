@@ -94,31 +94,53 @@
             $(".suggest-item:not(.dummy) .space").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
         });
 
-        var questionsCount = 0;
+        var questions = [];
 
         function addQuestion() {
-            var id = questionsCount++;
+            var id = questions.length;
             var type = $("#QuestionType option:selected").val();
             $.get("/Test/GetQuestionView", {
                 questionId: id,
                 type: type
             }, function (data) {
                 $(".questions").append(data);
-                $(".question.displayNone").slideDown();
+                $(".question.displayNone").fadeIn();
                 componentHandler.upgradeAllRegistered();
+
+                var question = $(".questions").find("[data-question-id='" + id + "']");
+                questions.push(question);
+
                 addAnswer(id, type)
             })
         }
 
-        function addAnswer(questionId, type) {
+        function addAnswer(questionId) {
+            var questionType = $(questions[questionId]).data("question-type");
+            var newAnswerId = $(questions[questionId]).find(".answers").children().size()
             $.get("/Test/GetAnswerView", {
                 questionId: questionId,
-                type: type,
-                answerId: $("#answers" + questionId).children().size()
+                type: questionType,
+                answerId: newAnswerId
             }, function (data) {
-                $("#answers" + questionId).append(data);
+                $(questions[questionId]).find(".answers").append(data);
+                $(".answer.displayNone").fadeIn(300);
+                $(questions[questionId]).find("[data-answer-id='" + newAnswerId + "'] .mdl-textfield__input").rules("add", {
+                    required: true
+                });
                 componentHandler.upgradeAllRegistered();
             })
+        }
+
+        function addAnswerIfNeeded(questionId, answerId) {
+            var emptyInputsCount = $(questions[questionId]).find(".answers .mdl-textfield__input").filter(function () { return $(this).val() == ""; }).size();
+            if (emptyInputsCount == 0)
+                addAnswer(questionId)
+        }
+
+        function removeAnswerIfNeeded(questionId, answerId) {
+            var emptyInputsCount = $(questions[questionId]).find(".answers .mdl-textfield__input").filter(function () { return $(this).val() == ""; }).size();
+            if (emptyInputsCount != 0 && !(emptyInputsCount == 1 && $(questions[questionId]).find("[data-answer-id='" + answerId + "']").val() != ""))
+                $(questions[questionId]).find(".answers").children().last().fadeOut(300, function() {$(this).remove()})
         }
 
         $(document).ready(function () {
@@ -138,19 +160,15 @@
             });
 
             $(".questions").on("keyup", ".answer INPUT", function () {
+                var questionId = $(this).parents(".question").data("question-id");
+                var answerId = $(this).parents(".answer").data("answer-id");
                 if ($(this).val()) {
-                    addAnswerIfNeeded($(this));
+                    addAnswerIfNeeded(questionId, answerId)
                 }
                 else {
-                    removeAnswerIfNeeded($(this));
+                    removeAnswerIfNeeded(questionId, answerId)
                 }
             });
-
-            function addAnswerIfNeeded(input) {
-            }
-
-            function removeAnswerIfNeeded(input) {
-            }
 
             /*$("#Shortcut").on("change", function (data) {
                 $.get("/Api/CheckTestShortcut", { shortcut: $("#Shortcut").val() }, function (data) {
@@ -162,6 +180,7 @@
             });*/
 
             $("#test-fab").on("click", function () {
+                $(".answers .mdl-textfield__input").filter(function () { return $(this).val() == "" }).parents(".answer:last-child").remove()
                 $("#test-create").submit();
             });
         });

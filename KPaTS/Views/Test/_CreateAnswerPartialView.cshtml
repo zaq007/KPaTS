@@ -1,6 +1,6 @@
 ﻿@model KPaTS.Models.AnswerModel
 
-<div class="mdl-cell answer" data-answer-id="@(ViewBag.answerId)">
+<div class="mdl-cell answer displayNone" data-answer-id="@(ViewBag.answerId)">
     @if (ViewBag.type == KPaTS.Models.QuestionType.Radio)
     {
         <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="questions[@(ViewBag.questionId)][Answers][@(ViewBag.answerId)][isRight]">
@@ -10,7 +10,7 @@
         <br />
         <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" type="text" name="questions[@(ViewBag.questionId)][Answers][@(ViewBag.answerId)][Text]" />
-            <label class="mdl-textfield__label" for="sample1">Text...</label>
+            <label class="mdl-textfield__label">Answer text</label>
         </div>
     }
     else if (ViewBag.type == KPaTS.Models.QuestionType.Check)
@@ -22,7 +22,7 @@
         <br />
         <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" type="text" name="questions[@(ViewBag.questionId)][Answers][@(ViewBag.answerId)][Text]" />
-            <label class="mdl-textfield__label" for="sample1">Text...</label>
+            <label class="mdl-textfield__label">Answer text</label>
         </div>
     }
 </div>
