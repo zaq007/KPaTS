@@ -132,14 +132,14 @@
         }
 
         function addAnswerIfNeeded(questionId, answerId) {
-            var emptyInputsCount = $(questions[questionId]).find(".answers .mdl-textfield__input").filter(function () { return $(this).val() == ""; }).size();
+            var emptyInputsCount = $(questions[questionId]).find(".answer:not([data-answer-id='" + answerId + "']) .mdl-textfield__input").filter(function () { return $(this).val() == ""; }).size();
             if (emptyInputsCount == 0)
                 addAnswer(questionId)
         }
 
         function removeAnswerIfNeeded(questionId, answerId) {
             var emptyInputsCount = $(questions[questionId]).find(".answers .mdl-textfield__input").filter(function () { return $(this).val() == ""; }).size();
-            if (emptyInputsCount != 0 && !(emptyInputsCount == 1 && $(questions[questionId]).find("[data-answer-id='" + answerId + "']").val() != ""))
+            if (emptyInputsCount != 0 && !(emptyInputsCount == 1 && $(questions[questionId]).find("[data-answer-id='" + answerId + "'] .mdl-textfield__input").val() == ""))
                 $(questions[questionId]).find(".answers").children().last().fadeOut(300, function() {$(this).remove()})
         }
 
@@ -159,13 +159,16 @@
                 })
             });
 
+            $(".questions").on("keypress", ".answer INPUT", function () {
+                var questionId = $(this).parents(".question").data("question-id");
+                var answerId = $(this).parents(".answer").data("answer-id");
+                addAnswerIfNeeded(questionId, answerId)
+            });
+
             $(".questions").on("keyup", ".answer INPUT", function () {
                 var questionId = $(this).parents(".question").data("question-id");
                 var answerId = $(this).parents(".answer").data("answer-id");
-                if ($(this).val()) {
-                    addAnswerIfNeeded(questionId, answerId)
-                }
-                else {
+                if (!$(this).val()) {
                     removeAnswerIfNeeded(questionId, answerId)
                 }
             });
