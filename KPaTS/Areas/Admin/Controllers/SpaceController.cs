@@ -15,7 +15,7 @@ namespace KPaTS.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View(repository.GetSpaces());
+            return PartialView(repository.GetSpaces());
         }
 
         public ActionResult Details(Guid id)

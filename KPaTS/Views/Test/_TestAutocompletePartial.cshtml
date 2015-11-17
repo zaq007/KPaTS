@@ -5,10 +5,7 @@
         @if (Model.Type == KPaTS.Core.Type.Test)
         {
             <span class="shortcut">#@(Model.Shortcut)</span>
-            if (Model.Space != "")
-            {
-                <span class="space">@@@(Model.Space)</span>
-            }
+            <span class="space displayNone">@@@(Model.Space)</span>
         }
         else
         {

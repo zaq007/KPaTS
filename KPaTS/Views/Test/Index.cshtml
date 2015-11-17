@@ -8,25 +8,25 @@
     <div class="mdl-layout-spacer"></div>
     <section class="card-side mdl-color--white mdl-cell mdl-cell--8-col card-relative card-padding mdl-cell--top mdl-shadow--2dp">
         <div class="body">
-        <aside>
-            <i class="material-icons">account_circle</i>
-            <p>Created by <b>@Model.Creator.UserName</b></p>
-        </aside>
-        <div class="content">
-            <div class="test-title"><h4>@Model.Name<span class="space">@@@Model.Space.Shortcut</span></h4></div>
-            <div class="mdl-card__supporting-text">
-                @Model.Description
+            <aside>
+                <i class="material-icons">account_circle</i>
+                <p>Created by <b>@Model.Creator.UserName</b></p>
+            </aside>
+            <div class="content">
+                <div class="test-title"><h4>@Model.Name<span class="space">@@@Model.Space.Shortcut</span></h4></div>
+                <div class="mdl-card__supporting-text">
+                    @Model.Description
+                </div>
+                <a id="test-fab" href="/Test/Pass?Id=@Model.Id" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                    <i class="material-icons">send</i>
+                </a>
             </div>
-            <a id="test-fab" href="/Test/Pass?Id=@Model.Id" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                <i class="material-icons">send</i>
-            </a>
         </div>
-            </div>
         <div class="card-footer">
-                <span class="author">Total attempts: <b>123</b></span>
-                <span class="author">Successfull attempts: <b>23</b></span>
-                <span class="author">Creation date: <b>11.03.2015</b></span>
-            </div>
+            <span class="author">Total attempts: <b>123</b></span>
+            <span class="author">Successfull attempts: <b>23</b></span>
+            <span class="author">Creation date: <b>11.03.2015</b></span>
+        </div>
     </section>
     <div class="mdl-layout-spacer"></div>
 </div>
