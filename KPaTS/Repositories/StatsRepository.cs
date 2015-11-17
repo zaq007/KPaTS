@@ -17,5 +17,18 @@ namespace KPaTS.Repositories
             }
         }
 
+        public bool Add(StatModel model)
+        {
+            using (var DB = new MainContext())
+            {
+                model.TestModel.Questions = null;
+                DB.Stats.Add(model);
+                DB.Entry(model.TestModel).State = System.Data.Entity.EntityState.Unchanged;
+                DB.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
     }
 }

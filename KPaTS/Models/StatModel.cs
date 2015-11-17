@@ -19,7 +19,7 @@ namespace KPaTS.Models
 
         public virtual TestModel TestModel { get; set; }
 
-        public virtual UserProfile UserProfile { get; set; }
+        public string Username { get; set; }
 
     }
 }

@@ -21,6 +21,16 @@ namespace KPaTS.Core.Algorithms
                 if (CheckQuestion(question))
                     check.RightAnswers++;
             }
+            StatModel stat = new StatModel()
+            {
+                Count = check.RightAnswers,
+                Date = DateTime.Now,
+                Username = WebMatrix.WebData.WebSecurity.CurrentUserName,
+                TestModel = result
+            };
+
+            new StatsRepository().Add(stat);
+
             return check;
         }
 

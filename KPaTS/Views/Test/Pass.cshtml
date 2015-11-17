@@ -27,7 +27,7 @@
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-
+        @Html.HiddenFor(x => x.Id)
         var questions = Model.Questions.ToList();
         for (int i = 0; i < questions.Count; i++ )
         {
