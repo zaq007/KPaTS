@@ -58,13 +58,29 @@
 <div class="mdl-grid">
     <div class="mdl-layout-spacer"></div>
     <section class="mdl-cell mdl-cell--8-col card-padding">
-        <h5>@Html.LabelFor(model => model.Questions)</h5>
-        <div class ="questions mdl-grid"></div>
-        <div class="mdl-selectfield">
-            @Html.DropDownList("QuestionType", EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
-        </div>
-        <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" type="button" value="Add question" onClick="addQuestion()"/>
-    </section>
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#questions-panel" class="mdl-tabs__tab is-active">Questions</a>
+                <a href="#theory-panel" class="mdl-tabs__tab">Theory</a>
+            </div>
+            <div class="mdl-tabs__panel is-active" id="questions-panel">
+                <h5>@Html.LabelFor(model => model.Questions)</h5>
+                <div class="questions mdl-grid"></div>
+                <div class="mdl-selectfield">
+                    @Html.DropDownList("QuestionType", EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
+                </div>
+                <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" type="button" value="Add question" onclick="addQuestion()" />
+            </div>
+            <div class="mdl-tabs__panel" id="theory-panel">
+                <h5>Write new information</h5>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <textarea class="mdl-textfield__input" rows="3" name="theory-editor" id="theory-editor"></textarea>
+                    <label class="mdl-textfield__label" for="theory-editor">Test-related information here</label>
+                </div>
+                <h4 class="mdl-typography--text-center">OR</h4>
+                <h5>Select existing one</h5>
+            </div>
+</section>
     <div class="mdl-layout-spacer"></div>
 </div>
 }
@@ -94,6 +110,8 @@
 
             $(".suggest-item:not(.dummy) .space").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
         });
+
+        $("#theory-editor").redactor();
 
         var questions = [];
 
