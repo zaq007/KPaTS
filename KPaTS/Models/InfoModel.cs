@@ -17,13 +17,12 @@ namespace KPaTS.Models
         [Required]
         public string Name { get; set; }
 
+        public UserProfile Creator { get; set; }
+
         [Required]
         [AllowHtml]
-        public string Text { get; set; }
+        public string Body { get; set; }
 
-        [Required]
-        public string Link { get; set; }
-
-        public virtual TestModel Test { get; set; }
+        public virtual ICollection<TestModel> Tests { get; set; }
     }
 }
