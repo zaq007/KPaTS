@@ -4,6 +4,8 @@
     ViewBag.Title = "TestResult";
 }
 
-<h2>TestResult</h2>
+<h2>Поздравляем, вы завершили тест!</h2>
 
-@Model.RightAnswers / @Model.QuestionsCount
+<h3>@Model.RightAnswers / @Model.QuestionsCount</h3>
+
+<h3>Rate this test: @Html.ActionLink("Good", "MakeRating", new { testId = @Model.TestId, rating = 1 }) / @Html.ActionLink("Bad", "MakeRating", new { testId = @Model.TestId, rating = -1 })</h3>

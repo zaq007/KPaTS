@@ -36,6 +36,8 @@ namespace KPaTS.Models
 
         public virtual ICollection<InfoModel> Infos { get; set; }
 
+        public virtual ICollection<StatModel> Stats { get; set; }
+
         public TestInfoModel ToTestInfoModel()
         {
             return new TestInfoModel()

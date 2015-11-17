@@ -29,6 +29,19 @@ namespace KPaTS.Repositories
             }
         }
 
+        public bool ChangeRating(Guid TestId, int Rating)
+        {
+            using (var DB = new MainContext())
+            {
+                var test = DB.Tests.Where(x => x.Id == TestId).FirstOrDefault();
+                test.Rating += Rating;
+                DB.Entry(test).State = System.Data.Entity.EntityState.Modified;
+                DB.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
         public bool Add(TestModel model)
         {
             model.Creator = new UserProfile()
