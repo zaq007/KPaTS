@@ -49,6 +49,9 @@
 
             this.questions.hide().first().show();
             this.restoreFromLocalStorage();
+            if (this.isOnLastQuestion()) {
+                $(".button-forward").addClass("mdl-button--colored").children("i").text("check");
+            }
         }
 
         PassController.prototype.restoreFromLocalStorage = function () {
@@ -84,6 +87,10 @@
             if (questionData.length != 0) {
                 localStorage.setItem('@Model.Id', JSON.stringify(questionData));
             }
+        }
+
+        PassController.prototype.clearLocalStorage = function () {
+            localStorage.removeItem('@Model.Id');
         }
 
         PassController.prototype.nextQuestion = function () {
@@ -128,6 +135,7 @@
                 return true;
             }
             else {
+                passController.clearLocalStorage()
                 $("#test-pass").submit();
             }
         });
