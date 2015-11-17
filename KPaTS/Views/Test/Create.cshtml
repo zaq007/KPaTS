@@ -56,8 +56,7 @@
     </div>
 </div>
 <div class="mdl-grid">
-    <section class="mdl-cell mdl-cell--2-col">
-    </section>
+    <div class="mdl-layout-spacer"></div>
     <section class="mdl-cell mdl-cell--8-col card-padding">
         <h5>@Html.LabelFor(model => model.Questions)</h5>
         <div class ="questions mdl-grid"></div>
@@ -66,6 +65,7 @@
         </div>
         <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" type="button" value="Add question" onClick="addQuestion()"/>
     </section>
+    <div class="mdl-layout-spacer"></div>
 </div>
 }
 
@@ -94,26 +94,38 @@
             $(".suggest-item:not(.dummy) .space").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
         });
 
-        var currentQuestions = 0;
+        var questionsCount = 0;
 
         function addQuestion() {
-            $.get("/Test/GetQuestionView", { number: currentQuestions++, type: $("#QuestionType option:selected").val() }, function (data) {
+            var id = questionsCount++;
+            var type = $("#QuestionType option:selected").val();
+            $.get("/Test/GetQuestionView", {
+                questionId: id,
+                type: type
+            }, function (data) {
                 $(".questions").append(data);
                 $(".question.displayNone").slideDown();
                 componentHandler.upgradeAllRegistered();
+                addAnswer(id, type)
             })
         }
 
-        function addAnswer(num, type) {
-            $.get("/Test/GetAnswerView", { number: num, type: type, count: $("#answers" + num).children().size() }, function (data) {
-                $("#answers" + num).append(data);
+        function addAnswer(questionId, type) {
+            $.get("/Test/GetAnswerView", {
+                questionId: questionId,
+                type: type,
+                answerId: $("#answers" + questionId).children().size()
+            }, function (data) {
+                $("#answers" + questionId).append(data);
                 componentHandler.upgradeAllRegistered();
             })
         }
 
         $(document).ready(function () {
             $("#Space_Id_").on("change", function (data) {
-                $.get("/Api/GetSpaceSubjects", { id: $("#Space_Id_ option:selected").val() }, function (data) {
+                $.get("/Api/GetSpaceSubjects", {
+                    id: $("#Space_Id_ option:selected").val()
+                }, function (data) {
                     $.each(data, function (i, item) {
                         $('#Subject_Id_').append($('<option>', {
                             value: item.Id,
@@ -124,6 +136,21 @@
                     $('.test-card').addClass("decorated math");
                 })
             });
+
+            $(".questions").on("keyup", ".answer INPUT", function () {
+                if ($(this).val()) {
+                    addAnswerIfNeeded($(this));
+                }
+                else {
+                    removeAnswerIfNeeded($(this));
+                }
+            });
+
+            function addAnswerIfNeeded(input) {
+            }
+
+            function removeAnswerIfNeeded(input) {
+            }
 
             /*$("#Shortcut").on("change", function (data) {
                 $.get("/Api/CheckTestShortcut", { shortcut: $("#Shortcut").val() }, function (data) {

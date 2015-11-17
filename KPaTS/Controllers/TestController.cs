@@ -60,17 +60,17 @@ namespace KPaTS.Controllers
             return View(model);
         }
 
-        public ActionResult GetQuestionView(int number, int type)
+        public ActionResult GetQuestionView(int questionId, int type)
         {
-            ViewBag.number = number;
+            ViewBag.questionId = questionId;
             ViewBag.type = (QuestionType)type;
             return PartialView("_CreateQuestionPartialView");
         }
 
-        public ActionResult GetAnswerView(int number, int type, int count)
+        public ActionResult GetAnswerView(int questionId, int type, int answerId)
         {
-            ViewBag.count = count;
-            ViewBag.number = number;
+            ViewBag.answerId = answerId;
+            ViewBag.questionId = questionId;
             ViewBag.type = (QuestionType)type;
             return PartialView("_CreateAnswerPartialView");
         }
