@@ -32,6 +32,7 @@ namespace KPaTS
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/material.min.css",
+                "~/Content/redactor.css",
                 "~/Content/style.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

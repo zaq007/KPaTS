@@ -3,7 +3,7 @@
 <div class="question-card mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--12-col">
     <div class="question">
         <h5>Question #@(Convert.ToInt32(ViewData["count"])+1)</h5>
-        <p>@Model.Text</p>
+        <p>@Html.Raw(Model.Text)</p>
     </div>
     <div class="answers">
         <div id="answers@(ViewData["count"])" class="mdl-grid">
