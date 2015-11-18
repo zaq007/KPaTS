@@ -415,7 +415,7 @@ SPAN.mark {
 .expandable {
     display: flex;
     flex-direction: column;
-    transition: box-shadow .3s, background-color .3s;
+    transition: box-shadow .2s, background-color .2s;
 }
 
 .expandable .header {
