@@ -85,6 +85,8 @@
                         </ul>
                     </div>
                 </div>
+                <div class="theory-pieces">
+                </div>
                 <h4 class="mdl-typography--text-center">OR</h4>
                 <h5>Write new information</h5>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -115,7 +117,18 @@
 
         $(".search-card").on("click", ".add-theory", function () {
             var newTheoryIndex = theoryEntriesCount++;
-            $("#theory-selection").append($('<input type="hidden" name="Infos[' + newTheoryIndex + '].Id" value="' + $(this).parents(".expandable").data("entry-id") + '" />'))
+            $.get("/Api/RenderInfoPiece", {
+                infoGuid: $(this).parents(".expandable").data("entry-id"),
+                index: newTheoryIndex
+            }, function (data) {
+                $(".theory-pieces").append(data)
+            })
+        });
+
+        $(".theory-pieces").on("click", ".delete-piece", function () {
+            if (theoryEntriesCount > 1)
+                theoryEntriesCount--;
+            $(this).parent().remove()
         });
 
         $("#Shortcut").keyup(function () {

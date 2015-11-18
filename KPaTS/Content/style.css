@@ -690,3 +690,20 @@ select:focus {
     transform: translateY(0px);
     transition: opacity .5s, transform .5s;
 }
+
+.theory-pieces {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.theory-pieces .piece {
+    background-color: white;
+    margin-left: 8px;
+    margin-top: 8px;
+    padding-right: 8px;
+    border-radius: 20px 2px 2px 20px;
+    max-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

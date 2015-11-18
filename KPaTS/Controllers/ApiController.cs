@@ -49,6 +49,13 @@ namespace KPaTS.Controllers
             return PartialView("~/Views/Test/_InfoSearchPartialView.cshtml", info);
         }
 
+        public PartialViewResult RenderInfoPiece(Guid infoGuid, int index)
+        {
+            ViewBag.InfoIndex = index;
+            InfoModel info = new InfosRepository().GetInfoById(infoGuid);
+            return PartialView("~/Views/Test/_InfoPiecePartial.cshtml", info);
+        }
+
         public JsonResult PreviewInfo(Guid infoGuid)
         {
             InfoModel info = new InfosRepository().GetInfoById(infoGuid);

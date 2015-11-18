@@ -105,9 +105,9 @@ $(document).ready(function () {
         }
     });
 
-    $(".search-card").on("click", ".expandable-content", function () {
-        var content = $(this).children(".expandable");
-        $.get("/Api/PreviewInfo", { infoGuid: $(this).data("entry-id") }, function (data) {
+    $(".search-card").on("click", ".expandable-content A", function () {
+        var content = $(this).parents(".expandable");
+        $.get("/Api/PreviewInfo", { infoGuid: content.data("entry-id") }, function (data) {
             content.find(".body").html(data)
         })
         expandContent(content)
