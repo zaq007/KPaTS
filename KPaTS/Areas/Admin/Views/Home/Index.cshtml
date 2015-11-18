@@ -18,3 +18,17 @@
         @Html.Action("Index", "Professor")
     </div>
 </section>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/mdl")
+<script>
+    $("body").on("click", "#add-space, #add-subject, #add-professor", function (e) {
+        e.preventDefault()
+        var self = this;
+        $.get($(self).attr("href"), {}, function (data) {
+            $(self).parents(".page-content").append(data)
+            componentHandler.upgradeAllRegistered();
+        })
+        return false
+    });
+</script>

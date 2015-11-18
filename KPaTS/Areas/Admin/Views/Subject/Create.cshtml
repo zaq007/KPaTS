@@ -4,39 +4,30 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell--8-col mdl-shadow--2dp mdl-color--white card-padding">
+        <h2>Create</h2>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>SubjectModel</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Shortcut)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Shortcut)
-            @Html.ValidationMessageFor(model => model.Shortcut)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                @Html.LabelFor(m => m.Shortcut, new { @class = "mdl-textfield__label" })
+                @Html.TextBoxFor(m => m.Shortcut, new { @class = "mdl-textfield__input" })
+                @Html.ValidationMessageFor(m => m.Shortcut)
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                @Html.LabelFor(m => m.Name, new { @class = "mdl-textfield__label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "mdl-textfield__input" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <input type="submit" value="Create" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+        }
+    </div>
+    <div class="mdl-layout-spacer"></div>
 </div>
 
 @section Scripts {

@@ -25,7 +25,7 @@ namespace KPaTS.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
