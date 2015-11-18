@@ -13,6 +13,10 @@
     <body class="main @(ViewBag.PageId == KPaTS.Core.PageID.PAGE_INDEX ? "index" : "") mdl-color--optic-white">
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <header class="mdl-layout__header mdl-layout__header--waterfall @(ViewBag.PageId == KPaTS.Core.PageID.PAGE_INDEX ? "mdl-layout__header--transparent mdl-layout__header--seamed" : "")">
+                @if (ViewBag.PageId != KPaTS.Core.PageID.PAGE_INDEX)
+                {
+                    @:<a href="../" class="mdl-layout__drawer-button"><i class="material-icons">arrow_back</i></a>
+                }
                 <div class="mdl-layout__header-row">
                     <span class="mdl-layout-title mdl-layout--large-screen-only">@ViewBag.Title</span>
                     <div class="mdl-layout-spacer"></div>
@@ -52,9 +56,8 @@
                 }
                 <nav class="mdl-navigation">
                     <a class="mdl-navigation__link" href="/">Home</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
+                    <a class="mdl-navigation__link" href="/Admin">Admin section</a>
+                    <a class="mdl-navigation__link" href="/Test/Create">Create test</a>
                 </nav>
             </div>
             <main class="mdl-layout__content">
