@@ -38,12 +38,15 @@
                 @if (Request.IsAuthenticated)
                 {
                     <div class="drawer-header">
-                        @Html.ActionLink("Hi, " + User.Identity.Name, "Manage", "Account", null, new { @class="mdl-color-text--primary-dark"})
                         @using (Html.BeginForm("LogOff", "Account"))
                         {
                             @Html.AntiForgeryToken()
-                            <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Logout"/>
+                            <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" value="Logout"/>
                         }
+                        <div class="profile mdl-color-text--deep-orange-A200">
+                            <i class="material-icons">account_circle</i>
+                            <p class="mdl-typography--body-2">Hi, <b>@Html.ActionLink(User.Identity.Name, "Manage", "Account", null, new { @class = "mdl-color-text--accent" })</b></p>
+                        </div>
                     </div>
                 }
                 else

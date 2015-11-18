@@ -1,4 +1,8 @@
-﻿.mdl-color--optic-white {
+﻿body {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.mdl-color--optic-white {
     background-color: #FAFAFA;
 }
 
@@ -8,6 +12,16 @@ A {
 
 A.mdl-button--fab {
     display: block;
+}
+
+h2, h3, h4, h5 {
+    text-transform: uppercase;
+    opacity: .54;
+}
+
+p {
+    opacity: .54;
+    font-family: Roboto,sans-serif;
 }
 
 header {
@@ -62,6 +76,8 @@ input[type="week"], select[multiple], select[size], textarea {
 
 .welcome {
     text-align: center;
+    text-transform: none;
+    opacity: 1;
     font-weight: 200;
     color: white;
 }
@@ -247,14 +263,30 @@ SPAN.mark {
 
 .drawer-header {
     display: flex;
-    height: 144px;
+    height: 82px;
     justify-content: space-around;
     background: url('../Images/drawer-bg.jpg') 33% 50% / 140% 100%;
     padding-bottom: 10px;
 }
 
+.drawer-header .profile {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-header .profile p {
+    margin: 0;
+    opacity: 1;
+}
+
+.drawer-header .profile i {
+    font-size: 50px;
+}
+
 .drawer-header > * {
-    align-self: flex-end;
+    align-self: center;
+    margin-top: 10px;
 }
 
 .question-card {
@@ -588,7 +620,7 @@ select:focus {
     margin-top: -92px;
 }
 
-.question-control {
+.question-control, .rating-control {
     width: 220px;
     margin: auto;
     overflow: visible;
@@ -598,14 +630,16 @@ select:focus {
     border-radius: 20px;
 }
 
-.question-control .button-back {
+.question-control .button-back, .rating-control .button-bad {
     position: absolute;
     left: 0px;
+    top: 0;
 }
 
-.question-control .button-forward {
+.question-control .button-forward, .rating-control .button-good {
     position: absolute;
     right: 0px;
+    top: 0;
     transition: background-color .5s;
 }
 
