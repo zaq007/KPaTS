@@ -75,7 +75,7 @@ namespace KPaTS.Controllers
             return PartialView("_CreateAnswerPartialView");
         }
 
-        public ActionResult MakeRating(Guid testId, int rating)
+        public ActionResult RateTest(Guid testId, int rating)
         {
             new TestsRepository().ChangeRating(testId, rating > 0 ? 1 : -1);
             return RedirectToAction("Index", "Home");

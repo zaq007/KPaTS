@@ -4,8 +4,28 @@
     ViewBag.Title = "Rest results";
 }
 
-<h2>Поздравляем, вы завершили тест!</h2>
+<div class="mdl-grid mdl-color--primary">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell mdl-cell--8-col">
+        <div class="rating-control mdl-color--optic-white mdl-shadow--2dp mdl-typography--text-center">
+            <a href="@Url.Action("RateTest", "Test", new { testId = @Model.TestId, rating = -1 })" class="button-bad mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                <i class="material-icons">thumb_down</i>
+            </a>
+            Rate this test
+            <a href="@Url.Action("RateTest", "Test", new { testId = @Model.TestId, rating = 1 })" class="button-good mdl-button mdl-js-button mdl-button--colored mdl-button--fab mdl-button--mini-fab">
+                <i class="material-icons">thumb_up</i>
+            </a>
+        </div>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+</div>
 
-<h3>@Model.RightAnswers / @Model.QuestionsCount</h3>
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell mdl-cell--8-col">
+        <h4>Поздравляем, вы завершили тест!</h4>
 
-<h3>Rate this test: @Html.ActionLink("Good", "MakeRating", new { testId = @Model.TestId, rating = 1 }) / @Html.ActionLink("Bad", "MakeRating", new { testId = @Model.TestId, rating = -1 })</h3>
+        <p>Your results: @Model.RightAnswers / @Model.QuestionsCount</p>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+</div>
