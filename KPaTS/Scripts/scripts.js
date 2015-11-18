@@ -52,25 +52,24 @@ $(document).ready(function () {
             content.find(".body").html(data)
         })
 
-        content.addClass("mdl-shadow--8dp mdl-color--white expanding")
-        setTimeout(function () {
-            var offset = content.offset()
-            var width = content.width;
-            content.appendTo("body").css({ "width": width, "position": "fixed", "top": offset.top, "left": offset.left, "transition": "none", "z-index": "9999" });
-            content.animate({
-                "width": $(".search-card").outerWidth(true),
-                "height": $(".search-card").outerHeight(true),
-                "top": $(".search-card").offset().top,
-                "left": $(".search-card").offset().left
-            }, 300, "easeOutCubic", function () {
-                content.appendTo(".search-card").attr("style", "").addClass("is-expanded").removeClass("expanding");
-            });
-            content.children(".header").animate({
-                "padding": "8px",
-                "font-size": "20px",
-                "font-weight": "500"
-            }, 300);
+        content.addClass("mdl-shadow--8dp mdl-color--white")
+        var offset = content.offset()
+        var width = content.width();
+        var height = content.height();
+        content.appendTo("body").css({ "width": width, "height": height, "position": "fixed", "top": offset.top, "left": offset.left, "transition": "none", "z-index": "9999" }).addClass("expanding");
+        content.animate({
+            "width": $(".search-card").outerWidth(true),
+            "height": $(".search-card").outerHeight(true),
+            "top": $(".search-card").offset().top,
+            "left": $(".search-card").offset().left
+        }, 300, "easeOutCubic", function () {
+            content.appendTo(".search-card").attr("style", "").addClass("is-expanded").removeClass("expanding");
         });
+        content.children(".header").animate({
+            "padding": "8px",
+            "font-size": "20px",
+            "font-weight": "500"
+        }, 300);
     });
 
     $(".search-card").on("click", ".close-preview", function () {
@@ -78,19 +77,20 @@ $(document).ready(function () {
         var target = $(".search-card").find(".expandable-content[data-entry-id='" + content.data("entry-id") + "']");
 
         var offset = content.offset()
-        var width = content.width
+        var width = content.width()
+        var height = content.height()
         content.addClass("expanding")
-        content.removeClass("is-expanded").appendTo("body").css({ "width": width, "position": "fixed", "top": offset.top, "left": offset.left, "transition": "none", "z-index": "9999" });
+        content.removeClass("is-expanded").appendTo("body").css({ "width": width, "height": height, "position": "fixed", "top": offset.top, "left": offset.left, "transition": "none", "z-index": "9999" });
         content.animate({
-            "width": target.outerWidth(true),
+            "width": target.outerWidth(false),
             "height": target.outerHeight(true),
             "top": target.offset().top,
             "left": target.offset().left
         }, 300, "easeOutCubic", function () {
-            content.removeClass("mdl-shadow--8dp mdl-color--white").removeClass("expanding")
+            content.appendTo(target).removeClass("expanding").attr("style", "")
             setTimeout(function () {
-                content.attr("style", "").appendTo(target);
-            }, 300)
+                content.removeClass("mdl-shadow--8dp mdl-color--white");
+            }, 100)
         });
         content.children(".header").animate({
             "padding": "0px",

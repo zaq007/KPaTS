@@ -415,12 +415,11 @@ SPAN.mark {
 .expandable {
     display: flex;
     flex-direction: column;
+    transition: box-shadow .3s, background-color .3s;
 }
 
 .expandable .header {
     display: flex;
-    transition: box-shadow .3s, background-color .3s;
-    border-bottom: 0 solid #e0e0e0;
 }
 
 .expandable .header .mdl-button {
@@ -652,7 +651,7 @@ select:focus {
         box-shadow: none;
     }
     100% {
-        height: 200px;
+        height: 250px;
         background-color: white;
         box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
         /*overflow-y: auto;
@@ -682,6 +681,7 @@ select:focus {
     position: absolute;
     z-index: 999;
     animation: grow .3s;
+    height: 250px;
 }
 
 .search-card.focused .results {
