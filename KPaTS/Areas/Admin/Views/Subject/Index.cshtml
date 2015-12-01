@@ -38,13 +38,13 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td class="mdl-data-table__cell--buttons">
-                        <a href="@Url.Action("Edit", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon">
+                        <a href="@Url.Action("Edit", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon ajax-action">
                             <i class="material-icons">edit</i>
                         </a>
-                        <a href="@Url.Action("Details", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon">
+                        <a href="@Url.Action("Details", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon ajax-action">
                             <i class="material-icons">search</i>
                         </a>
-                        <a href="@Url.Action("Delete", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon">
+                        <a href="@Url.Action("Delete", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon ajax-action">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>

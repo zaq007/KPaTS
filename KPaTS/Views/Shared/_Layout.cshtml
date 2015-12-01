@@ -27,12 +27,8 @@
                     {
                             if (!Request.IsAuthenticated)
                             {
-                                <div class="mdl-navigation mdl-layout--large-screen-only">
-                                    @Html.ActionLink("Авторизация", "Login", "Account", null, new { @class="mdl-navigation__link" })
-                                    @Html.ActionLink("Регистрация", "Register", "Account", null, new { @class="mdl-navigation__link" })
-                                </div>
-                                <div class="mdl-navigation mdl-layout--small-screen-only">
-                                    @Html.ActionLink("Войти", "Index", "Account", null, new { @class="mdl-navigation__link" })
+                                <div class="mdl-navigation">
+                                    @Html.ActionLink("Войти", "Login", "Account", null, new { @class="mdl-navigation__link" })
                                 </div>
                             }
                     }

@@ -20,7 +20,7 @@
             <tr>
                 <th class="mdl-data-table__cell--non-numeric">@Html.DisplayNameFor(model => model.Name)</th>
                 <th>
-                    <a id="add-professor" href="@Url.Action("Create", "Subject")" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                    <a id="add-professor" href="@Url.Action("Create", "Professor")" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                         <i class="material-icons">add</i>
                     </a>
                 </th>
@@ -34,13 +34,13 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td class="mdl-data-table__cell--buttons">
-                        <a href="@Url.Action("Edit", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon">
+                        <a href="@Url.Action("Edit", "Professor", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon ajax-action">
                             <i class="material-icons">edit</i>
                         </a>
-                        <a href="@Url.Action("Details", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon">
+                        <a href="@Url.Action("Details", "Professor", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon ajax-action">
                             <i class="material-icons">search</i>
                         </a>
-                        <a href="@Url.Action("Delete", "Subject", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon">
+                        <a href="@Url.Action("Delete", "Professor", new { id = item.Id })" class="mdl-button mdl-js-button mdl-button--icon ajax-action">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>

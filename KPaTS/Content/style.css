@@ -165,10 +165,12 @@ input[type="week"], select[multiple], select[size], textarea {
 
 .is-small-screen #header-search-container {
     opacity: 0;
+    visibility: hidden;
 }
 
 .search-expanded #header-search-container {
     opacity: 1;
+    visibility: visible;
 }
 
 .search-attached.search-expanded .mdl-navigation {

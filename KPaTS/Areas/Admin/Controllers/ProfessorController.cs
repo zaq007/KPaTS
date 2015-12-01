@@ -20,13 +20,13 @@ namespace KPaTS.Areas.Admin.Controllers
 
         public ActionResult Details(Guid id)
         {
-            return View(repository.GetProfessorById(id));
+            return PartialView(repository.GetProfessorById(id));
         }
 
         [HttpGet]
         public ActionResult Edit(Guid id)
         {
-            return View(repository.GetProfessorById(id));
+            return PartialView(repository.GetProfessorById(id));
         }
 
         [HttpPost]
@@ -35,7 +35,7 @@ namespace KPaTS.Areas.Admin.Controllers
             bool result = repository.Edit(data);
             if(result == false)
                 return View(data);
-            return RedirectToAction("Details", new { id = data.Id });
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -50,14 +50,14 @@ namespace KPaTS.Areas.Admin.Controllers
             bool result = repository.Add(data);
             if (result == false)
                 return View(data);
-            return RedirectToAction("Details", new { id = data.Id });
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
         public ActionResult Delete(Guid id)
         {
             repository.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
 

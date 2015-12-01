@@ -6,27 +6,45 @@
 <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
     <div class="page-content">
         @Html.Action("Index", "Space")
+        <div class="loaded-content"></div>
     </div>
 </section>
 <section class="mdl-layout__tab-panel" id="fixed-tab-2">
     <div class="page-content">
         @Html.Action("Index", "Subject")
+        <div class="loaded-content"></div>
     </div>
 </section>
 <section class="mdl-layout__tab-panel" id="fixed-tab-3">
     <div class="page-content">
         @Html.Action("Index", "Professor")
+        <div class="loaded-content"></div>
     </div>
 </section>
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/mdl")
 <script>
+    $("body").on("click", ".cancel-action", function (e) {
+        $(this).parents(".page-content").find(".transition").removeClass("transition")
+        $(this).parents(".loaded-content").html("")
+    });
     $("body").on("click", "#add-space, #add-subject, #add-professor", function (e) {
         e.preventDefault()
         var self = this;
         $.get($(self).attr("href"), {}, function (data) {
-            $(self).parents(".page-content").append(data)
+            $(self).parents(".page-content").find(".loaded-content").html(data)
+            componentHandler.upgradeAllRegistered();
+            $(self).addClass("transition");
+        })
+        return false
+    });
+    $("body").on("click", ".ajax-action", function (e) {
+        e.preventDefault()
+        var self = this;
+        $.get($(self).attr("href"), {}, function (data) {
+            $(self).parents(".page-content").find(".transition").removeClass("transition")
+            $(self).parents(".page-content").find(".loaded-content").html(data)
             componentHandler.upgradeAllRegistered();
         })
         return false

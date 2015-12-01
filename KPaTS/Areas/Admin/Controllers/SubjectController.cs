@@ -20,7 +20,7 @@ namespace KPaTS.Areas.Admin.Controllers
 
         public ActionResult Details(Guid id)
         {
-            return View(repository.GetSubjectById(id));
+            return PartialView(repository.GetSubjectById(id));
         }
 
         public ActionResult Create()
@@ -34,13 +34,13 @@ namespace KPaTS.Areas.Admin.Controllers
             bool result = repository.Add(data);
             if (result == false)
                 return View(data);
-            return RedirectToAction("Details", new { id = data.Id });
+            return RedirectToAction("Index", "Home");
         }
 
         
         public ActionResult Edit(Guid id)
         {
-            return View(repository.GetSubjectById(id));
+            return PartialView(repository.GetSubjectById(id));
         }
 
         [HttpPost]
@@ -49,14 +49,14 @@ namespace KPaTS.Areas.Admin.Controllers
             bool result = repository.Edit(data);
             if (result == false)
                 return View(data);
-            return RedirectToAction("Details", new { id = data.Id });
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
         public ActionResult Delete(Guid id)
         {
             repository.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
