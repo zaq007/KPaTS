@@ -454,6 +454,10 @@ SPAN.mark {
     display: flex;
 }
 
+.expandable .header A {
+    cursor: pointer;
+}
+
 .expandable .header .mdl-button {
     margin-right: 10px;
 }
@@ -571,6 +575,10 @@ select:focus {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
+
+    font-weight: 400;
+    line-height: 20px;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
 }
 
 .mdl-selectfield:after {
@@ -740,4 +748,13 @@ select:focus {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.redactor-editor abbr.attached-question {
+    background-color: rgba(0, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0 3px;
+    border-left: 1px solid rgba(0,0,0,0.7);
+    border-right: 1px solid rgba(0,0,0,0.7);
+    box-shadow: 0 0 7px rgba(0,0,0,0.3);
 }

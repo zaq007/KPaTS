@@ -1551,7 +1551,9 @@
 			return {
 				build: function(btnName, btnObject)
 				{
-					var $button = $('<a href="#" class="re-icon re-' + btnName + '" rel="' + btnName + '" <a/>').attr({'role': 'button', 'aria-label': btnObject.title, 'tabindex': '-1'});
+				    var $button = $('<a href="#" class="' + (btnObject.withIcon === false ? '' : 're-icon ') + 're-' + btnName + '" rel="' + btnName + '" <a/>').attr({ 'role': 'button', 'aria-label': btnObject.title, 'tabindex': '-1' });
+				    if (btnObject.withIcon === false)
+				        $button.text(btnObject.title)
 
 					// click
 					if (btnObject.func || btnObject.command || btnObject.dropdown)
@@ -1732,14 +1734,15 @@
 
 					return $dropdown;
 				},
-				add: function(key, title)
+				add: function(key, title, withIcon)
 				{
 					if (!this.opts.toolbar) return;
 
 					if (this.button.isMobileUndoRedo(key)) return "buffer";
 
-					var btn = this.button.build(key, { title: title });
-					btn.addClass('redactor-btn-image');
+					var btn = this.button.build(key, { title: title, withIcon: withIcon });
+                    if (withIcon)
+					    btn.addClass('redactor-btn-image');
 
 					this.$toolbar.append($('<li>').append(btn));
 

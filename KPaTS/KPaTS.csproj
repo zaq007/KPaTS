@@ -297,6 +297,7 @@
     <Content Include="Scripts\redactor\plugins\fullscreen\fullscreen.js" />
     <Content Include="Scripts\redactor\plugins\imagemanager\imagemanager.js" />
     <Content Include="Scripts\redactor\plugins\limiter\limiter.js" />
+    <Content Include="Scripts\redactor\plugins\questionmarkup\questionmarkup.js" />
     <Content Include="Scripts\redactor\plugins\table\table.js" />
     <Content Include="Scripts\redactor\plugins\textdirection\textdirection.js" />
     <Content Include="Scripts\redactor\plugins\textexpander\textexpander.js" />

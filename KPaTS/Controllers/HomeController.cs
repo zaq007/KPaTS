@@ -19,7 +19,7 @@ namespace KPaTS.Controllers
 
         public ActionResult About()
         {
-            return View();
+            return PartialView();
         }
 
         public ActionResult Contact()

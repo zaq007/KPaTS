@@ -169,6 +169,7 @@ body .redactor-box-fullscreen {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
+  font-weight: normal;
 }
 .redactor-toolbar li a:hover {
   outline: none;

@@ -105,6 +105,7 @@
 
 @section Scripts {
     <script src="~/Scripts/redactor/redactor.js"></script>
+    <script src="~/Scripts/redactor/plugins/questionmarkup/questionmarkup.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $("#theory-search").keyup(function () {
@@ -153,7 +154,9 @@
             $(".suggest-item:not(.dummy) .space").text("@@" + $("#Space_Id_ option:selected").text().toUpperCase());
         });
 
-        $("#theory-editor").redactor();
+        $("#theory-editor").redactor({
+            plugins: ['questionmarkup']
+        });
 
         var questions = [];
 
@@ -164,7 +167,7 @@
                 questionId: id,
                 type: type
             }, function (data) {
-                $(".questions").append(data);
+                $(".questions").append(data).trigger("questionListChanged");
                 $(".question.displayNone").fadeIn();
                 componentHandler.upgradeAllRegistered();
 
@@ -172,7 +175,7 @@
                 $(question).find(".body TEXTAREA").redactor();
                 questions.push(question);
 
-                addAnswer(id, type)
+                addAnswer(id, type);
             })
         }
 
