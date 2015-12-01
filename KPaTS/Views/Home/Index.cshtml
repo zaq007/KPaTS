@@ -55,6 +55,18 @@
             return query
         }
 
+        $(".open-search").click(function (event) {
+            event.preventDefault()
+            $("header").toggleClass("search-expanded");
+            if ($("header").hasClass("search-expanded")) {
+                $(".open-search i").text("close")
+                $(".search-main").focus()
+            } else {
+                $(".open-search i").text("search")
+            }
+
+        })
+
         $("#search-main").keyup(function () {
             var leading = $("#search-main").val().charAt(0);
             var lastSymbol = $("#search-main").val().charAt($("#search-main").val().length - 1);
@@ -130,11 +142,11 @@
 
         $(".mdl-layout__content").scroll(function () {
             if (!isScrolledIntoView($(".search-container"))) {
-                $("header").addClass("mdl-color--primary");
+                $("header").addClass("mdl-color--primary search-attached");
                 $(".search-container").children().appendTo($("#header-search-container"));
             }
             else {
-                $("header").removeClass("mdl-color--primary");
+                $("header").removeClass("mdl-color--primary search-attached");
                 $("#header-search-container").children().appendTo($(".search-container"));
             }
         });

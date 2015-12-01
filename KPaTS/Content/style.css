@@ -82,6 +82,10 @@ input[type="week"], select[multiple], select[size], textarea {
     color: white;
 }
 
+.mdl-layout-title span {
+    font-weight: 300;
+}
+
 .page-content, .test-data, .mdl-layout__header-row {
     position: relative;
 }
@@ -144,6 +148,14 @@ input[type="week"], select[multiple], select[size], textarea {
     position: relative;
 }
 
+.open-search {
+    display: none;
+}
+
+.search-attached .open-search {
+    display: block;
+}
+
 .search-container {
     align-self: center;
     min-height: 77px;
@@ -151,8 +163,34 @@ input[type="week"], select[multiple], select[size], textarea {
     position: relative;
 }
 
+.is-small-screen #header-search-container {
+    opacity: 0;
+}
+
+.search-expanded #header-search-container {
+    opacity: 1;
+}
+
+.search-attached.search-expanded .mdl-navigation {
+    display: none;
+}
+
 #header-search-container {
     position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+    transition: opacity .2s;
+}
+
+#header-search-container .search-input-container {
+    flex-grow: 1;
+}
+
+#header-search-container .autocomplete-container {
+    margin-left: 30px;
+    margin-right: 20px;
 }
 
 .search-input-container {
@@ -381,7 +419,7 @@ SPAN.mark {
     left: 0;
     right: 0;
     margin-top: 50px;
-    margin-left: 20px;
+    margin-left: 10px;
     background-color: white;
     z-index: -1;
     transition: transform .2s, visibility .3s, opacity .2s;
