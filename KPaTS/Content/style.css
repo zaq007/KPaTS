@@ -53,6 +53,33 @@ body.index {
     }
 }
 
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 3px 10px rgb(63,81,181);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12),0 1px 1px 0 rgba(0,0,0,.24);
+    }
+}
+
+@keyframes scrollIcon {
+    0% {
+        text-shadow: 0 -30px 10px rgba(0,0,0,0.5);
+    }
+    40% {
+        text-shadow: 0 0 0;
+    }
+    100% {
+        text-shadow: none;
+    }
+}
+
 body:not(.admin) .page-content {
     animation-name: fadeInDown;
     animation-duration: .4s;
@@ -666,6 +693,14 @@ select:focus {
 
 .fab-scroll {
     margin-top: -92px;
+}
+
+.fab-scroll a {
+    animation: pulsate 5s ease-in-out infinite;
+}
+
+.fab-scroll a i {
+    animation: scrollIcon 2.5s ease-out infinite;
 }
 
 .question-control, .rating-control {
