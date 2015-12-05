@@ -42,9 +42,10 @@ namespace KPaTS.Core.Algorithms
             if (test != "" && info.Type == Type.Space)
                 return false;
 
-            if (info.Space != null && space != "")
-                if (String.Compare(info.Space, space, true) != 0 && space != "")
-                    return false;
+            if (info.Space != "" && space != "")
+                for (int i = 0; i < space.Length; i++)
+                    if (info.Space.ToLower()[i] != space[i])
+                        return false;
 
             if (test != "")
                 for (int i = 0; i < test.Length; i++)

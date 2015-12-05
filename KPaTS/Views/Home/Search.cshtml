@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+<div class="mdl-grid mdl-color--primary mdl-color-text--white">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell--8-col">
+        <h2>Search results</h2>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+</div>
+
+<div class="mdl-grid">
+    <div class="mdl-cell--8-col mdl-grid">
+@if (ViewBag.Spaces != null)
+{
+    <li class="results-category">Spaces</li>
+    foreach (KPaTS.Models.SpaceInfoModel space in ViewBag.Spaces)
+    {
+        @Html.Partial("~/Views/Space/_SpaceCardPartialView.cshtml", space);
+    }
+} 
+else
+if(ViewBag.Tests != null)
+{
+    <li class="results-category">Tests</li>
+    foreach(KPaTS.Models.TestInfoModel test in ViewBag.Tests)
+    {
+        @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", test);
+    }
+}
+else
+{
+        <h5 class="mdl-cell--12-col">No results :(</h5>
+}
+    </div>
+</div> 

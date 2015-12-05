@@ -40,15 +40,23 @@ namespace KPaTS.Controllers
         {
             dynamic data = AutocompleteAlgorithms.ParseQuery(query);
             if (string.Compare(data.test, "") != 0 && string.Compare(data.space, "") == 0)
+            {
                 ViewBag.Tests = new TestsRepository().GetTestsForAutocomplete(data.space, data.test);
+                if(ViewBag.Tests.Count == 1)
+                    return RedirectToAction("Index", "Test", new { Id = ViewBag.Tests[0].Id });
+            }
             else
                 if (string.Compare(data.space, "") != 0 && string.Compare(data.test, "") == 0)
+                {
                     ViewBag.Spaces = new SpacesRepository().GetAutocompleteItems(data.space, data.test);
+                    if (ViewBag.Spaces.Count == 1)
+                        return RedirectToAction("Index", "Space", new { Id = ViewBag.Spaces[0].Id });
+                }
                 else
                 {
                     var Tests = new TestsRepository().GetTestsForAutocomplete(data.space, data.test);
-                    if (Tests.Count() == 1)
-                        RedirectToAction("Index", "Test", new { Id = Tests.First().Id });
+                    if (Tests.Count == 1)
+                        return RedirectToAction("Index", "Test", new { Id = Tests[0].Id });
                 }
             return View();
         }

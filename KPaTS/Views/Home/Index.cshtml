@@ -65,7 +65,12 @@
 
         })
 
-        $("#search-main").keyup(function () {
+        $("#search-main").keyup(function (event) {
+            if (event.which == 13) {
+                var query = buildQuery();
+                if (typeof(query) !== "undefined")
+                    window.location.href = "/Home/Search?query=" + encodeURIComponent(query);
+            }
             var leading = $("#search-main").val().charAt(0);
             var lastSymbol = $("#search-main").val().charAt($("#search-main").val().length - 1);
 
