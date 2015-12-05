@@ -128,6 +128,7 @@
                 if (response.length != 0) {
                     $("#suggest-list").show().html(response);
                     $("#suggest-recommended").hide();
+                    $("#all-results").attr("href", "/Home/Search?query=" + encodeURIComponent(query));
                 }
                 else {
                     $("#suggest-list").hide();
