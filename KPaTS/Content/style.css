@@ -70,13 +70,13 @@ body.index {
 
 @keyframes scrollIcon {
     0% {
-        text-shadow: 0 -30px 10px rgba(0,0,0,0.5);
+        text-shadow: 0 -30px 10px rgba(0,0,0,0.3);
     }
     40% {
-        text-shadow: 0 0 0;
+        text-shadow: 0 0 0 rgba(0,0,0,0.5);
     }
     100% {
-        text-shadow: none;
+        text-shadow: 0 0 0;
     }
 }
 
@@ -700,7 +700,7 @@ select:focus {
 }
 
 .fab-scroll a i {
-    animation: scrollIcon 2.5s ease-out infinite;
+    animation: scrollIcon 1s ease-out infinite;
 }
 
 .question-control, .rating-control {
