@@ -41,8 +41,6 @@
 </section>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jquery")
-
     <script>
         function buildQuery() {
             if ($("#search-main").val().length == 0 && $("#search-secondary").val().length == 0)
@@ -158,5 +156,10 @@
         $(".search-input-container INPUT").focus(function () {
             $(".autocomplete-container").removeClass("container-hidden");
         });
+
+        $("#about-scroll").click(function (event) {
+            event.preventDefault()
+            $(".mdl-layout__content").animate({ scrollTop: $("#about").position().top }, 500, "easeInOutCubic");
+        })
     </script>
 }
