@@ -62,7 +62,7 @@ namespace KPaTS.Repositories
 
                 bool isValid = Validator.TryValidateObject(model.Infos.First(), context, validationResults, true);
                 if (!isValid)
-                    model.Infos.Remove(model.Infos.First());
+                    DB.Entry(model.Infos.First()).State = System.Data.Entity.EntityState.Detached;
 
                 foreach (var infoModel in model.Infos)
                 {
