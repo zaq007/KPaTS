@@ -24,6 +24,9 @@
                 @Html.TextBoxFor(m => m.Name, new { @class = "mdl-textfield__input" })
                 @Html.ValidationMessageFor(m => m.Name)
             </div>
+            <div class="mdl-selectfield">
+                @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
+            </div>
             <input type="submit" value="Create" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
             <div class="mdl-button mdl-js-button mdl-js-ripple-effect cancel-action">Cancel</div>
         }

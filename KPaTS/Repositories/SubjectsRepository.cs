@@ -49,11 +49,12 @@ namespace KPaTS.Repositories
             return false;
         }
 
-        public bool Add(SubjectModel data)
+        public bool Add(SubjectModel model)
         {
             using (var DB = new MainContext())
             {
-                DB.Subjects.Add(data);
+                DB.Subjects.Add(model);
+                DB.Entry(model.Space).State = System.Data.Entity.EntityState.Unchanged;
                 DB.SaveChanges();
                 return true;
             }
