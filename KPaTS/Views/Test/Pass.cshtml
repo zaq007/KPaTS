@@ -154,5 +154,17 @@
             $(this).parent().parent().parent().find("input[type='radio']").val("false");
             $(this).find("input[type='radio']").val("true");
         });
+
+        $(".question-card").on("click", ".show-theory", function(event) {
+            var testId = $("#Id").val()
+            var questionIndex = passController.getCurrentQuestionId()
+            $(event.currentTarget).parent().children("input[type='hidden']").val()
+            $.get("/Api/GetInfoForQuestion", {
+                testId: testId,
+                questionIndex: questionIndex
+            }, function (data) {
+                $(".page-content").append(data)
+            })
+        })
     </script>
 }

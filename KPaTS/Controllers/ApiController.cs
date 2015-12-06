@@ -61,5 +61,12 @@ namespace KPaTS.Controllers
             InfoModel info = new InfosRepository().GetInfoById(infoGuid);
             return Json(info.Body, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetInfoForQuestion(Guid testId, int questionIndex)
+        {
+            TestModel test = new TestsRepository().GetTest(testId);
+            InfoModel info = test.Infos.FirstOrDefault();
+            return Json(info.StrippedBody, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -41,6 +41,7 @@
 </section>
 
 @section Scripts {
+    @Scripts.Render("~/bundles/jqueryui")
     <script>
         function buildQuery() {
             if ($("#search-main").val().length == 0 && $("#search-secondary").val().length == 0)

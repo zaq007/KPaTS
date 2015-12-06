@@ -355,13 +355,14 @@ SPAN.mark {
 
 .question-card {
     padding-top: 16px;
+    position: relative;
 }
 
 .mdl-textfield:not(.search-input-container) {
     width: 100%;
 }
 
-.question-card > DIV {
+.question-card > DIV:not(.right-fab) {
     padding: 0 16px;
 }
 

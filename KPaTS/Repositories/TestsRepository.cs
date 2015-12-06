@@ -8,6 +8,7 @@ using System.Web.Routing;
 using KPaTS.Core.Algorithms;
 using KPaTS.Models;
 using KPaTS.Core;
+using System.ComponentModel.DataAnnotations;
 
 namespace KPaTS.Repositories
 {
@@ -49,15 +50,23 @@ namespace KPaTS.Repositories
                 UserId = WebMatrix.WebData.WebSecurity.CurrentUserId,
                 UserName = WebMatrix.WebData.WebSecurity.CurrentUserName
             };
-            using(var DB = new MainContext())
+            using (var DB = new MainContext())
             {
                 DB.Tests.Add(model);
                 DB.Entry(model.Space).State = System.Data.Entity.EntityState.Unchanged;
                 DB.Entry(model.Subject).State = System.Data.Entity.EntityState.Unchanged;
                 DB.Entry(model.Creator).State = System.Data.Entity.EntityState.Unchanged;
+
+                var context = new ValidationContext(model.Infos.First(), serviceProvider: null, items: null);
+                var validationResults = new List<ValidationResult>();
+
+                bool isValid = Validator.TryValidateObject(model.Infos.First(), context, validationResults, true);
+                if (!isValid)
+                    model.Infos.Remove(model.Infos.First());
+
                 foreach (var infoModel in model.Infos)
                 {
-                    if (infoModel != model.Infos.First())
+                    if (infoModel != model.Infos.First() || !isValid)
                         DB.Entry(infoModel).State = System.Data.Entity.EntityState.Unchanged;
                 }
                 DB.SaveChanges();

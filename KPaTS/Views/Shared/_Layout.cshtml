@@ -8,14 +8,13 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
     </head>
     <body class="main @(ViewBag.PageId == KPaTS.Core.PageID.PAGE_INDEX ? "index" : "") mdl-color--optic-white">
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <header class="mdl-layout__header mdl-layout__header--waterfall @(ViewBag.PageId == KPaTS.Core.PageID.PAGE_INDEX ? "mdl-layout__header--transparent mdl-layout__header--seamed" : "")">
                 @if (ViewBag.PageId != KPaTS.Core.PageID.PAGE_INDEX)
                 {
-                    @:<a href="../" class="mdl-layout__drawer-button"><i class="material-icons">arrow_back</i></a>
+                    @:<a href="/" class="mdl-layout__drawer-button"><i class="material-icons">arrow_back</i></a>
                 }
                 <div class="mdl-layout__header-row">
                     <span class="mdl-layout-title mdl-layout--large-screen-only">@Html.Raw(ViewBag.PageId != KPaTS.Core.PageID.PAGE_INDEX ? ViewBag.Title : "<span>Project <b>#ash</b></span>")</span>
@@ -63,7 +62,6 @@
         </div>
 
         @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/jqueryui")
         @Scripts.Render("~/bundles/mdl")
         @Scripts.Render("~/bundles/global")
         @RenderSection("scripts", required: false)
