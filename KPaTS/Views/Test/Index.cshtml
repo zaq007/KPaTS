@@ -37,7 +37,7 @@
         @foreach(var info in Model.Infos)
         {
             <h3>@info.Name</h3>
-            @Html.Raw(info.Body)
+            @Html.Raw(info.StrippedBody)
         }
     </section>
     <div class="mdl-layout-spacer"></div>

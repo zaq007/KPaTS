@@ -14,7 +14,6 @@
     <div class="mdl-cell--8-col mdl-grid">
 @if (ViewBag.Spaces != null)
 {
-    <li class="results-category">Spaces</li>
     foreach (KPaTS.Models.SpaceInfoModel space in ViewBag.Spaces)
     {
         @Html.Partial("~/Views/Space/_SpaceCardPartialView.cshtml", space);
@@ -23,7 +22,6 @@
 else
 if(ViewBag.Tests != null)
 {
-    <li class="results-category">Tests</li>
     foreach(KPaTS.Models.TestInfoModel test in ViewBag.Tests)
     {
         @Html.Partial("~/Views/Test/_TestCardPartialView.cshtml", test);

@@ -43,8 +43,7 @@
 			},
 			set: function(questionId)
 			{
-			    questionId++;
-			    this.selection.replaceWithHtml("<abbr class='attached-question' title='Answer for the question #" + questionId + "'>" + this.range.extractContents().textContent + "</abbr>");
+			    this.selection.replaceWithHtml("<abbr class='attached-question' data-question-id='" + questionId + "' title='Answer for the question #" + (questionId + 1) + "'>" + this.range.extractContents().textContent + "</abbr>");
 			}
 		};
 	};
