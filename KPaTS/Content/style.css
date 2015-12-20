@@ -33,26 +33,6 @@ body.index {
     background: url('../Images/bg.png') center / cover;
 }
 
-@keyframes fadeInDown {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateY(-20px);
-        -ms-transform: translateY(-20px);
-        transform: translateY(-20px);
-    }
-
-    65% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: translateY(0px);
-        -ms-transform: translateY(0px);
-        transform: translateY(0px);
-    }
-}
-
 @keyframes pulsate {
     0% {
         transform: scale(1);
@@ -81,11 +61,6 @@ body.index {
 }
 
 body:not(.admin) .page-content {
-    animation-name: fadeInDown;
-    animation-duration: .4s;
-    animation-delay: .6s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
 }
 
 input[type="text"], input[type="date"], input[type="datetime"],
@@ -832,4 +807,8 @@ select:focus {
     border-left: 1px solid rgba(0,0,0,0.7);
     border-right: 1px solid rgba(0,0,0,0.7);
     box-shadow: 0 0 7px rgba(0,0,0,0.3);
+}
+
+.mdl-card__supporting-text {
+    text-overflow: ellipsis;
 }
