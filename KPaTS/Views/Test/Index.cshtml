@@ -4,34 +4,36 @@
     ViewBag.Title = "Test";
 }
 
-<div class="mdl-grid test-data info mdl-color--primary">
-    <div class="mdl-layout-spacer"></div>
-    <section class="card-side mdl-color--white mdl-cell mdl-cell--8-col card-relative card-padding mdl-cell--top mdl-shadow--2dp">
-        <div class="body">
-            <aside>
-                <i class="material-icons">account_circle</i>
-                <p>Created by <b>@Model.Creator.UserName</b></p>
-            </aside>
-            <div class="content">
-                <div class="test-title"><h4>@Model.Name<span class="space">@@@Model.Space.Shortcut</span></h4></div>
-                <div class="mdl-card__supporting-text">
-                    @Model.Description
+<div class="test-data info bg-image-wrapper @(Model.Subject.Style != null ? "decorated" : "")" @(Model.Subject.Style != null ? "style=background-image:url(" + Html.Raw(Model.Subject.Style.BackgroundUrl) + ")" : "")>
+    <div class="mdl-grid mdl-color--primary test-controls">
+        <div class="mdl-layout-spacer"></div>
+        <section class="card-side mdl-color--white mdl-cell mdl-cell--8-col card-relative card-padding mdl-cell--top mdl-shadow--2dp curved-shadow">
+            <div class="body">
+                <aside>
+                    <i class="material-icons">account_circle</i>
+                    <p>Created by <b>@Model.Creator.UserName</b></p>
+                </aside>
+                <div class="content">
+                    <div class="test-title"><h4>@Model.Name<span class="space">@@@Model.Space.Shortcut</span></h4></div>
+                    <div class="mdl-card__supporting-text">
+                        @Model.Description
+                    </div>
+                    <a id="test-fab" href="/Test/Pass?Id=@Model.Id" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                        <i class="material-icons">send</i>
+                    </a>
                 </div>
-                <a id="test-fab" href="/Test/Pass?Id=@Model.Id" class="right-fab mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">send</i>
-                </a>
             </div>
-        </div>
-        <div class="card-footer">
-            <span class="author">Total attempts: <b>@Model.Stats.Count</b></span>
-            <span class="author">Successfull attempts: <b>@Model.Stats.Count</b></span>
-            <span class="author">Rating: <b>@Model.Rating</b></span>
-        </div>
-    </section>
-    <div class="mdl-layout-spacer"></div>
+            <div class="card-footer">
+                <span class="author">Total attempts: <b>@Model.Stats.Count</b></span>
+                <span class="author">Successfull attempts: <b>@Model.Stats.Count</b></span>
+                <span class="author">Rating: <b>@Model.Rating</b></span>
+            </div>
+        </section>
+        <div class="mdl-layout-spacer"></div>
+    </div>
 </div>
 
-<div class="mdl-grid">
+<div class="mdl-grid mdl-color--optic-white">
     <div class="mdl-layout-spacer"></div>
     <section class="mdl-cell--8-col test-theory">
         @if (Model.Infos != null)

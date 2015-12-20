@@ -823,3 +823,37 @@ select:focus {
     height: 200px;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#FAFAFA 100%) transparent !important;
 }
+
+@media (max-width: 839px) {
+    .bg-image-wrapper:not(.test-data).decorated .test-controls {
+        height: 100px;
+    }
+}
+
+.curved-shadow
+{
+    position: relative;
+    z-index: 1;
+}
+
+.curved-shadow:before, .curved-shadow:after
+{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 15px;
+    left: 10px;
+    width: 50%;
+    top: 84%;
+    max-width:300px;
+    background: #777;
+    box-shadow: 0 15px 10px #777;
+    transform: rotate(-3deg);
+}
+
+.curved-shadow:after
+{
+    transform: rotate(3deg);
+    right: 10px;
+    left: auto;
+}
