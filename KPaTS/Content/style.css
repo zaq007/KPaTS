@@ -800,7 +800,7 @@ select:focus {
     white-space: nowrap;
 }
 
-.redactor-editor abbr.attached-question {
+.redactor-editor abbr.attached-question, .hint abbr.attached-question {
     background-color: rgba(0, 255, 255, 0.1);
     border-radius: 4px;
     padding: 0 3px;
@@ -811,4 +811,9 @@ select:focus {
 
 .mdl-card__supporting-text {
     text-overflow: ellipsis;
+}
+
+.hint p {
+    opacity: 1;
+    font-size: 13px;
 }

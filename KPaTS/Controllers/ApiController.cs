@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using KPaTS.Core.Algorithms;
 using KPaTS.Repositories;
 using KPaTS.Models;
+using System.Text.RegularExpressions;
 
 namespace KPaTS.Controllers
 {
@@ -59,14 +60,24 @@ namespace KPaTS.Controllers
         public JsonResult PreviewInfo(Guid infoGuid)
         {
             InfoModel info = new InfosRepository().GetInfoById(infoGuid);
-            return Json(info.Body, JsonRequestBehavior.AllowGet);
+            return Json(info.StrippedBody, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetInfoForQuestion(Guid testId, int questionIndex)
         {
-            TestModel test = new TestsRepository().GetTest(testId);
-            InfoModel info = test.Infos.FirstOrDefault();
-            return Json(info.StrippedBody, JsonRequestBehavior.AllowGet);
+            InfoModel info = new InfosRepository().GetInfoCreatedForTest(testId);
+            var result = "";
+            if (info != null)
+            {
+                string body = info.Body;
+                string pattern = String.Format(@"((\S+ *){{6}})(<abbr[^>]* data-question-id=\""{0}\""[^>]*>(.*?)< *\/ *abbr *>)(( *\S+){{6}})", questionIndex);
+                Match mainRegex = new Regex(pattern).Match(body);
+                Regex selectHtmlTags = new Regex("<[^>]*>");
+
+
+                result = "..." + selectHtmlTags.Replace(mainRegex.Groups[1].Value, "") + mainRegex.Groups[3].Value + selectHtmlTags.Replace(mainRegex.Groups[5].Value, "") + "...";
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -36,6 +36,10 @@
             @Html.Partial("_QuestionPartialView", questions[i], dic)
         }
     }
+    <div class="hint displayNone">
+        <h4>Hint</h4>
+        <p id="hint-container" class="mdl-color-text--grey-600"></p>
+    </div>
     </div>
     <div class="mdl-layout-spacer"></div>
 </div>
@@ -94,6 +98,7 @@
         }
 
         PassController.prototype.nextQuestion = function () {
+            $(".hint").hide();
             if (this.currentQuestionId + 1 < this.questions.length) {
                 $(this.questions[this.currentQuestionId]).hide();
                 this.currentQuestionId++;
@@ -104,6 +109,7 @@
         };
 
         PassController.prototype.prevQuestion = function () {
+            $(".hint").hide();
             if (this.currentQuestionId - 1 >= 0) {
                 $(this.questions[this.currentQuestionId]).hide();
                 this.currentQuestionId--;
@@ -163,7 +169,10 @@
                 testId: testId,
                 questionIndex: questionIndex
             }, function (data) {
-                $(".page-content").append(data)
+                if (data != "") {
+                    $("#hint-container").html(data)
+                    $(".hint").fadeIn();
+                }
             })
         })
     </script>

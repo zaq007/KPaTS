@@ -23,5 +23,13 @@ namespace KPaTS.Repositories
                 return DB.Infos.Where(x => x.Id == guid).FirstOrDefault();
             }
         }
+
+        public InfoModel GetInfoCreatedForTest(Guid testId)
+        {
+            using (var DB = new MainContext())
+            {
+                return DB.Infos.Where(x => x.Tests.FirstOrDefault().Id == testId).FirstOrDefault();
+            }
+        }
     }
 }
