@@ -4,25 +4,23 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace KPaTS.Models
 {
-    public class SubjectModel
+    public class SubjectStyleModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]
-        public string Shortcut { get; set; }
-
-        [Required]
         public string Name { get; set; }
 
-        public virtual SpaceModel Space { get; set; }
+        [Required]
+        [AllowHtml]
+        public string BackgroundUrl { get; set; }
 
-        public virtual SubjectStyleModel Style { get; set; }
-
-        public virtual ICollection<TestModel> Tests { get; set; }
+        public virtual ICollection<SubjectModel> Subjects { get; set; }
     }
 }

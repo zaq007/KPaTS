@@ -27,6 +27,17 @@
             <div class="mdl-selectfield">
                 @Html.DropDownList("Space[Id]", KPaTS.Core.ViewHelper.GetSpacesList())
             </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                @Html.LabelFor(m => m.Style.Name, new { @class = "mdl-textfield__label" })
+                @Html.TextBoxFor(m => m.Style.Name, new { @class = "mdl-textfield__input" })
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                @Html.LabelFor(m => m.Style.BackgroundUrl, new { @class = "mdl-textfield__label" })
+                @Html.TextBoxFor(m => m.Style.BackgroundUrl, new { @class = "mdl-textfield__input" })
+            </div>
+
             <input type="submit" value="Create" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
             <div class="mdl-button mdl-js-button mdl-js-ripple-effect cancel-action">Cancel</div>
         }

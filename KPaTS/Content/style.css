@@ -60,9 +60,6 @@ body.index {
     }
 }
 
-body:not(.admin) .page-content {
-}
-
 input[type="text"], input[type="date"], input[type="datetime"],
 input[type="datetime-local"], input[type="email"], input[type="month"],
 input[type="number"], input[type="password"], input[type="search"],
@@ -820,4 +817,9 @@ select:focus {
 .hint p {
     opacity: 1;
     font-size: 13px;
+}
+
+.bg-image-wrapper.decorated .test-controls {
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,#FAFAFA 100%) transparent !important;
 }
