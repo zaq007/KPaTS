@@ -52,22 +52,26 @@ namespace KPaTS.Repositories
             };
             using (var DB = new MainContext())
             {
+                var context = new ValidationContext(model.Infos.First(), serviceProvider: null, items: null);
+                var validationResults = new List<ValidationResult>();
+
+                bool isValid = Validator.TryValidateObject(model.Infos.First(), context, validationResults, true);
+                if (isValid)
+                {
+                    DB.Infos.Add(model.Infos.First());
+                    DB.SaveChanges();
+                }
+                else
+                    model.Infos.Remove(model.Infos.First());
+
                 DB.Tests.Add(model);
                 DB.Entry(model.Space).State = System.Data.Entity.EntityState.Unchanged;
                 DB.Entry(model.Subject).State = System.Data.Entity.EntityState.Unchanged;
                 DB.Entry(model.Creator).State = System.Data.Entity.EntityState.Unchanged;
 
-                var context = new ValidationContext(model.Infos.First(), serviceProvider: null, items: null);
-                var validationResults = new List<ValidationResult>();
-
-                bool isValid = Validator.TryValidateObject(model.Infos.First(), context, validationResults, true);
-                if (!isValid)
-                    DB.Entry(model.Infos.First()).State = System.Data.Entity.EntityState.Detached;
-
                 foreach (var infoModel in model.Infos)
                 {
-                    if (infoModel != model.Infos.First() || !isValid)
-                        DB.Entry(infoModel).State = System.Data.Entity.EntityState.Unchanged;
+                    DB.Entry(infoModel).State = System.Data.Entity.EntityState.Unchanged;
                 }
                 DB.SaveChanges();
                 return true;
