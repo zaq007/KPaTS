@@ -341,6 +341,10 @@ SPAN.mark {
     padding: 0 16px;
 }
 
+.question-card .answers > div div {
+    flex-grow: 1;
+}
+
 .question-card .answers {
     border-top: 1px solid rgba(0,0,0,0.1);
     background-color: #C5CAE9;
@@ -780,7 +784,7 @@ select:focus {
     opacity: 1;
     position: relative;
     transform: translateY(0px);
-    transition: opacity .5s, transform .5s;
+    transition: opacity .3s, transform .3s;
 }
 
 .theory-pieces {

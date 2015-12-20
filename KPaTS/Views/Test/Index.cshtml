@@ -34,10 +34,13 @@
 <div class="mdl-grid">
     <div class="mdl-layout-spacer"></div>
     <section class="mdl-cell--8-col test-theory">
-        @foreach(var info in Model.Infos)
+        @if (Model.Infos != null)
         {
-            <h3>@info.Name</h3>
-            @Html.Raw(info.StrippedBody)
+            foreach (var info in Model.Infos)
+            {
+                <h3>@info.Name</h3>
+                @Html.Raw(info.StrippedBody)
+            }
         }
     </section>
     <div class="mdl-layout-spacer"></div>

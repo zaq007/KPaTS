@@ -3,8 +3,8 @@
     ViewBag.Title = "Регистрация";
 }
 
-<div class="mdl-grid">
-<section class="mdl-color--white mdl-cell mdl-cell--8-col card-padding">
+<div class="mdl-grid mdl-cell--8-col">
+<section class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone card-padding">
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -19,7 +19,7 @@
 }
 </section>
 
-<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col card-padding" id="socialLoginForm">
+<section class="social mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone card-padding" id="socialLoginForm">
     <h4>Свяжите свою учетную запись в @ViewBag.ProviderDisplayName.</h4>
     <p>Вы прошли проверку через <strong>@ViewBag.ProviderDisplayName</strong>.
         Введите имя пользователя на этом сайте ниже и нажмите кнопку "Подтвердить", чтобы
