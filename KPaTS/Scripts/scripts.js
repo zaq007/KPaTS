@@ -1,4 +1,5 @@
-﻿function isScrolledIntoView(elem) {
+﻿
+function isScrolledIntoView(elem) {
     var $elem = $(elem);
     var $window = $(window);
 
@@ -117,4 +118,12 @@ $(document).ready(function () {
         var content = $(this).parents(".expandable");
         collapseContent(content);
     });
+
+    $("#button-back").click(function (e) {
+        if (window.history.length > 1) {
+            e.preventDefault()
+            window.history.back()
+        }
+        return true
+    })
 });
