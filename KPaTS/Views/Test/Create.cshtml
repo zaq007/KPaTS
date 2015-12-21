@@ -94,7 +94,7 @@
                     <label class="mdl-textfield__label" for="Infos[0].Name">Title</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield">
-                    <textarea class="mdl-textfield__input" rows="3" name="Infos[0].Body" id="theory-editor"></textarea>
+                    <textarea class="mdl-textfield__input" name="Infos[0].Body" id="theory-editor"></textarea>
                 </div>
             </div>
         </div>
@@ -106,6 +106,7 @@
 @section Scripts {
     <script src="~/Scripts/redactor/redactor.js"></script>
     <script src="~/Scripts/redactor/plugins/questionmarkup/questionmarkup.js"></script>
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $("#theory-search").keyup(function () {
