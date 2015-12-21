@@ -179,20 +179,38 @@
             })
         }
 
+        var canAddAnswer = true;
+
         function addAnswer(questionId) {
             var questionType = $(questions[questionId]).data("question-type");
             var newAnswerId = $(questions[questionId]).find(".answers").children().size()
-            $.get("/Test/GetAnswerView", {
-                questionId: questionId,
-                type: questionType,
-                answerId: newAnswerId
-            }, function (data) {
-                $(questions[questionId]).find(".answers").append(data);
-                $(".answer.displayNone").fadeIn(300);
-                $(questions[questionId]).find("[data-answer-id='" + newAnswerId + "'] .mdl-textfield__input").rules("add", {
-                    required: true
-                });
-                componentHandler.upgradeAllRegistered();
+            $.ajax({
+                url: "/Test/GetAnswerView",
+                method: "GET",
+                data: {
+                    questionId: questionId,
+                    type: questionType,
+                    answerId: newAnswerId
+                },
+                beforeSend: function (xhr) {
+                    if (!canAddAnswer) {
+                        xhr.abort();
+                    }
+                    else {
+                        canAddAnswer = false;
+                    }
+                },
+                success: function (data) {
+                    $(questions[questionId]).find(".answers").append(data);
+                    $(".answer.displayNone").fadeIn(300);
+                    $(questions[questionId]).find("[data-answer-id='" + newAnswerId + "'] .mdl-textfield__input").rules("add", {
+                        required: true
+                    });
+                    componentHandler.upgradeAllRegistered();
+                },
+                complete: function () {
+                    canAddAnswer = true;
+                }
             })
         }
 
