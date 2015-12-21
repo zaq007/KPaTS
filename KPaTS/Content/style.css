@@ -30,7 +30,7 @@ header {
 }
 
 body.index {
-    background: url('../Images/bg.png') center / cover;
+    background: url('../Images/bg.jpg') center / cover;
 }
 
 @keyframes pulsate {
@@ -214,7 +214,7 @@ HEADER .search-input-container .mdl-textfield__label {
 }
 
 .search-input-container.space {
-    margin-left: 50px;
+    margin-left: 55px;
     opacity: 1;
 }
 
@@ -653,6 +653,10 @@ select:focus {
 
 .viewport-page {
     min-height: calc(100vh - 120px);
+}
+
+.landing-page {
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 70%,#FAFAFA 100%) transparent !important;
 }
 
 .about-page {

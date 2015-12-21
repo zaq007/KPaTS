@@ -60,15 +60,15 @@
     <section class="mdl-cell mdl-cell--8-col card-padding">
         <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
             <div class="mdl-tabs__tab-bar">
-                <a href="#questions-panel" class="mdl-tabs__tab is-active">Questions</a>
-                <a href="#theory-panel" class="mdl-tabs__tab">Theory</a>
+                <a href="#questions-panel" class="mdl-tabs__tab is-active">Вопроосы</a>
+                <a href="#theory-panel" class="mdl-tabs__tab">Теория</a>
             </div>
             <div class="mdl-tabs__panel is-active" id="questions-panel">
                 <div class="questions mdl-grid"></div>
                 <div class="mdl-selectfield">
                     @Html.DropDownList("QuestionType", EnumHelper.GetSelectList(typeof(KPaTS.Models.QuestionType)))
                 </div>
-                <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" type="button" value="Add question" onclick="addQuestion()" />
+                <input class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" type="button" value="Добавить вопрос" onclick="addQuestion()" />
             </div>
             <div class="mdl-tabs__panel" id="theory-panel">
                 <h5>Select existing one</h5>
