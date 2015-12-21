@@ -6,7 +6,7 @@
         <label class="mdl-textfield__label" for="questions[@ViewBag.questionId][Text]">Question text</label>
     </div>
 
-    <h6>Answers</h6>
+    <h6>Ответы</h6>
 
     <input type="hidden" value="@((int)ViewBag.type)" name="questions[@ViewBag.questionId][Type]" />
     @if (ViewBag.type != KPaTS.Models.QuestionType.Plain)
@@ -16,9 +16,9 @@
     else
     {
         <div class="mdl-textfield mdl-js-textfield">
-            <textarea class="mdl-textfield__input" rows="3" name="questions[@(ViewBag.questionId)][Answers][0][Text]" id="questions[@(ViewBag.questionId)][Answers][0][Text]"></textarea>
+            <textarea class="mdl-textfield__input" rows="1" name="questions[@(ViewBag.questionId)][Answers][0][Text]" id="questions[@(ViewBag.questionId)][Answers][0][Text]"></textarea>
             <input type="hidden" value="true" id="questions[@(ViewBag.questionId)][Answers][0][isRight]" name="questions[@(ViewBag.questionId)][Answers][0][isRight]" />
-            <label class="mdl-textfield__label" for="questions[@(ViewBag.questionId)][Answers][0][Text]">Answer</label>
+            <label class="mdl-textfield__label" for="questions[@(ViewBag.questionId)][Answers][0][Text]">Текст ответа</label>
         </div>
     }
 </div>

@@ -20,7 +20,7 @@ namespace KPaTS.Core
             }).ToList();
             list.Insert(0, new SelectListItem()
             {
-                Text = "Space",
+                Text = "Спэйс",
                 Value = "0",
                 Selected = true
             });

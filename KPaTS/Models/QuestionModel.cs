@@ -28,8 +28,11 @@ namespace KPaTS.Models
 
     public enum QuestionType
     {
+        [Display(Name = "Единственный верный вариант")]
         Radio,
+        [Display(Name = "Несколько верных вариантов")]
         Check,
+        [Display(Name = "Без вариантов ответа")]
         Plain
     }
 }

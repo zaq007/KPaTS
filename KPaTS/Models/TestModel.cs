@@ -15,21 +15,26 @@ namespace KPaTS.Models
         public Guid Id { get; set; }
 
         [Required]
+        [Display(Name = "Название")]
         public string Name { get; set; }
 
+        [Display(Name = "Описание")]
         public string Description { get; set; }
 
         public virtual UserProfile Creator { get; set; }
 
         [Required]
+        [Display(Name = "Хэш")]
         public string Shortcut { get; set; }
 
+        [Display(Name = "Спэйс")]
         public virtual SpaceModel Space { get; set; }
 
         public long Rating { get; set; }
 
         public virtual ProfessorModel ProfessorModel { get; set; }
 
+        [Display(Name = "Предмет")]
         public virtual SubjectModel Subject { get; set; }
 
         public virtual ICollection<QuestionModel> Questions { get; set; }

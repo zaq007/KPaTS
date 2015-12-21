@@ -17,6 +17,7 @@ namespace KPaTS.Models
         public string Shortcut { get; set; }
 
         [Required]
+        [Display(Name = "Название")]
         public string Name { get; set; }
 
         public virtual SpaceModel Space { get; set; }

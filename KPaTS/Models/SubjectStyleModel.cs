@@ -15,10 +15,12 @@ namespace KPaTS.Models
         public Guid Id { get; set; }
 
         [Required]
+        [Display(Name = "Название стиля")]
         public string Name { get; set; }
 
         [Required]
         [AllowHtml]
+        [Display(Name = "URL фонового изображения")]
         public string BackgroundUrl { get; set; }
 
         public virtual ICollection<SubjectModel> Subjects { get; set; }
