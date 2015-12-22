@@ -70,12 +70,12 @@ namespace KPaTS.Controllers
             if (info != null)
             {
                 string body = info.Body;
-                string pattern = String.Format(@"((\S+ *){{6}})(<abbr[^>]* data-question-id=\""{0}\""[^>]*>(.*?)< *\/ *abbr *>)(( *\S+){{6}})", questionIndex);
+                string pattern = String.Format(@"(<abbr[^>]* data-question-id=\""{0}\""[^>]*>(.*?)< *\/ *abbr *>)", questionIndex);
                 Match mainRegex = new Regex(pattern).Match(body);
                 Regex selectHtmlTags = new Regex("<[^>]*>");
 
 
-                result = "..." + selectHtmlTags.Replace(mainRegex.Groups[1].Value, "") + mainRegex.Groups[3].Value + selectHtmlTags.Replace(mainRegex.Groups[5].Value, "") + "...";
+                result = "..." + mainRegex.Groups[1].Value +  "...";
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
